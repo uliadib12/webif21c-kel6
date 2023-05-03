@@ -50,6 +50,16 @@ jobs:
         with:
           name: php-app
 
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_CI_ENVIRONMENT : production
+          envkey_app.baseURL : '${{ steps.deploy-to-webapp.outputs.webapp-url }}'
+          envkey_database.default.hostname : ${{ secrets.DATABASE_HOSTNAME }}
+          envkey_database.default.database : ${{ secrets.DATABASE_NAME }}
+          envkey_database.default.username : ${{ secrets.DATABASE_USERNAME }}
+          envkey_database.default.password : ${{ secrets.DATABASE_PASSWORD }}
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
