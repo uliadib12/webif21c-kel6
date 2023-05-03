@@ -52,7 +52,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "app.baseURL='${{ url }}'" > .env
+          echo "app.baseURL='https://teknoexpo.azurewebsites.net/'" > .env
           echo "CI_ENVIRONMENT=production" >> .env
           echo "database.default.hostname='${{ secrets.DB_HOST }}'" >> .env
           echo "database.default.database='${{ secrets.DB_NAME }}'" >> .env
