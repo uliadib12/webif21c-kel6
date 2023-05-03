@@ -29,11 +29,16 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// Ilham : Menambahkan Controller
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/register', 'Register::index');
+// --Ilham : Menambahkan Controller
 
 $routes->group('dashboard', static function ($routes) {
+
+// Adib : Menambahkan Controller
     $routes->get('users', 'Dashboard::user');
     $routes->get('admin', 'Dashboard::admin');
 
@@ -46,7 +51,9 @@ $routes->group('dashboard', static function ($routes) {
         $routes->get('sk', 'Dashboard::sk');
         $routes->get('formating', 'Dashboard::formating');
     });
+// --Adib : Menambahkan Controller
 
+// Verlando : Menambahkan Controller
     $routes->group('laporan', static function ($routes) {
         $routes->get('desain_web', 'Dashboard/Laporan::desainWeb');
         $routes->get('pemrograman_mobile', 'Dashboard/Laporan::pemrogramanMobile');
@@ -60,7 +67,9 @@ $routes->group('dashboard', static function ($routes) {
         $routes->get('ui_ux', 'Dashboard/Sertifikasi::uiUx');
         $routes->get('ctf', 'Dashboard/Sertifikasi::ctf');
     });
+//--Verlando : Menambahkan Controller
 
+// Theo : Menambahkan Controller
     $routes->group('chart', static function ($routes) {
         $routes->get('desain_web', 'Dashboard/Chart::desainWeb');
         $routes->get('pemrograman_mobile', 'Dashboard/Chart::pemrogramanMobile');
@@ -71,6 +80,7 @@ $routes->group('dashboard', static function ($routes) {
     $routes->get('data_mitra', 'Dashboard::dataMitra');
 
     $routes->get('setting', 'Dashboard::setting');
+//--Theo : Menambahkan Controller
 });
 
 /*
