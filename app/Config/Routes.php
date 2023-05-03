@@ -37,8 +37,8 @@ $routes->get('/register', 'Register::index');
 // --Ilham : Menambahkan Controller
 
 $routes->group('dashboard', static function ($routes) {
-
 // Adib : Menambahkan Controller
+    $routes->get('/', 'Dasboard::index');
     $routes->get('users', 'Dashboard::user');
     $routes->get('admin', 'Dashboard::admin');
 
