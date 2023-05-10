@@ -35,7 +35,7 @@ $routes->get('/login', 'Login::index');
 $routes->get('/register', 'Register::index');
 
 $routes->group('dashboard', static function ($routes) {
-    $routes->get('/', 'Dasboard::index');
+    $routes->get('/', 'Dashboard::index');
     $routes->get('users', 'Dashboard::user');
     $routes->get('admin', 'Dashboard::admin');
 
