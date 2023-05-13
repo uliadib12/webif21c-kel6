@@ -23,21 +23,21 @@
       referrerpolicy="no-referrer"
     />
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="/css/loading.css" />
 
-    <link rel="stylesheet" href="./css/calendar.css" />
+    <link rel="stylesheet" href="/css/calendar.css" />
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
     <!-- fevicon -->
     <link rel="icon" href="images/fevicon.png" type="image/gif" />
     <!-- font css -->
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css" />
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
   </head>
@@ -45,7 +45,7 @@
     <div class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="index.html"><img src="images/UNIVERSITASTEKNOKRAT.png" width="100" /></a>
+          <a class="navbar-brand" href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" width="100" /></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -99,7 +99,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="banner_img"><img src="images/ilustration-0.png" /></div>
+                    <div class="banner_img"><img src="/images/ilustration-0.png" /></div>
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="banner_img"><img src="images/ilustration-0.png" /></div>
+                    <div class="banner_img"><img src="/images/ilustration-0.png" /></div>
                   </div>
                 </div>
               </div>
@@ -133,7 +133,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="banner_img"><img src="images/ilustration-0.png" /></div>
+                    <div class="banner_img"><img src="/images/ilustration-0.png" /></div>
                   </div>
                 </div>
               </div>
@@ -290,8 +290,8 @@
           <div class="contain">
             <div class="service_box">
               <div class="house_icon">
-                <img src="images/icon-1.png" class="image_1" />
-                <img src="images/icon-4.png" class="image_2" />
+                <img src="/images/icon-1.png" class="image_1" />
+                <img src="/images/icon-4.png" class="image_2" />
                 <h3 class="corporate_text">Desain Web</h3>
                 <div class="up">
                   <p class="chunks_text">
@@ -303,8 +303,8 @@
             </div>
             <div class="service_box">
               <div class="house_icon">
-                <img src="images/icon-2.png" class="image_1" />
-                <img src="images/icon-5.png" class="image_2" />
+                <img src="/images/icon-2.png" class="image_1" />
+                <img src="/images/icon-5.png" class="image_2" />
                 <h3 class="corporate_text">Pemrograman Mobile</h3>
                 <div class="up">
                   <p class="chunks_text">
@@ -316,8 +316,8 @@
             </div>
             <div class="service_box">
               <div class="house_icon">
-                <img src="images/icon-2.png" class="image_1" />
-                <img src="images/icon-5.png" class="image_2" />
+                <img src="/images/icon-2.png" class="image_1" />
+                <img src="/images/icon-5.png" class="image_2" />
                 <h3 class="corporate_text">UI/UX</h3>
                 <div class="up">
                   <p class="chunks_text">UI/UX adalah singkatan dari User Interface (UI) dan User Experience (UX). Kedua istilah ini sering digunakan dalam desain produk digital seperti website, aplikasi mobile, dan software.</p>
@@ -327,8 +327,8 @@
             </div>
             <div class="service_box">
               <div class="house_icon">
-                <img src="images/icon-3.png" class="image_1" />
-                <img src="images/icon-6.png" class="image_2" />
+                <img src="/images/icon-3.png" class="image_1" />
+                <img src="/images/icon-6.png" class="image_2" />
                 <h3 class="corporate_text">Capture The Flag</h3>
                 <div class="up">
                   <p class="chunks_text">
@@ -348,7 +348,7 @@
         <div class="contain">
           <div class="row">
             <div class="col-md-6">
-              <div class="about_img"><img src="images/3081783.jpg" /></div>
+              <div class="about_img"><img src="/images/3081783.jpg" /></div>
             </div>
             <div class="col-md-6">
               <div class="about_text_main">
@@ -377,7 +377,7 @@
       <div class="card-container">
         <div class="cards-wrapper">
           <div class="card-grid-space">
-            <a class="card" href="#" style="background-image: url('./images/web.jpeg')">
+            <a class="card" href="#" style="background-image: url('/images/web.jpeg')">
               <div class="card-text">
                 <h1>Desain Web</h1>
                 <p>Proses merancang tampilan website. yang melibatkan elemen visual, warna, gambar…</p>
@@ -391,7 +391,7 @@
             </a>
           </div>
           <div class="card-grid-space">
-            <a class="card" href="#" style="background-image: url('./images/mobile.jpeg')">
+            <a class="card" href="#" style="background-image: url('/images/mobile.jpeg')">
               <div class="card-text">
                 <h1>Mobile</h1>
                 <p>Pembuatan aplikasi mobile yang dapat dijalankan pada SO mobile seperti Android, iOS…</p>
@@ -405,7 +405,7 @@
             </a>
           </div>
           <div class="card-grid-space">
-            <a class="card" href="#" style="background-image: url('./images/ctf.jpeg')">
+            <a class="card" href="#" style="background-image: url('/images/ctf.jpeg')">
               <div class="card-text">
                 <h1>CTF</h1>
                 <p>Capture the Flag adalah salah satu jenis kompetisi hacking dimana peserta harus mengambil “Flag”…</p>
@@ -418,7 +418,7 @@
             </a>
           </div>
           <div class="card-grid-space">
-            <a class="card" href="#" style="background-image: url('./images/uiux.jpeg')">
+            <a class="card" href="#" style="background-image: url('/images/uiux.jpeg')">
               <div class="card-text">
                 <h1>UI/UX</h1>
                 <p>Membuat inteface & pengalaman pengguna yang lebih baik dalam produk aplikasi, web dan layanan…</p>
@@ -450,7 +450,7 @@
                 <input type="submit" value="Masuk" />
                 <p class="message">Belum Memiliki akun? <a href="#">Buat Akun</a></p>
                 <div class="social-icons">
-                  <a href="#"><img src="./images/logo-uti.png" width="90" /></a>
+                  <a href="#"><img src="/images/logo-uti.png" width="90" /></a>
                 </div>
               </form>
             </div>
@@ -468,16 +468,16 @@
         </div>
         <div class="sponsor-list">
           <div class="sponsor">
-            <img src="./images/./mcd.png" alt="Sponsor 1" />
+            <img src="/images/./mcd.png" alt="Sponsor 1" />
           </div>
           <div class="sponsor">
-            <img src="./images/prime-v.png" alt="Sponsor 2" />
+            <img src="/images/prime-v.png" alt="Sponsor 2" />
           </div>
           <div class="sponsor">
-            <img src="./images/uniqlo.png" alt="Sponsor 3" />
+            <img src="/images/uniqlo.png" alt="Sponsor 3" />
           </div>
           <div class="sponsor">
-            <img src="./images/nasa.png" alt="Sponsor 4" />
+            <img src="/images/nasa.png" alt="Sponsor 4" />
           </div>
         </div>
       </div>
@@ -492,7 +492,7 @@
             <div class="col-xl-4 col-lg-4 mb-50">
               <div class="footer-widget">
                 <div class="footer-logo">
-                  <a href="index.html"><img src="./images/UNIVERSITASTEKNOKRAT.png" class="img-fluid" alt="logo" /></a>
+                  <a href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" class="img-fluid" alt="logo" /></a>
                 </div>
               </div>
             </div>
@@ -606,16 +606,16 @@
         }
       }
     </script> -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/js/plugin.js"></script>
     <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/calendar.js"></script>
-    <script src="js/style.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/calendar.js"></script>
+    <script src="/js/style.js"></script>
     <!-- javascript -->
   </body>
 </html>
