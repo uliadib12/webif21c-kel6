@@ -33,7 +33,7 @@ service('auth')->routes($routes);
 
 $routes->get('/', 'Home::index');
 
-$routes->group('dashboard', static function ($routes) {
+$routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->get('users', 'Dashboard::user');
     $routes->get('admin', 'Dashboard::admin');

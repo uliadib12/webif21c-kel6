@@ -71,11 +71,24 @@
               <div class="login_bt">
                 <ul>
                   <li>
-                    <a href="#login"
-                      ><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login</a
-                    >
+                    <a href="#login"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                      <?php if ($user) : ?>
+                        <?= $user->username ?>
+                      <?php else : ?>
+                        Login
+                      <?php endif ?>
+                    </a>
                   </li>
-                </ul>
+                  <li>
+                    <?php if ($user) : ?>
+                      <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                        <?php if ($user) : ?>
+                          Logout
+                        <?php endif ?>
+                      </a>
+                    <?php endif ?>
+                  </li>
+                  </ul>
               </div>
             </form>
           </div>

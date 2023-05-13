@@ -63,6 +63,7 @@ class AuthGroups extends ShieldAuthGroups
      * If a permission is not listed here it cannot be used.
      */
     public array $permissions = [
+        'admin.dashboard'     => 'Can access the dashboard',
         'admin.access'        => 'Can access the sites admin area',
         'admin.settings'      => 'Can access the main site settings',
         'users.manage-admins' => 'Can manage other admins',
@@ -87,6 +88,7 @@ class AuthGroups extends ShieldAuthGroups
             'beta.*',
         ],
         'admin' => [
+            'admin.dashboard',
             'admin.access',
             'users.create',
             'users.edit',
