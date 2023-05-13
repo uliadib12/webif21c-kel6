@@ -22,7 +22,7 @@
       referrerpolicy="no-referrer"
     />
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
     <title>Dashboard</title>
   </head>
   <body>
@@ -411,7 +411,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/api.js"></script>
   </body>
 </html>
