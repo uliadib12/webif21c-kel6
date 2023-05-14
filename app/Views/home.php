@@ -483,7 +483,7 @@
                   <label for="password">Kata Sandi</label>
                   <input type="password" name="password" id="password" required />
                   <input type="submit" value="Masuk" />
-                  <p class="message">Belum Memiliki akun? <a href="#">Buat Akun</a></p>
+                  <p class="message">Belum Memiliki akun? <a href="/register">Buat Akun</a></p>
                   <div class="social-icons">
                     <a href="#"><img src="/images/logo-uti.png" width="90" /></a>
                   </div>
