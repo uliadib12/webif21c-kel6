@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Controllers;
-
 class Home extends BaseController
 {
     public function index()
     {
-        return view('home');
+        $user = service('auth')->user();
+        return view('home', [
+            'user' => $user,
+            'isDashboard' => isset($user) ? $user->can('admin.dashboard') : NULL,
+        ]);
     }
 }
