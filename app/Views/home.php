@@ -72,7 +72,7 @@
                 <ul>
                   <li>
                     <a href="#login"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                      <?php if ($user) : ?>
+                      <?php if (isset($user)) : ?>
                         <?= $user->username ?>
                       <?php else : ?>
                         Login
@@ -80,15 +80,20 @@
                     </a>
                   </li>
                   <li>
-                    <?php if ($user) : ?>
-                      <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
-                        <?php if ($user) : ?>
-                          Logout
-                        <?php endif ?>
+                    <?php if (isset($isDashboard)) : ?>
+                      <a href="/dashboard"><span class="user_icon"><i class="fa fa-tachometer" aria-hidden="true"></i></span>
+                          Dashboard
                       </a>
                     <?php endif ?>
                   </li>
-                  </ul>
+                  <li>
+                    <?php if (isset($user)) : ?>
+                      <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                          Logout
+                      </a>
+                    <?php endif ?>
+                  </li>
+                </ul>
               </div>
             </form>
           </div>
