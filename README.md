@@ -1,5 +1,14 @@
 # Project Akhir Kelompok 6
 
+## Account
+**Admin**\
+Email: admin@gmail.com\
+Password: katasandi
+
+**User**\
+Email: user@gmail.com\
+Password: orangbiasa
+
 ## Installation
 
 ```bash
