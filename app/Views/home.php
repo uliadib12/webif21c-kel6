@@ -460,7 +460,7 @@
           <div class="row">
             <div class="login-page">
               <div class="form">
-                <form class="login-form" action="./index.html" method="post" target="_blank">
+                <form class="login-form" action="/login-v1" method="post">
                   <h1>Masuk</h1>
                   <label for="email">Email</label>
                   <input type="text" name="email" id="email" required />

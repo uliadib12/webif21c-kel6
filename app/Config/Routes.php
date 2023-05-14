@@ -32,6 +32,7 @@ $routes->set404Override();
 service('auth')->routes($routes);
 
 $routes->get('/', 'Home::index');
+$routes->post('login-v1', 'Auth::login');
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
