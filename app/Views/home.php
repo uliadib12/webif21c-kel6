@@ -71,16 +71,16 @@
               <div class="login_bt">
                 <ul>
                   <li>
-                    <a href="#login"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <a href="/login"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>
                       <?php if (isset($user)) : ?>
-                        <?= $user->username ?>
+                        <?= esc($user->username) ?>
                       <?php else : ?>
                         Login
                       <?php endif ?>
                     </a>
                   </li>
                   <li>
-                    <?php if (isset($isDashboard)) : ?>
+                    <?php if (isset($isDashboard) && $isDashboard != NULL) : ?>
                       <a href="/dashboard"><span class="user_icon"><i class="fa fa-tachometer" aria-hidden="true"></i></span>
                           Dashboard
                       </a>
@@ -454,28 +454,30 @@
     </div>
     <!-- studies section end -->
     <!-- contact section start -->
-    <div id="login" class="contact_section layout_padding">
-      <div class="container">
-        <div class="row">
-          <div class="login-page">
-            <div class="form">
-              <form class="login-form" action="./index.html" method="post" target="_blank">
-                <h1>Masuk</h1>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" required />
-                <label for="password">Kata Sandi</label>
-                <input type="password" name="password" id="password" required />
-                <input type="submit" value="Masuk" />
-                <p class="message">Belum Memiliki akun? <a href="#">Buat Akun</a></p>
-                <div class="social-icons">
-                  <a href="#"><img src="/images/logo-uti.png" width="90" /></a>
-                </div>
-              </form>
+    <?php if (isset($user) == NULL) : ?>
+      <div id="login" class="contact_section layout_padding">
+        <div class="container">
+          <div class="row">
+            <div class="login-page">
+              <div class="form">
+                <form class="login-form" action="./index.html" method="post" target="_blank">
+                  <h1>Masuk</h1>
+                  <label for="email">Email</label>
+                  <input type="text" name="email" id="email" required />
+                  <label for="password">Kata Sandi</label>
+                  <input type="password" name="password" id="password" required />
+                  <input type="submit" value="Masuk" />
+                  <p class="message">Belum Memiliki akun? <a href="#">Buat Akun</a></p>
+                  <div class="social-icons">
+                    <a href="#"><img src="/images/logo-uti.png" width="90" /></a>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <?php endif ?>
     <!-- contact section end -->
 
     <!-- news section start -->
