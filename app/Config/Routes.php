@@ -40,8 +40,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('admin', 'Dashboard::admin');
 
     $routes->group('pengingat', static function ($routes) {
-        $routes->get('penjadwalan', 'Dashboard::penjadwalan');
-        $routes->get('data-kegiatan', 'Dashboard::dataKegiatan');
+        $routes->get('penjadwalan', 'Dashboard::pengingat_penjadwalan');
+        $routes->get('data-kegiatan', 'Dashboard::pengingat_dataKegiatan');
     });
 
     $routes->group('kepanitiaan', static function ($routes) {
