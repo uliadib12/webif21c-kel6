@@ -46,7 +46,7 @@ nav {
 }
 
 h1 {
-  padding-bottom: 2.1em;
+  padding-bottom: 0.7em;
 }
 .login-page {
   width: 360px;
@@ -78,21 +78,6 @@ h1 {
   font-size: 16px;
 }
 
-.message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-
-.message a {
-  color: #4caf50;
-  text-decoration: none;
-}
-
-.message a:hover {
-  text-decoration: underline;
-}
-
 /* animasi */
 .form {
   position: absolute;
@@ -118,18 +103,9 @@ form label {
 }
 .form input,
 .form label {
-  
   border-radius: 0px 200px 0px 0px;
 }
-.form div {
-  transform: translatex(100px);
-  transition: all 1s ease-in-out;
-}
-
-.form:hover div {
-  transform: translateX(0);
-}
-
+  
 .form input[type='submit'] {
   opacity: 0;
   transform: translateZ(100px);
@@ -145,8 +121,8 @@ form input[type='submit'] {
   font-family: 'Sen', sans-serif;
   background-color: #182848;
   color: #fff;
-  margin-block: 3em;
-  padding: 10px 20px;
+  margin-block: 1em;
+  /* padding: 10px 20px; */
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -154,7 +130,7 @@ form input[type='submit'] {
   transition: background-color 0.2s;
 }
 
-.logo {
+.social-icons {
   padding-top: 2em;
 }
 

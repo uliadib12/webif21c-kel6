@@ -37,8 +37,8 @@
         <li class="has-dropdown">
             <i class="fa-brands fa-redhat"></i><a href="#"> Kepanitiaan</a>
             <ul class="sidebar-dropdown list-unstyled">
-                <li><a href="#">SK</a></li>
-                <li><a href="#">Format Otomatis</a></li>
+                <li id="sk"><a href="#">SK</a></li>
+                <li id="formating"><a href="#">Format Otomatis</a></li>
             </ul>
         </li>
         <li class="has-dropdown">
@@ -63,7 +63,7 @@
             <i class="fa-regular fa-handshake"></i>
             <a href="#"> Data Mitra</a>
         </li>
-        <li class="icon-container">
+        <li id="setting" class=" icon-container">
             <i class="fa-solid fa-gear"></i>
             <a href="#"> Settings</a>
         </li>
