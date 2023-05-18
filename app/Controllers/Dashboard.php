@@ -21,4 +21,25 @@ class Dashboard extends BaseController
     {
         return view('dashboard', ['kategori' => 'dataKegiatan']);
     }
+    public function kepanitiaan_panitia()
+    {
+        return view('dashboard', ['kategori' => 'panitia']);
+    }
+
+    public function chart_desainWeb()
+    {
+        return view('dashboard', ['kategori' => 'desainWeb']);
+    }
+    public function chart_pemrogramanMobile()
+    {
+        return view('dashboard', ['kategori' => 'pemrogramanMobile']);
+    }
+    public function chart_uiUx()
+    {
+        return view('dashboard', ['kategori' => 'uiUx']);
+    }
+    public function chart_ctf()
+    {
+        return view('dashboard', ['kategori' => 'ctf']);
+    }
 }

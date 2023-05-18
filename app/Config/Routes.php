@@ -47,6 +47,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->group('kepanitiaan', static function ($routes) {
         $routes->get('sk', 'Dashboard::sk');
         $routes->get('formating', 'Dashboard::formating');
+        $routes->get('panitia', 'Dashboard::kepanitiaan_panitia');
     });
 
     $routes->group('laporan', static function ($routes) {
@@ -64,10 +65,10 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     });
 
     $routes->group('chart', static function ($routes) {
-        $routes->get('desain-web', 'Dashboard/Chart::desainWeb');
-        $routes->get('pemrograman-mobile', 'Dashboard/Chart::pemrogramanMobile');
-        $routes->get('ui-ux', 'Dashboard/Chart::uiUx');
-        $routes->get('ctf', 'Dashboard/Chart::ctf');
+        $routes->get('desain-web', 'Dashboard::chart_desainWeb');
+        $routes->get('pemrograman-mobile', 'Dashboard::chart_pemrogramanMobile');
+        $routes->get('ui-ux', 'Dashboard::chart_uiUx');
+        $routes->get('ctf', 'Dashboard::chart_ctf');
     });
 
     $routes->get('data-mitra', 'Dashboard::dataMitra');
