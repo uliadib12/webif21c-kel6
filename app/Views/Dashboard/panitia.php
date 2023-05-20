@@ -1,6 +1,5 @@
 <head>
     <link rel="stylesheet" href="/css/panitia.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <div class="p-4 org-tree">
     <div class="welcome">

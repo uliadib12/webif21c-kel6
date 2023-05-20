@@ -15,7 +15,11 @@ class Dashboard extends BaseController
 
     public function pengingat_penjadwalan()
     {
-        return view('dashboard', ['kategori' => 'penjadwalan']);
+        $model = new \App\Models\CategoryModel();
+
+        $data = $model->paginate(5);
+
+        return view('dashboard', ['kategori' => 'penjadwalan', 'data' => $data]);
     }
     public function pengingat_dataKegiatan()
     {

@@ -1,13 +1,6 @@
-<?php
-// Include database configuration file
-include_once 'config.php';
-?>
-
 <!DOCTYPE html>
-
 <head>
     <link rel="stylesheet" href="/css/tabel.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <div class="container">
     <div class="table-wrapper">
@@ -42,91 +35,27 @@ include_once 'config.php';
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                            <label for="checkbox1"></label>
-                        </span>
-                    </td>
-                    <td>Desain Web</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>Mobile Dev</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                            <label for="checkbox3"></label>
-                        </span>
-                    </td>
-                    <td>UI/UX</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                            <label for="checkbox4"></label>
-                        </span>
-                    </td>
-                    <td>CTF</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                            <label for="checkbox5"></label>
-                        </span>
-                    </td>
-                    <td>Game Dev</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
+                <?php foreach ($data as $item) {
+                    echo '<tr>' .
+                    '<td>' .
+                    '<span class="custom-checkbox">' .
+                    '<input type="checkbox" id="checkbox1" name="options[]" value="1">' .
+                    '<label for="checkbox1"></label>' .
+                    '</span>' .
+                    '</td>' .
+                    '<div class="id_kategori" style="display: none;">'. $item['id'] .'</div>' .
+                    '<td>'. $item['kategori'] .'</td>' .
+                    '<td>'. $item['pendaftaran'] . '<br>' . $item['jamAwalPendaftaran'] . ' - ' . $item['jamAkhirPendaftaran'] .' WIB</td>' .
+                    '<td>'. $item['penyisihan'] . '<br>' . $item['jamAwalPenyisihan'] . ' - ' . $item['jamAkhirPenyisihan'] .' WIB</td>' .
+                    '<td>'. $item['pengumuman'] .'</td>' .
+                    '<td>'. $item['final'].'</td>' .
+                    '<td>' .
+                    '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                    '<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                    '</td>' .
+                    '</tr>';
+                }
+                ?>
             </tbody>
         </table>
         <div class="clearfix">
@@ -149,7 +78,7 @@ include_once 'config.php';
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/SettingT/add_data.php" method="POST">
+            <form id="addForm" action="/penjadwalan/add" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -200,7 +129,7 @@ include_once 'config.php';
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/SettingT/add_data.php" method="POST">
+            <form id="addForm" action="/penjadwalan/edit" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -249,7 +178,7 @@ include_once 'config.php';
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="deleteForm" action="delete_data.php" method="POST">
+            <form id="deleteForm" action="/penjadwalan/delete" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -269,5 +198,3 @@ include_once 'config.php';
         </div>
     </div>
 </div>
-
-<script src="/js/tabel.js"></script>

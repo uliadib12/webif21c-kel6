@@ -1,13 +1,7 @@
-<?php
-// Include database configuration file
-include_once 'config.php';
-?>
-
 <!DOCTYPE html>
 
 <head>
     <link rel="stylesheet" href="/css/tabel.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <div class="container">
     <div class="table-wrapper">
