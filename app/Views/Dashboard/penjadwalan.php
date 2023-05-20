@@ -69,17 +69,51 @@
             </tbody>
         </table>
         <div class="clearfix">
-            <div class="hint-text">Showing <b>5</b> out of
-                <b>25</b> entries
+            <div class="hint-text">Showing <b>
+                <?php
+                    if($page == $pageCount){
+                        echo $countAllRow;
+                    }
+
+                    if($page < $pageCount){
+                        echo $maxPaginate * $page;
+                    }
+                ?>
+            </b> out of
+                <b><?= $countAllRow ?></b> entries
             </div>
             <ul class="pagination">
-                <li class="page-item disabled"><a href="#">Previous</a></li>
-                <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+
+                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>"><a href="
+                <?php 
+                    if($page == 1){
+                        echo '#';
+                    }else{
+                        echo '?page=' . ($page - 1);
+                    }
+                ?>
+                " class="page-link">Previous</a></li>
+
+                <?php
+                    for($i = 1; $i <= $pageCount; $i++){
+                        // /add class active if $i == $page
+                        if($i == $page){
+                            echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                            continue;
+                        }
+                        echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                    }
+                ?>
+                
+                <li class="page-item <?= ($page == $pageCount) ? "disabled" : "" ?>"><a href="
+                <?php 
+                    if($page == $pageCount){
+                        echo '#';
+                    }else{
+                        echo '?page=' . ($page + 1);
+                    }
+                ?>
+                " class="page-link">Next</a></li>
             </ul>
         </div>
     </div>
