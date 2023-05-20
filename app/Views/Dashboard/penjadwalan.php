@@ -17,6 +17,16 @@
                 </div>
             </div>
         </div>
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -64,9 +74,9 @@
             </div>
             <ul class="pagination">
                 <li class="page-item disabled"><a href="#">Previous</a></li>
-                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item active"><a href="#" class="page-link">1</a></li>
                 <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
                 <li class="page-item"><a href="#" class="page-link">4</a></li>
                 <li class="page-item"><a href="#" class="page-link">5</a></li>
                 <li class="page-item"><a href="#" class="page-link">Next</a></li>
