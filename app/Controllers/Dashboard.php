@@ -15,7 +15,35 @@ class Dashboard extends BaseController
 
     public function pengingat_penjadwalan()
     {
-        return view('dashboard', ['kategori' => 'penjadwalan']);
+        $maxPaginate = 10;
+
+        $model = new \App\Models\CategoryModel();
+        $countAllRow = $model->countAll();
+
+        $data = $model->paginate($maxPaginate);
+
+        $page = request()->getVar('page');
+        if($page == null){
+            $page = 1;
+        }
+
+        // calculate number of page
+        $pageCount = $countAllRow / $maxPaginate;
+        // if page count is not integer, round up
+        if (!is_int($pageCount)) {
+            $pageCount = ceil($pageCount);
+        }
+        
+        return view('dashboard', 
+        [
+            'kategori' => 'penjadwalan',
+            'page' => $page, 
+            'pageCount' => $pageCount,
+            'data' => $data,
+            'maxPaginate' => $maxPaginate,
+            'countAllRow' => $countAllRow
+        ]
+    );
     }
     public function pengingat_dataKegiatan()
     {

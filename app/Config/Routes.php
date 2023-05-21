@@ -76,6 +76,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('setting', 'Dashboard::setting');
 });
 
+$routes->group('penjadwalan', ['filter' => 'group:admin,superadmin'], static function ($routes) {
+    $routes->post('add', 'Pengingat\Penjadwalan::addData');
+    $routes->post('edit', 'Pengingat\Penjadwalan::editData');
+    $routes->post('delete', 'Pengingat\Penjadwalan::deleteData');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

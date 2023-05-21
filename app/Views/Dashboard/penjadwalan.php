@@ -1,13 +1,6 @@
-<?php
-// Include database configuration file
-include_once 'config.php';
-?>
-
 <!DOCTYPE html>
-
 <head>
     <link rel="stylesheet" href="/css/tabel.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <div class="container">
     <div class="table-wrapper">
@@ -19,18 +12,28 @@ include_once 'config.php';
                 <div class="col-sm-6">
                     <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
         </div>
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>
                         <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
+                            <input type="checkbox" id="checkbox_selectAll">
+                            <label for="checkbox_selectAll"></label>
                         </span>
                     </th>
                     <th>Kategori</th>
@@ -42,105 +45,79 @@ include_once 'config.php';
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                            <label for="checkbox1"></label>
-                        </span>
-                    </td>
-                    <td>Desain Web</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>Mobile Dev</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                            <label for="checkbox3"></label>
-                        </span>
-                    </td>
-                    <td>UI/UX</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                            <label for="checkbox4"></label>
-                        </span>
-                    </td>
-                    <td>CTF</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                            <label for="checkbox5"></label>
-                        </span>
-                    </td>
-                    <td>Game Dev</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 <br> 09.00 - 23.59 WIB</td>
-                    <td>20 Sep 2024</td>
-                    <td>30 Sep 2024</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
+                <?php foreach ($data as $item) {
+                    echo '<tr>' .
+                    '<td>' .
+                    '<span class="custom-checkbox">' .
+                    '<input id="id-kategori" type="hidden" value="'.esc($item['id']).'">'.
+                    '<input type="checkbox" class="checkbox" name="options[]" value="'.esc($item['kategori']).'">' .
+                    '<label for="checkbox"></label>' .
+                    '</span>' .
+                    '</td>' .
+                    '<td>'. esc($item['kategori']) .'</td>' .
+                    '<td>'. esc($item['pendaftaran']) . '<br>' . esc(substr($item['jamAwalPendaftaran'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPendaftaran'], 0, -3)) .' WIB</td>' .
+                    '<td>'. esc($item['penyisihan']) . '<br>' . esc(substr($item['jamAwalPenyisihan'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPenyisihan'], 0, -3)) .' WIB</td>' .
+                    '<td>'. esc($item['pengumuman']) .'</td>' .
+                    '<td>'. esc($item['final']).'</td>' .
+                    '<td>' .
+                    '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"' . 'data-pendaftaran="' . esc($item['pendaftaran'])  . '" data-jamAwalPendaftaran="'.esc($item['jamAwalPendaftaran']).'" data-jamAkhirPendaftaran="'.esc($item['jamAkhirPendaftaran']).'" data-penyisihan="'.esc($item['penyisihan']).'" data-jamAwalPenyisihan="'.esc($item['jamAwalPenyisihan']).'" data-jamAkhirPenyisihan="'.esc($item['jamAkhirPenyisihan']).'" data-pengumuman="'.esc($item['pengumuman']).'" data-final="'.esc($item['final']).'"'.'><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"'.'><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                    '</td>' .
+                    '</tr>';
+                }
+                ?>
             </tbody>
         </table>
         <div class="clearfix">
-            <div class="hint-text">Showing <b>5</b> out of
-                <b>25</b> entries
+            <div class="hint-text">Showing <b>
+                <?php
+                    if($page == $pageCount){
+                        echo $countAllRow;
+                    }
+
+                    if($page < $pageCount){
+                        echo $maxPaginate * $page;
+                    }
+                ?>
+            </b> out of
+                <b><?= $countAllRow ?></b> entries
             </div>
             <ul class="pagination">
-                <li class="page-item disabled"><a href="#">Previous</a></li>
-                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+
+                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>"><a href="
+                <?php 
+                    if($page == 1){
+                        echo '#';
+                    }else{
+                        echo '?page=' . ($page - 1);
+                    }
+                ?>
+                " class="page-link">Previous</a></li>
+
+                <?php
+                    for($i = 1; $i <= $pageCount; $i++){
+                        // /add class active if $i == $page
+                        if($i == $page){
+                            echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                            continue;
+                        }
+                        echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                    }
+                ?>
+                
+                <li class="page-item <?= ($page == $pageCount) ? "disabled" : "" ?>"><a href="
+                <?php 
+                    if($page == $pageCount){
+                        echo '#';
+                    }else{
+                        if($pageCount == 0){
+                            echo '#';
+                        }else{
+                            echo '?page=' . ($page + 1);
+                        }
+                    }
+                ?>
+                " class="page-link">Next</a></li>
             </ul>
         </div>
     </div>
@@ -149,7 +126,7 @@ include_once 'config.php';
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/SettingT/add_data.php" method="POST">
+            <form id="addForm" action="/penjadwalan/add" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -200,7 +177,7 @@ include_once 'config.php';
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/SettingT/add_data.php" method="POST">
+            <form id="addForm" action="/penjadwalan/edit" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -209,6 +186,7 @@ include_once 'config.php';
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <input type="hidden" class="form-control" name="id" required />
                         <label>Kategori</label>
                         <input type="text" class="form-control" name="kategori" required />
                     </div>
@@ -239,7 +217,7 @@ include_once 'config.php';
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-success" value="Add" />
+                    <input type="submit" class="btn btn-success" value="Edit" />
                 </div>
             </form>
         </div>
@@ -249,7 +227,6 @@ include_once 'config.php';
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="deleteForm" action="delete_data.php" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -257,17 +234,17 @@ include_once 'config.php';
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="deleteId" id="deleteId" />
                     <p>Data yang dipilih akan terhapus, hapus data?</p>
-                    <p class="text-warning"><small>Tampilkan data yang dipilih!</small></p>
+                    <p class="text-warning">
+                        <ul class="list-data">
+                        </ul>
+                    </small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-danger" value="Delete" />
+                    <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
                 </div>
-            </form>
         </div>
     </div>
 </div>
-
 <script src="/js/tabel.js"></script>
