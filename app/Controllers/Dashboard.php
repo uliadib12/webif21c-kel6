@@ -20,7 +20,7 @@ class Dashboard extends BaseController
         $model = new \App\Models\CategoryModel();
         $countAllRow = $model->countAll();
 
-        $data = $model->paginate(5);
+        $data = $model->paginate($maxPaginate);
 
         $page = request()->getVar('page');
         if($page == null){

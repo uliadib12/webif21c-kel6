@@ -42,6 +42,7 @@ j(document).ready(function () {
     });
   });
 
+  // delete kategori
   j(document).on("click", ".deleteKategoriButton", function () {
     let Id = j(this).data('id');
     let kategori = j(this).data('kategori');
@@ -77,6 +78,32 @@ j(document).ready(function () {
 
     // reload page
     location.reload();
+  });
+
+  // edit kategori
+  j(document).on("click", ".editKategoriButton", function () {
+    // get id
+    let id = j(this).data('id');
+    let kategori = j(this).data('kategori');
+    let pendaftaran = j(this).data('pendaftaran');
+    let jamAwalPendaftaran = j(this).data('jamawalpendaftaran');
+    let jamAkhirPendaftaran = j(this).data('jamakhirpendaftaran');
+    let penyisihan = j(this).data('penyisihan');
+    let jamAwalPenyisihan = j(this).data('jamawalpenyisihan');
+    let jamAkhirPenyisihan = j(this).data('jamakhirpenyisihan');
+    let pengumuman = j(this).data('pengumuman');
+    let final = j(this).data('final');
+    
+    j('#editEmployeeModal').find('[name="id"]').val(id);
+    j('#editEmployeeModal').find('[name="kategori"]').val(kategori);
+    j('#editEmployeeModal').find('[name="pendaftaran"]').val(pendaftaran);
+    j('#editEmployeeModal').find('[name="jamAwalPendaftaran"]').val(jamAwalPendaftaran);
+    j('#editEmployeeModal').find('[name="jamAkhirPendaftaran"]').val(jamAkhirPendaftaran);
+    j('#editEmployeeModal').find('[name="penyisihan"]').val(penyisihan);
+    j('#editEmployeeModal').find('[name="jamAwalPenyisihan"]').val(jamAwalPenyisihan);
+    j('#editEmployeeModal').find('[name="jamAkhirPenyisihan"]').val(jamAkhirPenyisihan);
+    j('#editEmployeeModal').find('[name="pengumuman"]').val(pengumuman);
+    j('#editEmployeeModal').find('[name="final"]').val(final);
   });
 
 });

@@ -55,13 +55,13 @@
                     '</span>' .
                     '</td>' .
                     '<td>'. esc($item['kategori']) .'</td>' .
-                    '<td>'. esc($item['pendaftaran']) . '<br>' . esc($item['jamAwalPendaftaran']) . ' - ' . esc($item['jamAkhirPendaftaran']) .' WIB</td>' .
-                    '<td>'. esc($item['penyisihan']) . '<br>' . esc($item['jamAwalPenyisihan']) . ' - ' . esc($item['jamAkhirPenyisihan']) .' WIB</td>' .
+                    '<td>'. esc($item['pendaftaran']) . '<br>' . esc(substr($item['jamAwalPendaftaran'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPendaftaran'], 0, -3)) .' WIB</td>' .
+                    '<td>'. esc($item['penyisihan']) . '<br>' . esc(substr($item['jamAwalPenyisihan'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPenyisihan'], 0, -3)) .' WIB</td>' .
                     '<td>'. esc($item['pengumuman']) .'</td>' .
                     '<td>'. esc($item['final']).'</td>' .
                     '<td>' .
-                    '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                    '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"' . 'data-pendaftaran="' . esc($item['pendaftaran'])  . '" data-jamAwalPendaftaran="'.esc($item['jamAwalPendaftaran']).'" data-jamAkhirPendaftaran="'.esc($item['jamAkhirPendaftaran']).'" data-penyisihan="'.esc($item['penyisihan']).'" data-jamAwalPenyisihan="'.esc($item['jamAwalPenyisihan']).'" data-jamAkhirPenyisihan="'.esc($item['jamAkhirPenyisihan']).'" data-pengumuman="'.esc($item['pengumuman']).'" data-final="'.esc($item['final']).'"'.'><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"'.'><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
                     '</td>' .
                     '</tr>';
                 }
@@ -186,6 +186,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <input type="hidden" class="form-control" name="id" required />
                         <label>Kategori</label>
                         <input type="text" class="form-control" name="kategori" required />
                     </div>
@@ -216,7 +217,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-success" value="Add" />
+                    <input type="submit" class="btn btn-success" value="Edit" />
                 </div>
             </form>
         </div>
