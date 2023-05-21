@@ -49,19 +49,19 @@
                     echo '<tr>' .
                     '<td>' .
                     '<span class="custom-checkbox">' .
-                    '<input id="id-kategori" type="hidden" value="'.$item['id'].'">'.
-                    '<input type="checkbox" class="checkbox" name="options[]" value="'.$item['kategori'].'">' .
+                    '<input id="id-kategori" type="hidden" value="'.esc($item['id']).'">'.
+                    '<input type="checkbox" class="checkbox" name="options[]" value="'.esc($item['kategori']).'">' .
                     '<label for="checkbox"></label>' .
                     '</span>' .
                     '</td>' .
-                    '<td>'. $item['kategori'] .'</td>' .
-                    '<td>'. $item['pendaftaran'] . '<br>' . $item['jamAwalPendaftaran'] . ' - ' . $item['jamAkhirPendaftaran'] .' WIB</td>' .
-                    '<td>'. $item['penyisihan'] . '<br>' . $item['jamAwalPenyisihan'] . ' - ' . $item['jamAkhirPenyisihan'] .' WIB</td>' .
-                    '<td>'. $item['pengumuman'] .'</td>' .
-                    '<td>'. $item['final'].'</td>' .
+                    '<td>'. esc($item['kategori']) .'</td>' .
+                    '<td>'. esc($item['pendaftaran']) . '<br>' . esc($item['jamAwalPendaftaran']) . ' - ' . esc($item['jamAkhirPendaftaran']) .' WIB</td>' .
+                    '<td>'. esc($item['penyisihan']) . '<br>' . esc($item['jamAwalPenyisihan']) . ' - ' . esc($item['jamAkhirPenyisihan']) .' WIB</td>' .
+                    '<td>'. esc($item['pengumuman']) .'</td>' .
+                    '<td>'. esc($item['final']).'</td>' .
                     '<td>' .
                     '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.$item['id'].'" data-kategori="'.$item['kategori'].'"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
                     '</td>' .
                     '</tr>';
                 }
