@@ -15,7 +15,7 @@ class Dashboard extends BaseController
 
     public function pengingat_penjadwalan()
     {
-        $maxPaginate = 5;
+        $maxPaginate = 10;
 
         $model = new \App\Models\CategoryModel();
         $countAllRow = $model->countAll();
