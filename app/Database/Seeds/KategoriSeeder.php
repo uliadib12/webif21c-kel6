@@ -18,11 +18,11 @@ class KategoriSeeder extends Seeder
             $data = [
                 'kategori' => $faker->word(), 
                 'pendaftaran' => $faker->date(),
-                'jamAwalPendaftaran' => $faker->time(),
-                'jamAkhirPendaftaran' => $faker->time(), 
+                'jamAwalPendaftaran' => $faker->time($format = 'H:i'),
+                'jamAkhirPendaftaran' => $faker->time($format = 'H:i'), 
                 'penyisihan' => $faker->date(),
-                'jamAwalPenyisihan' => $faker->time(),
-                'jamAkhirPenyisihan' => $faker->time(), 
+                'jamAwalPenyisihan' => $faker->time($format = 'H:i'),
+                'jamAkhirPenyisihan' => $faker->time($format = 'H:i'), 
                 'pengumuman' => $faker->date(), 
                 'final' => $faker->date(),
             ];
