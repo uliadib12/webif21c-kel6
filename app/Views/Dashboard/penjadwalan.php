@@ -12,7 +12,7 @@
                 <div class="col-sm-6">
                     <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
@@ -32,8 +32,8 @@
                 <tr>
                     <th>
                         <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
+                            <input type="checkbox" id="checkbox_selectAll">
+                            <label for="checkbox_selectAll"></label>
                         </span>
                     </th>
                     <th>Kategori</th>
@@ -49,11 +49,11 @@
                     echo '<tr>' .
                     '<td>' .
                     '<span class="custom-checkbox">' .
-                    '<input type="checkbox" id="checkbox1" name="options[]" value="1">' .
-                    '<label for="checkbox1"></label>' .
+                    '<input id="id-kategori" type="hidden" value="'.$item['id'].'">'.
+                    '<input type="checkbox" class="checkbox" name="options[]" value="'.$item['kategori'].'">' .
+                    '<label for="checkbox"></label>' .
                     '</span>' .
                     '</td>' .
-                    '<div class="id_kategori" style="display: none;">'. $item['id'] .'</div>' .
                     '<td>'. $item['kategori'] .'</td>' .
                     '<td>'. $item['pendaftaran'] . '<br>' . $item['jamAwalPendaftaran'] . ' - ' . $item['jamAkhirPendaftaran'] .' WIB</td>' .
                     '<td>'. $item['penyisihan'] . '<br>' . $item['jamAwalPenyisihan'] . ' - ' . $item['jamAkhirPenyisihan'] .' WIB</td>' .
@@ -61,7 +61,7 @@
                     '<td>'. $item['final'].'</td>' .
                     '<td>' .
                     '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                    '<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.$item['id'].'" data-kategori="'.$item['kategori'].'"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
                     '</td>' .
                     '</tr>';
                 }
@@ -110,7 +110,11 @@
                     if($page == $pageCount){
                         echo '#';
                     }else{
-                        echo '?page=' . ($page + 1);
+                        if($pageCount == 0){
+                            echo '#';
+                        }else{
+                            echo '?page=' . ($page + 1);
+                        }
                     }
                 ?>
                 " class="page-link">Next</a></li>
@@ -222,7 +226,6 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="deleteForm" action="/penjadwalan/delete" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -230,15 +233,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="deleteId" id="deleteId" />
                     <p>Data yang dipilih akan terhapus, hapus data?</p>
-                    <p class="text-warning"><small>Tampilkan data yang dipilih!</small></p>
+                    <p class="text-warning">
+                        <ul class="list-data">
+                        </ul>
+                    </small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-danger" value="Delete" />
+                    <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
                 </div>
-            </form>
         </div>
     </div>
 </div>
+<script src="/js/tabel.js"></script>

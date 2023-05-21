@@ -1,142 +1,82 @@
-$(document).ready(function () {
-  // Activate tooltip
-  $('[data-toggle="tooltip"]').tooltip();
-
-  // Select/Deselect checkboxes
-  var checkbox = $('table tbody input[type="checkbox"]');
-  $('#selectAll').click(function () {
+var j = jQuery.noConflict();
+j(document).ready(function () {
+  j('#checkbox_selectAll').change(function () {
     if (this.checked) {
-      checkbox.each(function () {
-        this.checked = true;
-      });
-    } else {
-      checkbox.each(function () {
-        this.checked = false;
+      let arrayCheckBox = document.querySelectorAll('.checkbox');
+      arrayCheckBox.forEach((checkbox) => {
+        checkbox.checked = true;
       });
     }
-  });
-  checkbox.click(function () {
-    if (!this.checked) {
-      $('#selectAll').prop('checked', false);
+    else {
+      let arrayCheckBox = document.querySelectorAll('.checkbox');
+      arrayCheckBox.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
     }
   });
-});
 
-$(document).ready(function () {
-  // Tambah data
-  $('form#addEmployeeModal').submit(function (e) {
-    e.preventDefault();
+  j('#deletSelectCategory').on('click', function () {
+    let arrayCheckBox = document.querySelectorAll('.checkbox');
+    let arrayId = [];
 
-    // Ambil nilai input
-    var name = $(this).find("input[name='name']").val();
-    var pendaftaran = $(this).find("input[name='pendaftaran']").val();
-    var penyisihan = $(this).find("input[name='penyisihan']").val();
-    var pengumuman = $(this).find("input[name='pengumuman']").val();
-    var final = $(this).find("input[name='final']").val();
+    arrayCheckBox.forEach((checkbox) => {
+      if (checkbox.checked) {
+        let id = j(checkbox).parent().find('#id-kategori')[0].value;
 
-    // Validasi input (optional)
-    if (name === '' || pendaftaran === '' || penyisihan === '' || pengumuman === '' || final === '') {
-      alert('Harap lengkapi semua field!');
-      return;
-    }
+        arrayId.push({
+          kategori: checkbox.value,
+          id: id
+        }
+        );
+      }
+    });
 
-    // Buat baris baru dalam tabel
-    var newRow =
-      '<tr>' +
-      '<td>' +
-      "<span class='custom-checkbox'>" +
-      "<input type='checkbox' id='checkbox1' name='options[]' value='1'>" +
-      "<label for='checkbox1'></label>" +
-      '</span>' +
-      '</td>' +
-      '<td>' +
-      name +
-      '</td>' +
-      '<td>' +
-      pendaftaran +
-      '</td>' +
-      '<td>' +
-      penyisihan +
-      '</td>' +
-      '<td>' +
-      pengumuman +
-      '</td>' +
-      '<td>' +
-      final +
-      '</td>' +
-      '<td>' +
-      "<a href='#editEmployeeModal' class='edit' data-toggle='modal'>" +
-      "<i class='fa-solid fa-pen-clip' data-toggle='tooltip' title='Edit'></i>" +
-      '</a>' +
-      "<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'>" +
-      "<i class='fa-solid fa-trash' data-toggle='tooltip' title='Delete'></i>" +
-      '</a>' +
-      '</td>' +
-      '</tr>';
-
-    // Tambahkan baris baru ke dalam tabel
-    $('table tbody').append(newRow);
-
-    // Reset form
-    $(this).find("input[type='text'], input[type='datetime-local']").val('');
-
-    // Tutup modal
-    $('#addEmployeeModal').modal('hide');
+    let ul = j('#deleteEmployeeModal').find(".list-data");
+    ul.html('');
+    arrayId.forEach((arr) => {
+      ul.append(
+      `<li>
+      <input type="hidden" name="id" value="${arr.id}">
+      ${arr.kategori}
+      </li>`);
+    });
   });
 
-  // Edit data
-  $('form#editEmployeeModal').submit(function (e) {
-    e.preventDefault();
-
-    // Ambil nilai input yang diubah
-    var name = $(this).find("input[name='name']").val();
-    var pendaftaran = $(this).find("input[name='pendaftaran']").val();
-    var penyisihan = $(this).find("textarea[name='penyisihan']").val();
-    var pengumuman = $(this).find("input[name='pengumuman']").val();
-    var final = $(this).find("input[name='final']").val();
-
-    // Validasi input (optional)
-    if (name === '' || pendaftaran === '' || penyisihan === '' || pengumuman === '' || final === '') {
-      alert('Harap lengkapi semua field!');
-      return;
-    }
-
-    // Ambil baris yang akan diubah
-    var row = $('table tbody tr.selected');
-
-    // Update nilai kolom pada baris yang diubah
-    row.find('td:nth-child(2)').text(name);
-    row.find('td:nth-child(3)').text(pendaftaran);
-    row.find('td:nth-child(4)').text(penyisihan);
-    row.find('td:nth-child(5)').text(pengumuman);
-    row.find('td:nth-child(6)').text(final);
-
-    // Tutup modal
-    $('#editEmployeeModal').modal('hide');
+  j(document).on("click", ".deleteKategoriButton", function () {
+    let Id = j(this).data('id');
+    let kategori = j(this).data('kategori');
+    let ul = j('#deleteEmployeeModal').find(".list-data");
+    ul.html(
+    `<li>
+      <input type="hidden" name="id" value="${Id}">
+      ${kategori}
+    </li>`);
   });
 
-  // Hapus data
-  $('form#deleteEmployeeModal').submit(function (e) {
-    e.preventDefault();
+  j("#modal-delete-button").on("click", function () {
+    // get data from modal
+    let arrayID = [];
+    let ids = j('#deleteEmployeeModal')
+    .find('.modal-dialog')
+    .find('.modal-content')
+    .find('.modal-body').
+    find('.list-data').
+    find('[name="id"]');
 
-    // Ambil baris yang akan dihapus
-    var row = $('table tbody tr.selected');
+    ids.each(function () {
+      arrayID.push(j(this).val());
+    });
 
-    // Hapus baris
-    row.remove();
+    // send data to server
+    j.ajax({
+      url: '/penjadwalan/delete',
+      type: 'POST',
+      data: {
+        id: arrayID
+      }});
 
-    // Tutup modal
-    $('#deleteEmployeeModal').modal('hide');
+    // reload page
+    location.reload();
   });
 
-  // Pilih baris pada tabel
-  $('table tbody').on('click', 'tr', function () {
-    $(this).toggleClass('selected');
-  });
-
-  // Pilih semua baris
-  $('#selectAll').change(function () {
-    var checked = $(this).prop('checked');
-    $('table tbody tr').toggleClass('selected', checked);
-  });
 });

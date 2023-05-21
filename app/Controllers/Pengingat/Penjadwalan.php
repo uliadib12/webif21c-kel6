@@ -55,8 +55,11 @@ class Penjadwalan extends BaseController
         // get post data
         $id = request()->getPost('id');
 
-        if(! $kategoriModel->delete($id)){
-            return redirect()->back()->withInput()->with('errors', $kategoriModel->errors());
+        // looping id
+        foreach($id as $i){
+            if(! $kategoriModel->delete($i)){
+                return redirect()->back()->withInput()->with('errors', $kategoriModel->errors());
+            }
         }
 
         return redirect()->back()->with('success', 'Data berhasil dihapus');
