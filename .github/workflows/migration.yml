@@ -14,7 +14,7 @@ jobs:
                      -X POST \
                      -H "Content-Type: application/json" \
                      -d '{"private_key": "${{ secrets.PRIVATE_KEY }}"}' \
-                     teknoexpo.azurewebsites.net/utils/migrate)
+                     https://teknoexpo.azurewebsites.net/utils/migrate)
           if [ $RESPONSE -ne 200 ]; then
             echo "POST request failed with response status: $RESPONSE"
             exit 1
