@@ -14,4 +14,4 @@ jobs:
           url: https://teknoexpo.azurewebsites.net/utils/migrate
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"private_key": "${{ secrets.PRIVATE_KEY }}"}'
+          data: '{"private_key": ${{ secrets.PRIVATE_KEY }}}'
