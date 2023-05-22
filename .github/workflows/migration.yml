@@ -10,13 +10,4 @@ jobs:
     steps:
       - name: Perform POST Request
         run: |
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-                     -X POST \
-                     -H "Content-Type: application/json" \
-                     -d '{"private_key": "${{ secrets.PRIVATE_KEY }}"}' \
-                     https://teknoexpo.azurewebsites.net/utils/migrate
-                     )
-          if [ $RESPONSE -ne 200 ]; then
-            echo "POST request failed with response status: $RESPONSE"
-            exit 1
-          fi
+          $(curl --location --request POST 'https://teknoexpo.azurewebsites.net/utils/migrate' --form 'private_key="${{ secrets.PRIVATE_KEY }}"')
