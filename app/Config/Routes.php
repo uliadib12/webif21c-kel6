@@ -82,6 +82,10 @@ $routes->group('penjadwalan', ['filter' => 'group:admin,superadmin'], static fun
     $routes->post('delete', 'Pengingat\Penjadwalan::deleteData');
 });
 
+$routes->group('utils', static function ($routes) {
+    $routes->post('migrate', 'Utils\MigrateController::migrate');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
