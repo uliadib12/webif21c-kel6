@@ -25,7 +25,7 @@ and any database settings.
 ## Migration
 
 ```bash
-php spark migrate
+php spark migrate -all
 ```
 
 ## Run PHP Server
