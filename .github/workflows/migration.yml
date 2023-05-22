@@ -9,5 +9,10 @@ jobs:
 
     steps:
       - name: Perform POST Request
-        run: |
-          $(curl --location --request POST 'https://teknoexpo.azurewebsites.net/utils/migrate' --form 'private_key="${{ secrets.PRIVATE_KEY }}"')
+        uses: http-request/action@v1
+        with:
+          method: POST
+          url: https://teknoexpo.azurewebsites.net/utils/migrate
+          headers: |
+            Content-Type: application/json
+          data: '{"private_key": "${{ secrets.PRIVATE_KEY }}"}'
