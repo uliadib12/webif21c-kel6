@@ -13,13 +13,17 @@ class Dashboard extends BaseController
 
         return view('dashboard', [
             'kategori' => 'dashboard',
+            'user' => auth()->user(),
             'jumlah_user' => $jumlah_user,
             'jumlah_kategori' => $jumlah_kategori
         ]);
     }
     public function dataMitra()
     {
-        return view('dashboard', ['kategori' => 'datamitra']);
+        return view('dashboard', [
+            'kategori' => 'datamitra',
+            'user' => auth()->user()
+        ]);
     }
 
     public function pengingat_penjadwalan()
@@ -51,37 +55,38 @@ class Dashboard extends BaseController
                 'pageCount' => $pageCount,
                 'data' => $data,
                 'maxPaginate' => $maxPaginate,
-                'countAllRow' => $countAllRow
+                'countAllRow' => $countAllRow,
+                'user' => auth()->user()
             ]
         );
     }
     public function pengingat_dataKegiatan()
     {
-        return view('dashboard', ['kategori' => 'dataKegiatan']);
+        return view('dashboard', ['kategori' => 'dataKegiatan', 'user' => auth()->user()]);
     }
     public function kepanitiaan_panitia()
     {
-        return view('dashboard', ['kategori' => 'panitia']);
+        return view('dashboard', ['kategori' => 'panitia', 'user' => auth()->user()]);
     }
     public function kepanitiaan_sk()
     {
-        return view('dashboard', ['kategori' => 'sk']);
+        return view('dashboard', ['kategori' => 'sk', 'user' => auth()->user()]);
     }
 
     public function chart_desainWeb()
     {
-        return view('dashboard', ['kategori' => 'desainWeb']);
+        return view('dashboard', ['kategori' => 'desainWeb', 'user' => auth()->user()]);
     }
     public function chart_pemrogramanMobile()
     {
-        return view('dashboard', ['kategori' => 'pemrogramanMobile']);
+        return view('dashboard', ['kategori' => 'pemrogramanMobile', 'user' => auth()->user()]);
     }
     public function chart_uiUx()
     {
-        return view('dashboard', ['kategori' => 'uiUx']);
+        return view('dashboard', ['kategori' => 'uiUx', 'user' => auth()->user()]);
     }
     public function chart_ctf()
     {
-        return view('dashboard', ['kategori' => 'ctf']);
+        return view('dashboard', ['kategori' => 'ctf', 'user' => auth()->user()]);
     }
 }
