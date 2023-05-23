@@ -1,0 +1,17 @@
+name: Migration
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  post-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Perform POST Request
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: https://teknoexpo.azurewebsites.net/utils/migrate/
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: '{"private_key": "${{ secrets.PRIVATE_KEY }}"}'
