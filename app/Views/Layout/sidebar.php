@@ -4,7 +4,13 @@
         <img class="img-fluid" width="65" src=" /images/AlbertEinstein.jpg" alt="profile" />
         <div class="ms-2">
             <h5 class="fs-6 mb-0">
-                <a class="text-decoration-none" href="#">Einstein</a>
+                <a class="text-decoration-none" href="#">
+                    <?php if (isset($user)) : ?>
+                        <?= esc($user->username) ?>
+                    <?php else : ?>
+                        Login
+                    <?php endif ?>
+                </a>
             </h5>
             <p class="mt-1 mb-0">Admin</p>
         </div>
@@ -16,10 +22,11 @@
     </div>
 
     <ul class="categories list-unstyled">
-        <li id="dashboard" class="icon-container"><i class="fa-solid fa-house"></i> <a href="/dashboard"> Dashboard</a>
+        <li id="dashboard" class="icon-container"><i class="fa-solid fa-gauge"></i> <a href="/dashboard">
+                Dashboard</a>
         </li>
         <li class="has-dropdown">
-            <i class="fa-solid fa-calendar"></i><a href="#"> Pengingat</a>
+            <i class="fa-solid fa-calendar"></i><a href="#"> Event</a>
             <ul class="sidebar-dropdown list-unstyled">
                 <li id="penjadwalan"><a href="#">Penjadwalan</a></li>
                 <li id="dataKegiatan"><a href="#">Data Kegiatan</a></li>
@@ -38,7 +45,6 @@
             <i class="fa-brands fa-redhat"></i><a href="#"> Kepanitiaan</a>
             <ul class="sidebar-dropdown list-unstyled">
                 <li id="sk"><a href="#">SK</a></li>
-                <li id="formating"><a href="#">Format Otomatis</a></li>
                 <li id="panitia"><a href="#">Panitia</a></li>
             </ul>
         </li>
@@ -70,7 +76,7 @@
         </li>
         <li id="myDiv" class="icon-container">
             <i class="fa-solid fa-right-from-bracket"></i>
-            <a href="#"> Log Out</a>
+            <a href="/logout"> Log Out</a>
         </li>
     </ul>
 </aside>

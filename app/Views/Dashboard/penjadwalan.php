@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <link rel="stylesheet" href="/css/tabel.css" />
 </head>
@@ -46,76 +47,77 @@
             </thead>
             <tbody>
                 <?php foreach ($data as $item) {
-                    echo '<tr>' .
-                    '<td>' .
-                    '<span class="custom-checkbox">' .
-                    '<input id="id-kategori" type="hidden" value="'.esc($item['id']).'">'.
-                    '<input type="checkbox" class="checkbox" name="options[]" value="'.esc($item['kategori']).'">' .
-                    '<label for="checkbox"></label>' .
-                    '</span>' .
-                    '</td>' .
-                    '<td>'. esc($item['kategori']) .'</td>' .
-                    '<td>'. esc($item['pendaftaran']) . '<br>' . esc(substr($item['jamAwalPendaftaran'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPendaftaran'], 0, -3)) .' WIB</td>' .
-                    '<td>'. esc($item['penyisihan']) . '<br>' . esc(substr($item['jamAwalPenyisihan'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPenyisihan'], 0, -3)) .' WIB</td>' .
-                    '<td>'. esc($item['pengumuman']) .'</td>' .
-                    '<td>'. esc($item['final']).'</td>' .
-                    '<td>' .
-                    '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"' . 'data-pendaftaran="' . esc($item['pendaftaran'])  . '" data-jamAwalPendaftaran="'.esc($item['jamAwalPendaftaran']).'" data-jamAkhirPendaftaran="'.esc($item['jamAkhirPendaftaran']).'" data-penyisihan="'.esc($item['penyisihan']).'" data-jamAwalPenyisihan="'.esc($item['jamAwalPenyisihan']).'" data-jamAkhirPenyisihan="'.esc($item['jamAkhirPenyisihan']).'" data-pengumuman="'.esc($item['pengumuman']).'" data-final="'.esc($item['final']).'"'.'><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                    '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="'.esc($item['id']).'" data-kategori="'.esc($item['kategori']).'"'.'><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
-                    '</td>' .
-                    '</tr>';
+                    echo
+                    '<tr>' .
+                        '<td>' .
+                        '<span class="custom-checkbox">' .
+                        '<input id="id-kategori" type="hidden" value="' . esc($item['id']) . '">' .
+                        '<input type="checkbox" class="checkbox" name="options[]" value="' . esc($item['kategori']) . '">' .
+                        '<label for="checkbox"></label>' .
+                        '</span>' .
+                        '</td>' .
+                        '<td>' . esc($item['kategori']) . '</td>' .
+                        '<td>' . esc(date('d F Y', strtotime($item['pendaftaran']))) . '<br>' . esc(substr($item['jamAwalPendaftaran'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPendaftaran'], 0, -3)) . ' WIB</td>' .
+                        '<td>' . esc(date('d F Y', strtotime($item['penyisihan']))) . '<br>' . esc(substr($item['jamAwalPenyisihan'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPenyisihan'], 0, -3)) . ' WIB</td>' .
+                        '<td>' . esc(date('d F Y', strtotime($item['pengumuman']))) . '</td>' .
+                        '<td>' . esc(date('d F Y', strtotime($item['final']))) . '</td>'     .
+                        '<td>' .
+                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="' . esc($item['id']) . '" data-kategori="' . esc($item['kategori']) . '"' . 'data-pendaftaran="' . esc($item['pendaftaran'])  . '" data-jamAwalPendaftaran="' . esc($item['jamAwalPendaftaran']) . '" data-jamAkhirPendaftaran="' . esc($item['jamAkhirPendaftaran']) . '" data-penyisihan="' . esc($item['penyisihan']) . '" data-jamAwalPenyisihan="' . esc($item['jamAwalPenyisihan']) . '" data-jamAkhirPenyisihan="' . esc($item['jamAkhirPenyisihan']) . '" data-pengumuman="' . esc($item['pengumuman']) . '" data-final="' . esc($item['final']) . '"' . '><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="' . esc($item['id']) . '" data-kategori="' . esc($item['kategori']) . '"' . '><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                        '</td>' .
+                        '</tr>';
                 }
                 ?>
             </tbody>
         </table>
         <div class="clearfix">
             <div class="hint-text">Showing <b>
-                <?php
-                    if($page == $pageCount){
+                    <?php
+                    if ($page == $pageCount) {
                         echo $countAllRow;
                     }
 
-                    if($page < $pageCount){
+                    if ($page < $pageCount) {
                         echo $maxPaginate * $page;
                     }
-                ?>
-            </b> out of
+                    ?>
+                </b> out of
                 <b><?= $countAllRow ?></b> entries
             </div>
             <ul class="pagination">
 
                 <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>"><a href="
-                <?php 
-                    if($page == 1){
-                        echo '#';
-                    }else{
-                        echo '?page=' . ($page - 1);
-                    }
+                <?php
+                if ($page == 1) {
+                    echo '#';
+                } else {
+                    echo '?page=' . ($page - 1);
+                }
                 ?>
                 " class="page-link">Previous</a></li>
 
                 <?php
-                    for($i = 1; $i <= $pageCount; $i++){
-                        // /add class active if $i == $page
-                        if($i == $page){
-                            echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
-                            continue;
-                        }
-                        echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                for ($i = 1; $i <= $pageCount; $i++) {
+                    // /add class active if $i == $page
+                    if ($i == $page) {
+                        echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                        continue;
                     }
+                    echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                }
                 ?>
-                
+
                 <li class="page-item <?= ($page == $pageCount) ? "disabled" : "" ?>"><a href="
-                <?php 
-                    if($page == $pageCount){
+                <?php
+                if ($page == $pageCount) {
+                    echo '#';
+                } else {
+                    if ($pageCount == 0) {
                         echo '#';
-                    }else{
-                        if($pageCount == 0){
-                            echo '#';
-                        }else{
-                            echo '?page=' . ($page + 1);
-                        }
+                    } else {
+                        echo '?page=' . ($page + 1);
                     }
+                }
                 ?>
                 " class="page-link">Next</a></li>
             </ul>
@@ -227,23 +229,23 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Kategori</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Data yang dipilih akan terhapus, hapus data?</p>
-                    <p class="text-warning">
-                        <ul class="list-data">
-                        </ul>
-                    </small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
-                </div>
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Kategori</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Data yang dipilih akan terhapus, hapus data?</p>
+                <p class="text-warning">
+                <ul class="list-data">
+                </ul>
+                </small></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
+            </div>
         </div>
     </div>
 </div>

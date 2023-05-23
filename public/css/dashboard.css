@@ -148,9 +148,11 @@ body {
   color: #eee;
 }
 .sidebar ul > li.icon-container:hover {
+  cursor: pointer !important;
   background-color: #001431;
 }
 .sidebar ul > li.has-dropdown:hover {
+  cursor: pointer;
   background-color: #001431;
 }
 .sidebar ul > li.has-dropdown > ul > li:hover {
