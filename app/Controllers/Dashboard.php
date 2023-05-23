@@ -6,7 +6,16 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        return view('dashboard', ['kategori' => 'dashboard']);
+        $users = auth()->getProvider();
+        $jumlah_user = $users->countAll();
+        $kategori_model = new \App\Models\CategoryModel();
+        $jumlah_kategori = $kategori_model->countAll();
+
+        return view('dashboard', [
+            'kategori' => 'dashboard',
+            'jumlah_user' => $jumlah_user,
+            'jumlah_kategori' => $jumlah_kategori
+        ]);
     }
     public function dataMitra()
     {
@@ -15,7 +24,7 @@ class Dashboard extends BaseController
 
     public function pengingat_penjadwalan()
     {
-        $maxPaginate = 10;
+        $maxPaginate = 5;
 
         $model = new \App\Models\CategoryModel();
         $countAllRow = $model->countAll();
@@ -23,7 +32,7 @@ class Dashboard extends BaseController
         $data = $model->paginate($maxPaginate);
 
         $page = request()->getVar('page');
-        if($page == null){
+        if ($page == null) {
             $page = 1;
         }
 
@@ -33,17 +42,18 @@ class Dashboard extends BaseController
         if (!is_int($pageCount)) {
             $pageCount = ceil($pageCount);
         }
-        
-        return view('dashboard', 
-        [
-            'kategori' => 'penjadwalan',
-            'page' => $page, 
-            'pageCount' => $pageCount,
-            'data' => $data,
-            'maxPaginate' => $maxPaginate,
-            'countAllRow' => $countAllRow
-        ]
-    );
+
+        return view(
+            'dashboard',
+            [
+                'kategori' => 'penjadwalan',
+                'page' => $page,
+                'pageCount' => $pageCount,
+                'data' => $data,
+                'maxPaginate' => $maxPaginate,
+                'countAllRow' => $countAllRow
+            ]
+        );
     }
     public function pengingat_dataKegiatan()
     {
@@ -52,6 +62,10 @@ class Dashboard extends BaseController
     public function kepanitiaan_panitia()
     {
         return view('dashboard', ['kategori' => 'panitia']);
+    }
+    public function kepanitiaan_sk()
+    {
+        return view('dashboard', ['kategori' => 'sk']);
     }
 
     public function chart_desainWeb()

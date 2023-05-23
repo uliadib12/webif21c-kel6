@@ -45,8 +45,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     });
 
     $routes->group('kepanitiaan', static function ($routes) {
-        $routes->get('sk', 'Dashboard::sk');
-        $routes->get('formating', 'Dashboard::formating');
+        $routes->get('sk', 'Dashboard::kepanitiaan_sk');
         $routes->get('panitia', 'Dashboard::kepanitiaan_panitia');
     });
 

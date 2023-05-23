@@ -29,7 +29,7 @@
                         <?php if (is_array(session('errors'))) : ?>
                         <?php foreach (session('errors') as $error) : ?>
                         <?= $error ?>
-                        <br>
+                        <br />
                         <?php endforeach ?>
                         <?php else : ?>
                         <?= session('errors') ?>
@@ -38,18 +38,17 @@
                     <?php endif ?>
                     <!-- Error Handle -->
                     <div class="form">
-                        <form class="login-form" action="/login-v1" method="post">
-                            <h1>Masuk</h1>
-                            <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
+                        <form class="login-form" style="padding-top: 4.5em" action="/login-v1" method="post">
+                            <h1>Log In</h1>
+                            <div class="alert alert-danger" role="alert">
+                                <?= session('error') ?>
+                            </div>
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email" required />
                             <label for="password">Kata Sandi</label>
                             <input type="password" name="password" id="password" required />
-                            <input type="submit" value="Masuk" />
-                            <p class="text-center">Belum Memiliki akun? <a href="/register">Buat Akun</a></p>
-                            <div class="social-icons">
-                                <a href="#"><img src="/images/logo-uti.png" width="90" /></a>
-                            </div>
+                            <input type="submit" value="Log In" />
+                            <p class="text-center">Haven't an Account? <a href="/register">SignUp</a></p>
                         </form>
                     </div>
                 </div>
@@ -57,4 +56,7 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>
 <?php endif ?>

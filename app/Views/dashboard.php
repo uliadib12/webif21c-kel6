@@ -58,9 +58,10 @@
             const penjadwalan = document.querySelector('#penjadwalan');
             const dataKegitan = document.querySelector('#dataKegiatan');
             const panitia = document.querySelector('#panitia');
+            const sk = document.querySelector('#sk');
 
             myDiv.addEventListener('click', function() {
-                alert('Berhasil Log Out!');
+                window.location.href = '/logout';
             });
             dashboard.addEventListener('click', function redirec() {
                 window.location.href = '/dashboard';
@@ -77,6 +78,9 @@
             });
             panitia.addEventListener('click', function redirec() {
                 window.location.href = '/dashboard/kepanitiaan/panitia';
+            });
+            sk.addEventListener('click', function redirec() {
+                window.location.href = '/dashboard/kepanitiaan/sk';
             });
         </script>
 

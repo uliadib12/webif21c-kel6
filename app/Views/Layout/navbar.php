@@ -17,6 +17,9 @@
                         <a class="dropdown-item" href="#">Log Out</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fa-solid fa-house"></i></a>
+                </li>
                 <li id="myButton" class="nav-item">
                     <a class="nav-link" href="#"><i class="fa-solid fa-comment-dots"></i><span>23</span></a>
                     <div id="myModal" class="modal">
@@ -24,7 +27,6 @@
                             <span class="close">&times;</span>
                             <p>Ini adalah konten dari modal.</p>
                         </div>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa-solid fa-bell"></i><span>98</span></a>
