@@ -29,7 +29,7 @@ class Dashboard extends BaseController
         $model = new \App\Models\CategoryModel();
         $countAllRow = $model->countAll();
 
-        $data = $model->paginate($maxPaginate);
+        $data = $model->orderBy('id', 'DESC')->paginate($maxPaginate);
 
         $page = request()->getVar('page');
         if ($page == null) {
