@@ -20,6 +20,16 @@
                 </div>
             </div>
         </div>
+        <?php if (session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+        <div class="alert alert-danger" role="alert">
+            <?= session()->getFlashdata('error'); ?>
+        </div>
+        <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -29,14 +39,35 @@
                             <label for="selectAll"></label>
                         </span>
                     </th>
+                    <th>Logo</th>
                     <th>Perusahaan</th>
-                    <th>Tanggal Gabung</th>
-                    <th>Kontrak</th>
-                    <th>Pendanaan</th>
+                    <th>No. Telpon</th>
+                    <th>Email</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                <?php foreach ($data as $item) {
+                    echo
+                    '<tr>' .
+                        '<td>' .
+                        '<span class="custom-checkbox">' .
+                        '<input id="id-kategori" type="hidden" value="' . esc($item['id_mitra']) . '">' .
+                        '<input type="checkbox" class="checkbox" name="options[]" value="' . esc($item['logo']) . '">' .
+                        '<label for="checkbox"></label>' .
+                        '</span>' .
+                        '</td>' .
+                        '<td>' . esc($item['logo']) . '</td>' .
+                        '<td>' . esc($item['nama']) . '</td>' .
+                        '<td>' . esc($item['no_telp']) . '</td>' .
+                        '<td>' . esc($item['email']) . '</td>' .
+                        '<td>' .
+                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="' . esc($item['id_mitra']) . '" data-logo="' . esc($item['logo']) .  '"' . '"data-nama="' . esc($item['nama']) .  '" data-email="' . esc($item['email']) . '"' . '><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="' . esc($item['id_mitra']) . '" data-logo="' . esc($item['logo']) .  '"' . '><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                        '</td>' .
+                        '</tr>';
+                }
+                ?>
                 <tr>
                     <td>
                         <span class="custom-checkbox">
@@ -44,82 +75,12 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
-                    <td>NASSA</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 - 20 Okt 2024</td>
-                    <td>Rp. 500.000.000</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
+                        <img src="/images/nasa.png" alt="img" />
                     </td>
                     <td>NASSA</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 - 20 Okt 2024</td>
-                    <td>Rp. 500.000.000</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                            <label for="checkbox3"></label>
-                        </span>
-                    </td>
-                    <td>McDonald's</td>
-                    <td>24 Aug 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 - 20 Okt 2024</td>
-                    <td>Rp. 30.000.000</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                            <label for="checkbox4"></label>
-                        </span>
-                    </td>
-                    <td>Uniqlo</td>
-                    <td>04 May 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>04 May 2024 - 20 Okt 2024</td>
-                    <td>20 Set T-Shirt</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                            <label for="checkbox5"></label>
-                        </span>
-                    </td>
-                    <td>Prime Video</td>
-                    <td>24 Jul 2024 <br> 08.00 - 23.59 WIB</td>
-                    <td>12 Sep 2024 - 20 Okt 2024</td>
-                    <td>10 Voucher</td>
+                    <td>01239147914</td>
+                    <td>Nassa@gmail.com</td>
                     <td>
                         <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
                                 data-toggle="tooltip" title="Edit"></i></a>
@@ -130,17 +91,54 @@
             </tbody>
         </table>
         <div class="clearfix">
-            <div class="hint-text">Showing <b>5</b> out of
-                <b>25</b> entries
+            <div class="hint-text">Showing <b>
+                    <?php
+                    if ($page == $pageCount) {
+                        echo $countAllRow;
+                    }
+
+                    if ($page < $pageCount) {
+                        echo $maxPaginate * $page;
+                    }
+                    ?>
+                </b> out of
+                <b><?= $countAllRow ?></b> entries
             </div>
             <ul class="pagination">
-                <li class="page-item disabled"><a href="#">Previous</a></li>
-                <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>"><a href="
+                <?php
+                if ($page == 1) {
+                    echo '#';
+                } else {
+                    echo '?page=' . ($page - 1);
+                }
+                ?>
+                " class="page-link">Previous</a></li>
+
+                <?php
+                for ($i = 1; $i <= $pageCount; $i++) {
+                    // /add class active if $i == $page
+                    if ($i == $page) {
+                        echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                        continue;
+                    }
+                    echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                }
+                ?>
+
+                <li class="page-item <?= ($page == $pageCount) ? "disabled" : "" ?>"><a href="
+                <?php
+                if ($page == $pageCount) {
+                    echo '#';
+                } else {
+                    if ($pageCount == 0) {
+                        echo '#';
+                    } else {
+                        echo '?page=' . ($page + 1);
+                    }
+                }
+                ?>
+                " class="page-link">Next</a></li>
             </ul>
         </div>
     </div>
@@ -149,39 +147,28 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/SettingT/add_data.php" method="POST">
+            <form id="addForm" action="/data-mitra/add" method="POST">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Kategori</h4>
+                    <h4 class="modal-title">Add Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kategori</label>
-                        <input type="text" class="form-control" name="kategori" required />
+                        <label>Logo</label>
+                        <input type="file" class="form-control" name="image"
+                            accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
-                        <label>Pendaftaran</label>
-                        <input type="date" class="form-control" name="pendaftaran" required />
-                        <label for="jamAwalPendaftaran">Dari:</label>
-                        <input type="time" id="jamAwalPendaftaran" name="jamAwalPendaftaran" />
-                        <label for="jamAkhirPendaftaran">Sampai:</label>
-                        <input type="time" id="jamAkhirPendaftaran" name="jamAkhirPendaftaran" />
+                        <label>Nama Perusahaan</label>
+                        <input type="text" class="form-control" name="pendaftaran" required />
                     </div>
                     <div class="form-group">
-                        <label>Penyisihan</label>
-                        <input type="date" class="form-control" name="penyisihan" required />
-                        <label for="jamAwalPenyisihan">Dari:</label>
-                        <input type="time" id="jamAwalPenyisihan" name="jamAwalPenyisihan" />
-                        <label for="jamAkhirPenyisihan">Sampai:</label>
-                        <input type="time" id="jamAkhirPenyisihan" name="jamAkhirPenyisihan" />
+                        <label>No Telpon</label>
+                        <input type="number" class="form-control" name="penyisihan" required />
                     </div>
                     <div class="form-group">
-                        <label>Pengumuman</label>
-                        <input type="date" class="form-control" name="pengumuman" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Final</label>
-                        <input type="date" class="form-control" name="final" required />
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="pengumuman" required />
                     </div>
                 </div>
                 <!-- Notifikasi -->
@@ -198,41 +185,32 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/SettingT/add_data.php" method="POST">
+            <form id="addForm" action="/data-mitra/edit" method="POST">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Kategori</h4>
+                    <h4 class="modal-title">Edit Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kategori</label>
-                        <input type="text" class="form-control" name="kategori" required />
+                        <label>Logo</label>
+                        <input type="file" class="form-control" name="image"
+                            accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
-                        <label>Pendaftaran</label>
-                        <input type="date" class="form-control" name="pendaftaran" required />
-                        <label for="jamAwalPendaftaran">Jam Awal:</label>
-                        <input type="time" id="jamAwalPendaftaran" name="jamAwalPendaftaran" />
-                        <label for="jamAkhirPendaftaran">Jam Akhir:</label>
-                        <input type="time" id="jamAkhirPendaftaran" name="jamAkhirPendaftaran" />
+                        <label>Nama Perusahaan</label>
+                        <input type="text" class="form-control" name="pendaftaran" required />
                     </div>
                     <div class="form-group">
-                        <label>Penyisihan</label>
-                        <input type="date" class="form-control" name="penyisihan" required />
-                        <label for="jamAwalPenyisihan">Jam Awal:</label>
-                        <input type="time" id="jamAwalPenyisihan" name="jamAwalPenyisihan" />
-                        <label for="jamAkhirPenyisihan">Jam Akhir:</label>
-                        <input type="time" id="jamAkhirPenyisihan" name="jamAkhirPenyisihan" />
+                        <label>No Telpon</label>
+                        <input type="number" class="form-control" name="penyisihan" required />
                     </div>
                     <div class="form-group">
-                        <label>Pengumuman</label>
-                        <input type="date" class="form-control" name="pengumuman" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Final</label>
-                        <input type="date" class="form-control" name="final" required />
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="pengumuman" required />
                     </div>
                 </div>
+                <!-- Notifikasi -->
+                <div id="notification" style="display: none;"></div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
                     <input type="submit" class="btn btn-success" value="Add" />

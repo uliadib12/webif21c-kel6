@@ -9,6 +9,7 @@ class Dashboard extends BaseController
         $users = auth()->getProvider();
         $jumlah_user = $users->countAll();
         $kategori_model = new \App\Models\CategoryModel();
+        $kategori_model = new \App\Models\MitraModel();
         $jumlah_kategori = $kategori_model->countAll();
 
         return view('dashboard', [
@@ -20,10 +21,37 @@ class Dashboard extends BaseController
     }
     public function dataMitra()
     {
-        return view('dashboard', [
-            'kategori' => 'datamitra',
-            'user' => auth()->user()
-        ]);
+        $maxPaginate = 5;
+
+        $model = new \App\Models\MitraModel();
+        $countAllRow = $model->countAll();
+
+        $data = $model->orderBy('id_mitra', 'DESC')->paginate($maxPaginate);
+
+        $page = request()->getVar('page');
+        if ($page == null) {
+            $page = 1;
+        }
+
+        // calculate number of page
+        $pageCount = $countAllRow / $maxPaginate;
+        // if page count is not integer, round up
+        if (!is_int($pageCount)) {
+            $pageCount = ceil($pageCount);
+        }
+
+        return view(
+            'dashboard',
+            [
+                'kategori' => 'datamitra',
+                'page' => $page,
+                'pageCount' => $pageCount,
+                'data' => $data,
+                'maxPaginate' => $maxPaginate,
+                'countAllRow' => $countAllRow,
+                'user' => auth()->user()
+            ]
+        );
     }
 
     public function pengingat_penjadwalan()

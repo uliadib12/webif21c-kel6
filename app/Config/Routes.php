@@ -81,6 +81,12 @@ $routes->group('penjadwalan', ['filter' => 'group:admin,superadmin'], static fun
     $routes->post('delete', 'Pengingat\Penjadwalan::deleteData');
 });
 
+$routes->group('data-mitra', ['filter' => 'group:admin,superadmin'], static function ($routes) {
+    $routes->post('add', 'DataMitra\Mitra::addData');
+    $routes->post('edit', 'DataMitra\Mitra::editData');
+    $routes->post('delete', 'DataMitra\Mitra::deleteData');
+});
+
 $routes->group('utils', static function ($routes) {
     $routes->post('migrate', 'Utils\MigrateController::migrate');
 });
