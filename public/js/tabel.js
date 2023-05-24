@@ -36,7 +36,7 @@ j(document).ready(function () {
     arrayId.forEach((arr) => {
       ul.append(
       `<li>
-      <input type="hidden" name="id" value="${arr.id}">
+      <input type="hidden" name="id[]" value="${arr.id}">
       ${arr.kategori}
       </li>`);
     });
@@ -49,35 +49,9 @@ j(document).ready(function () {
     let ul = j('#deleteEmployeeModal').find(".list-data");
     ul.html(
     `<li>
-      <input type="hidden" name="id" value="${Id}">
+      <input type="hidden" name="id[]" value="${Id}"/>
       ${kategori}
     </li>`);
-  });
-
-  j("#modal-delete-button").on("click", function () {
-    // get data from modal
-    let arrayID = [];
-    let ids = j('#deleteEmployeeModal')
-    .find('.modal-dialog')
-    .find('.modal-content')
-    .find('.modal-body').
-    find('.list-data').
-    find('[name="id"]');
-
-    ids.each(function () {
-      arrayID.push(j(this).val());
-    });
-
-    // send data to server
-    j.ajax({
-      url: '/penjadwalan/delete',
-      type: 'POST',
-      data: {
-        id: arrayID
-      }});
-
-    // reload page
-    location.reload();
   });
 
   // edit kategori

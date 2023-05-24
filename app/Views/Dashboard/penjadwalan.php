@@ -228,25 +228,27 @@
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete Kategori</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+        <form id="deleteForm" action="/penjadwalan/delete" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Kategori</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Data yang dipilih akan terhapus, hapus data?</p>
+                    <p class="text-warning">
+                    <ul class="list-data">
+                    </ul>
+                    </small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                    <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Data yang dipilih akan terhapus, hapus data?</p>
-                <p class="text-warning">
-                <ul class="list-data">
-                </ul>
-                </small></p>
-            </div>
-            <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 <script src="/js/tabel.js"></script>
