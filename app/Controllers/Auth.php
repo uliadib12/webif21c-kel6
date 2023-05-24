@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 class Auth extends BaseController
 {
     public function login()
@@ -12,7 +13,7 @@ class Auth extends BaseController
 
         $loginAttempt = auth()->attempt($credentials);
 
-        if (! $loginAttempt->isOK()) {
+        if (!$loginAttempt->isOK()) {
             return redirect()->back()->with('error', $loginAttempt->reason());
         }
 

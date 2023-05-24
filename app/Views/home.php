@@ -370,6 +370,107 @@
             </div>
         </div>
     </div>
+    <!-- service section end -->
+
+    <!-- event section start -->
+    <div class="services_section layout-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="judul">Event</h1>
+                </div>
+            </div>
+        </div>
+        <ul class="card-list">
+
+            <li class="card-event">
+                <a class="card-image" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei - 13 Juni 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+            <li class="card-event">
+                <a class="card-image" title="Ini adalah deskripsi tautan" href="" target="_blank" data-image-full="/images/web.jpeg">
+                    <img src="/images/web.jpeg" alt="The Beautiful Game" />
+                </a>
+                <a class="card-description" href="" target="_blank">
+                    <h2>Gebyar</h2>
+                    <p>24 Mei 2024</p>
+                </a>
+            </li>
+
+        </ul>
+        <div class="col-lg-4">
+            <div class="box d-flex">
+                <i class="fa-solid fa-calendar-day fs-5 text-center"></i>
+                <div class="ms-3 mb-2">
+                    <div class="d-flex align-items-center p-3">
+                        <h3 class="mb-0">2</h3>
+                        <span class="d-block ms-2">Event</span>
+                    </div>
+                    <p class="fs-normal mb-0">Status</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- event section end -->
     <!-- about section start -->
     <div id="about" class="about_section layout_padding">
         <div class="container">
@@ -382,8 +483,10 @@
                         <div class="about_text_main">
                             <h1 class="about_taital">About Us</h1>
                             <p class="about_text">
-                                Tekno Expo adalah acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa Fakultas
-                                Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia. Terdiri atas empat
+                                Tekno Expo adalah acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa
+                                Fakultas
+                                Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia. Terdiri atas
+                                empat
                                 kategori, yaitu Desain Web, Pemrograman Game, UI/UX,
                                 dan CTF.
                             </p>
@@ -410,7 +513,8 @@
                     <a class="card" href="#" style="background-image: url('/images/web.jpeg')">
                         <div class="card-text">
                             <h1>Desain Web</h1>
-                            <p>Proses merancang tampilan website. yang melibatkan elemen visual, warna, gambar…</p>
+                            <p>Proses merancang tampilan website. yang melibatkan elemen visual, warna, gambar…
+                            </p>
                             <div class="date">6 January 2018</div>
                             <div class="tags">
                                 <div class="tag">HTML</div>
@@ -424,7 +528,9 @@
                     <a class="card" href="#" style="background-image: url('/images/mobile.jpeg')">
                         <div class="card-text">
                             <h1>Mobile</h1>
-                            <p>Pembuatan aplikasi mobile yang dapat dijalankan pada SO mobile seperti Android, iOS…</p>
+                            <p>Pembuatan aplikasi mobile yang dapat dijalankan pada SO mobile seperti Android,
+                                iOS…
+                            </p>
                             <div class="date">9 Februari 2019</div>
                             <div class="tags">
                                 <div class="tag">Java</div>
@@ -438,7 +544,8 @@
                     <a class="card" href="#" style="background-image: url('/images/ctf.jpeg')">
                         <div class="card-text">
                             <h1>CTF</h1>
-                            <p>Capture the Flag adalah salah satu jenis kompetisi hacking dimana peserta harus mengambil
+                            <p>Capture the Flag adalah salah satu jenis kompetisi hacking dimana peserta harus
+                                mengambil
                                 “Flag”…</p>
                             <div class="date">4 Februari 2020</div>
                             <div class="tags">
@@ -452,7 +559,8 @@
                     <a class="card" href="#" style="background-image: url('/images/uiux.jpeg')">
                         <div class="card-text">
                             <h1>UI/UX</h1>
-                            <p>Membuat inteface & pengalaman pengguna yang lebih baik dalam produk aplikasi, web dan
+                            <p>Membuat inteface & pengalaman pengguna yang lebih baik dalam produk aplikasi, web
+                                dan
                                 layanan…</p>
                             <div class="date">14 March 2021</div>
                             <div class="tags">

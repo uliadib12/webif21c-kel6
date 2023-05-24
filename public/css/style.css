@@ -1399,3 +1399,137 @@ footer {
   color: #878787;
   text-transform: capitalize;
 }
+
+/* card Load Styles */
+.card-image {
+  display: block;
+  min-height: 15rem; /* layout hack */
+  background: center center no-repeat;
+  background-size: cover;
+  filter: blur(3px); /* blur the lowres image */
+}
+
+.card-image > img {
+  display: block;
+  width: 90%;
+  opacity: 0; /* visually hide the img element */
+}
+
+.card-image.is-loaded {
+  filter: none; /* remove the blur on fullres image */
+  transition: filter 1s;
+}
+
+/* Layout Styles */
+
+.card-list {
+  display: block;
+  margin: 1rem auto;
+  padding: 0;
+  font-size: 0;
+  text-align: center;
+  list-style: none;
+}
+
+.card-event {
+  display: inline-block;
+  width: 90%;
+  max-width: 16rem;
+  margin: 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 0px 20px 0px 20px;
+  box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+
+.card-event:hover {
+  transform: translateY(0rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+}
+
+.card-description {
+  display: block;
+  padding: 0.1em 0.1em;
+  color: #f1e6e6;
+  text-decoration: none;
+  background: linear-gradient(to right, #0b2b76 5%, #001431);
+  transition: background 0.5s ease-in-out;
+}
+.card-description:hover {
+  background: linear-gradient(to right, #001431 5%, #0b2b76);
+}
+.card-description > h2 {
+  color: #f1e6e6;
+  margin: 0.5em;
+}
+
+.card-description > p {
+  margin: 0;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-image::after {
+  content: 'Selengkapnya';
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card-image:hover::after {
+  /* content: ''; */
+  visibility: visible;
+  opacity: 1;
+}
+.col-lg-4 .box {
+  background-color: #001431;
+  color: #fff;
+  border-radius: 0px 20px 0px 20px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 40px 10px rgba(0, 0, 0, 0.1);
+}
+.col-lg-4 .box:hover {
+  background-image: linear-gradient(340deg, #001431, #d40808);
+  background-size: 100% 200%;
+  animation: gradient 5s ease-in-out infinite;
+}
+.col-lg-4 .box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.col-lg-4 .box .d-flex {
+  font-size: larger;
+}
+.col-lg-4 .box i {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  background-color: #d40808;
+  border-radius: 0px 20px 0px 20px;
+}
+
+.col-lg .box i {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  font-size: 22px;
+  padding: 15px;
+  top: -25px;
+  left: -25px;
+  background-color: rgba(0, 0, 0, 0.15);
+  line-height: 60px;
+  text-align: right;
+  border-radius: 50%;
+}
