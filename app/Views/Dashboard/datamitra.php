@@ -14,7 +14,7 @@
                     <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
                             class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
                             class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
@@ -35,25 +35,26 @@
                 <tr>
                     <th>
                         <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
+                            <input type="checkbox" id="checkbox_selectAll">
+                            <label for="checkbox_selectAll"></label>
                         </span>
                     </th>
                     <th>Logo</th>
                     <th>Perusahaan</th>
                     <th>No. Telpon</th>
                     <th>Email</th>
+                    <th>Pendanaan</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $item) {
+                <?php foreach ($data as $key => $item) {
+                    $fmt = numfmt_create( 'id_ID', NumberFormatter::CURRENCY );
                     echo
                     '<tr>' .
                         '<td>' .
                         '<span class="custom-checkbox">' .
-                        '<input id="id-kategori" type="hidden" value="' . esc($item['id_mitra']) . '">' .
-                        '<input type="checkbox" class="checkbox" name="options[]" value="' . esc($item['logo']) . '">' .
+                        '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
                         '<label for="checkbox"></label>' .
                         '</span>' .
                         '</td>' .
@@ -61,33 +62,14 @@
                         '<td>' . esc($item['nama']) . '</td>' .
                         '<td>' . esc($item['no_telp']) . '</td>' .
                         '<td>' . esc($item['email']) . '</td>' .
+                        '<td>' . esc(numfmt_format_currency($fmt, $item['pendanaan'], "IDR")) . '</td>' .
                         '<td>' .
-                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="' . esc($item['id_mitra']) . '" data-logo="' . esc($item['logo']) .  '"' . '"data-nama="' . esc($item['nama']) .  '" data-email="' . esc($item['email']) . '"' . '><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="' . esc($item['id_mitra']) . '" data-logo="' . esc($item['logo']) .  '"' . '><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
                         '</td>' .
                         '</tr>';
                 }
                 ?>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                            <label for="checkbox1"></label>
-                        </span>
-                    </td>
-                    <td>
-                        <img src="/images/nasa.png" alt="img" />
-                    </td>
-                    <td>NASSA</td>
-                    <td>01239147914</td>
-                    <td>Nassa@gmail.com</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <div class="clearfix">
@@ -155,20 +137,24 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Logo</label>
-                        <input type="file" class="form-control" name="image"
+                        <input type="file" class="form-control" name="logo"
                             accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Perusahaan</label>
-                        <input type="text" class="form-control" name="pendaftaran" required />
+                        <input type="text" class="form-control" name="nama" required />
                     </div>
                     <div class="form-group">
                         <label>No Telpon</label>
-                        <input type="number" class="form-control" name="penyisihan" required />
+                        <input type="number" class="form-control" name="no_telp" required />
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="pengumuman" required />
+                        <input type="email" class="form-control" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Pendanaan</label>
+                        <input type="number" class="form-control" name="pendanaan" required />
                     </div>
                 </div>
                 <!-- Notifikasi -->
@@ -193,20 +179,25 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Logo</label>
-                        <input type="file" class="form-control" name="image"
+                        <input type="hidden" class="form-control" name="id_mitra" required />
+                        <input type="file" class="form-control" name="logo"
                             accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Perusahaan</label>
-                        <input type="text" class="form-control" name="pendaftaran" required />
+                        <input type="text" class="form-control" name="nama" required />
                     </div>
                     <div class="form-group">
                         <label>No Telpon</label>
-                        <input type="number" class="form-control" name="penyisihan" required />
+                        <input type="number" class="form-control" name="no_telp" required />
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="pengumuman" required />
+                        <input type="email" class="form-control" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Pendanaan</label>
+                        <input type="number" class="form-control" name="pendanaan" required />
                     </div>
                 </div>
                 <!-- Notifikasi -->
@@ -223,7 +214,7 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="deleteForm" action="delete_data.php" method="POST">
+            <form id="deleteForm" action="/data-mitra/delete" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Kategori</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -231,7 +222,10 @@
                 <div class="modal-body">
                     <input type="hidden" name="deleteId" id="deleteId" />
                     <p>Data yang dipilih akan terhapus, hapus data?</p>
-                    <p class="text-warning"><small>Tampilkan data yang dipilih!</small></p>
+                    <p class="text-warning">
+                    <ul class="list-data">
+                    </ul>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
@@ -242,4 +236,7 @@
     </div>
 </div>
 
-<script src="/js/tabel.js"></script>
+<script>
+var data_table = <?php echo json_encode($data); ?>
+</script>
+<script src="/js/tabel/datamitra.js"></script>

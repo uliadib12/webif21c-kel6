@@ -10,7 +10,7 @@ class Dashboard extends BaseController
         $jumlah_user = $users->countAll();
         $kategori_model = new \App\Models\CategoryModel();
         $kategori_model = new \App\Models\MitraModel();
-        $jumlah_kategori = $kategori_model->countAll();
+        $jumlah_kategori = $kategori_model->countAllResults();
 
         return view('dashboard', [
             'kategori' => 'dashboard',
@@ -24,7 +24,7 @@ class Dashboard extends BaseController
         $maxPaginate = 5;
 
         $model = new \App\Models\MitraModel();
-        $countAllRow = $model->countAll();
+        $countAllRow = $model->countAllResults();
 
         $data = $model->orderBy('id_mitra', 'DESC')->paginate($maxPaginate);
 

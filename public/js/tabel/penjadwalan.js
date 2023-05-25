@@ -1,4 +1,3 @@
-console.log(data_table);
 var j = jQuery.noConflict();
 j(document).ready(function () {
   j('#checkbox_selectAll').change(function () {

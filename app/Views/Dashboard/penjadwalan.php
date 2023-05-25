@@ -255,4 +255,4 @@
 <script>
 var data_table = <?php echo json_encode($data); ?>
 </script>
-<script src="/js/tabel.js"></script>
+<script src="/js/tabel/penjadwalan.js"></script>

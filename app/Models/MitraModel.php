@@ -8,7 +8,7 @@ class MitraModel extends Model
 {
     protected $table = 'mitra';
     protected $primaryKey = 'id_mitra';
-    protected $allowedFields = ['logo', 'nama', 'no_telp', 'email'];
+    protected $allowedFields = ['logo', 'nama', 'no_telp', 'email', 'pendanaan'];
 
     
     // Dates
@@ -23,7 +23,8 @@ class MitraModel extends Model
     protected $validationRules    = [
         'nama' => 'required',
         'no_telp' => 'required|numeric',
-        'email' => 'required|valid_email'
+        'email' => 'required|valid_email',
+        'pendanaan' => 'required|numeric'
     ];
     protected $validationMessages = [
         'nama' => [
@@ -36,6 +37,10 @@ class MitraModel extends Model
         'email' => [
             'required' => 'Email harus diisi.',
             'valid_email' => 'Email tidak valid.'
+        ],
+        'pendanaan' => [
+            'required' => 'Pendanaan harus diisi.',
+            'numeric' => 'Pendanaan harus berupa angka.'
         ]
     ];
     protected $skipValidation = false;

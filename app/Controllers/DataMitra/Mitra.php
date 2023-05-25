@@ -74,7 +74,8 @@ class Mitra extends BaseController
             'logo' => request()->getPost('logo'),
             'nama' => request()->getPost('nama'),
             'no_telp' => request()->getPost('no_telp'),
-            'email' => request()->getPost('email')
+            'email' => request()->getPost('email'),
+            'pendanaan' => request()->getPost('pendanaan')
         ];
 
         return $data;
