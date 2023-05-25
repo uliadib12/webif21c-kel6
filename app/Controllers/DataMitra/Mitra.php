@@ -54,9 +54,9 @@ class Mitra extends BaseController
         $data = $this->getPostData();
 
         // delete image
-        $data = $mitraModel->find($id[0]);
-        if (file_exists(ROOTPATH . 'public/uploads/images/' . $data['logo'])) {
-            unlink(ROOTPATH . 'public/uploads/images/' . $data['logo']);
+        $image_delete = $mitraModel->find($id[0]);
+        if (file_exists(ROOTPATH . 'public/uploads/images/' . $image_delete['logo'])) {
+            unlink(ROOTPATH . 'public/uploads/images/' . $image_delete['logo']);
         }
 
         // upload image
@@ -92,14 +92,12 @@ class Mitra extends BaseController
         // get post data
         $id = request()->getPost('id_mitra');
 
-        // delete image
-        $data = $mitraModel->find($id[0]);
-        if (file_exists(ROOTPATH . 'public/uploads/images/' . $data['logo'])) {
-            unlink(ROOTPATH . 'public/uploads/images/' . $data['logo']);
-        }
-
         // looping id
         foreach ($id as $i) {
+            $image_delete = $mitraModel->find($i);
+            if (file_exists(ROOTPATH . 'public/uploads/images/' . $image_delete['logo'])) {
+                unlink(ROOTPATH . 'public/uploads/images/' . $image_delete['logo']);
+            }
             if (!$mitraModel->delete($i)) {
                 return redirect()->back()->withInput()->with('errors', $mitraModel->errors());
             }
