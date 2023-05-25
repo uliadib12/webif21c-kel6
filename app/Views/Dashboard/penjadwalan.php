@@ -11,22 +11,24 @@
                     <h2>Manage <b>Event's</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
+                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
+                            class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
+                            class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
         </div>
         <?php if (session()->getFlashdata('success')) : ?>
-            <div class="alert alert-success" role="alert">
-                <?= session()->getFlashdata('success'); ?>
-            </div>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
         <?php endif; ?>
         <?php if (session()->getFlashdata('error')) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?= session()->getFlashdata('error'); ?>
-            </div>
+        <div class="alert alert-danger" role="alert">
+            <?= session()->getFlashdata('error'); ?>
+        </div>
         <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
