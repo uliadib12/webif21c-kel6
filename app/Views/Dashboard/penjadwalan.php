@@ -11,22 +11,24 @@
                     <h2>Manage <b>Event's</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
+                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
+                            class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
+                            class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
         </div>
         <?php if (session()->getFlashdata('success')) : ?>
-            <div class="alert alert-success" role="alert">
-                <?= session()->getFlashdata('success'); ?>
-            </div>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
         <?php endif; ?>
         <?php if (session()->getFlashdata('error')) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?= session()->getFlashdata('error'); ?>
-            </div>
+        <div class="alert alert-danger" role="alert">
+            <?= session()->getFlashdata('error'); ?>
+        </div>
         <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
@@ -46,13 +48,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $item) {
+                <?php foreach ($data as $key=>$item) {
                     echo
-                    '<tr>' .
+                        '<tr>' .
                         '<td>' .
                         '<span class="custom-checkbox">' .
-                        '<input id="id-kategori" type="hidden" value="' . esc($item['id']) . '">' .
-                        '<input type="checkbox" class="checkbox" name="options[]" value="' . esc($item['kategori']) . '">' .
+                        '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
                         '<label for="checkbox"></label>' .
                         '</span>' .
                         '</td>' .
@@ -62,8 +63,8 @@
                         '<td>' . esc(date('d F Y', strtotime($item['pengumuman']))) . '</td>' .
                         '<td>' . esc(date('d F Y', strtotime($item['final']))) . '</td>'     .
                         '<td>' .
-                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="' . esc($item['id']) . '" data-kategori="' . esc($item['kategori']) . '"' . 'data-pendaftaran="' . esc($item['pendaftaran'])  . '" data-jamAwalPendaftaran="' . esc($item['jamAwalPendaftaran']) . '" data-jamAkhirPendaftaran="' . esc($item['jamAkhirPendaftaran']) . '" data-penyisihan="' . esc($item['penyisihan']) . '" data-jamAwalPenyisihan="' . esc($item['jamAwalPenyisihan']) . '" data-jamAkhirPenyisihan="' . esc($item['jamAkhirPenyisihan']) . '" data-pengumuman="' . esc($item['pengumuman']) . '" data-final="' . esc($item['final']) . '"' . '><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="' . esc($item['id']) . '" data-kategori="' . esc($item['kategori']) . '"' . '><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
                         '</td>' .
                         '</tr>';
                 }
@@ -228,25 +229,30 @@
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete Kategori</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+        <form id="deleteForm" action="/penjadwalan/delete" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Kategori</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Data yang dipilih akan terhapus, hapus data?</p>
+                    <p class="text-warning">
+                    <ul class="list-data">
+                    </ul>
+                    </small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                    <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Data yang dipilih akan terhapus, hapus data?</p>
-                <p class="text-warning">
-                <ul class="list-data">
-                </ul>
-                </small></p>
-            </div>
-            <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                <input id="modal-delete-button" type="submit" class="btn btn-danger" value="Delete" />
-            </div>
-        </div>
+        </form>
     </div>
 </div>
-<script src="/js/tabel.js"></script>
+<script>
+var data_table = <?php echo json_encode($data); ?>
+</script>
+<script src="/js/tabel/penjadwalan.js"></script>
