@@ -46,13 +46,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $item) {
+                <?php foreach ($data as $key=>$item) {
                     echo
-                    '<tr>' .
+                        '<tr>' .
                         '<td>' .
                         '<span class="custom-checkbox">' .
-                        '<input id="id-kategori" type="hidden" value="' . esc($item['id']) . '">' .
-                        '<input type="checkbox" class="checkbox" name="options[]" value="' . esc($item['kategori']) . '">' .
+                        '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
                         '<label for="checkbox"></label>' .
                         '</span>' .
                         '</td>' .
@@ -62,8 +61,8 @@
                         '<td>' . esc(date('d F Y', strtotime($item['pengumuman']))) . '</td>' .
                         '<td>' . esc(date('d F Y', strtotime($item['final']))) . '</td>'     .
                         '<td>' .
-                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-id="' . esc($item['id']) . '" data-kategori="' . esc($item['kategori']) . '"' . 'data-pendaftaran="' . esc($item['pendaftaran'])  . '" data-jamAwalPendaftaran="' . esc($item['jamAwalPendaftaran']) . '" data-jamAkhirPendaftaran="' . esc($item['jamAkhirPendaftaran']) . '" data-penyisihan="' . esc($item['penyisihan']) . '" data-jamAwalPenyisihan="' . esc($item['jamAwalPenyisihan']) . '" data-jamAkhirPenyisihan="' . esc($item['jamAkhirPenyisihan']) . '" data-pengumuman="' . esc($item['pengumuman']) . '" data-final="' . esc($item['final']) . '"' . '><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-id="' . esc($item['id']) . '" data-kategori="' . esc($item['kategori']) . '"' . '><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
                         '</td>' .
                         '</tr>';
                 }
@@ -251,4 +250,7 @@
         </form>
     </div>
 </div>
+<script>
+var data_table = <?php echo json_encode($data); ?>
+</script>
 <script src="/js/tabel.js"></script>

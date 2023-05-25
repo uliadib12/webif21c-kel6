@@ -1,3 +1,4 @@
+console.log(data_table);
 var j = jQuery.noConflict();
 j(document).ready(function () {
   j('#checkbox_selectAll').change(function () {
@@ -21,12 +22,13 @@ j(document).ready(function () {
 
     arrayCheckBox.forEach((checkbox) => {
       if (checkbox.checked) {
-        let id = j(checkbox).parent().find('#id-kategori')[0].value;
-
+        let index = checkbox.value;
+        
         arrayId.push({
-          kategori: checkbox.value,
-          id: id
+          kategori: data_table[index]['kategori'],
+          id: data_table[index]['id']
         }
+
         );
       }
     });
@@ -44,40 +46,30 @@ j(document).ready(function () {
 
   // delete kategori
   j(document).on("click", ".deleteKategoriButton", function () {
-    let Id = j(this).data('id');
-    let kategori = j(this).data('kategori');
+    let index = j(this).data('index');
     let ul = j('#deleteEmployeeModal').find(".list-data");
     ul.html(
     `<li>
-      <input type="hidden" name="id[]" value="${Id}"/>
-      ${kategori}
+      <input type="hidden" name="id[]" value="${data_table[index]['id']}"/>
+      ${data_table[index]['kategori']}
     </li>`);
   });
 
   // edit kategori
   j(document).on("click", ".editKategoriButton", function () {
-    // get id
-    let id = j(this).data('id');
-    let kategori = j(this).data('kategori');
-    let pendaftaran = j(this).data('pendaftaran');
-    let jamAwalPendaftaran = j(this).data('jamawalpendaftaran');
-    let jamAkhirPendaftaran = j(this).data('jamakhirpendaftaran');
-    let penyisihan = j(this).data('penyisihan');
-    let jamAwalPenyisihan = j(this).data('jamawalpenyisihan');
-    let jamAkhirPenyisihan = j(this).data('jamakhirpenyisihan');
-    let pengumuman = j(this).data('pengumuman');
-    let final = j(this).data('final');
-    
-    j('#editEmployeeModal').find('[name="id"]').val(id);
-    j('#editEmployeeModal').find('[name="kategori"]').val(kategori);
-    j('#editEmployeeModal').find('[name="pendaftaran"]').val(pendaftaran);
-    j('#editEmployeeModal').find('[name="jamAwalPendaftaran"]').val(jamAwalPendaftaran);
-    j('#editEmployeeModal').find('[name="jamAkhirPendaftaran"]').val(jamAkhirPendaftaran);
-    j('#editEmployeeModal').find('[name="penyisihan"]').val(penyisihan);
-    j('#editEmployeeModal').find('[name="jamAwalPenyisihan"]').val(jamAwalPenyisihan);
-    j('#editEmployeeModal').find('[name="jamAkhirPenyisihan"]').val(jamAkhirPenyisihan);
-    j('#editEmployeeModal').find('[name="pengumuman"]').val(pengumuman);
-    j('#editEmployeeModal').find('[name="final"]').val(final);
+    // get index
+    let index = j(this).data('index');
+
+    j('#editEmployeeModal').find('[name="id"]').val(data_table[index]['id']);
+    j('#editEmployeeModal').find('[name="kategori"]').val(data_table[index]['kategori']);
+    j('#editEmployeeModal').find('[name="pendaftaran"]').val(data_table[index]['pendaftaran']);
+    j('#editEmployeeModal').find('[name="jamAwalPendaftaran"]').val(data_table[index]['jamAwalPendaftaran']);
+    j('#editEmployeeModal').find('[name="jamAkhirPendaftaran"]').val(data_table[index]['jamAkhirPendaftaran']);
+    j('#editEmployeeModal').find('[name="penyisihan"]').val(data_table[index]['penyisihan']);
+    j('#editEmployeeModal').find('[name="jamAwalPenyisihan"]').val(data_table[index]['jamAwalPenyisihan']);
+    j('#editEmployeeModal').find('[name="jamAkhirPenyisihan"]').val(data_table[index]['jamAkhirPenyisihan']);
+    j('#editEmployeeModal').find('[name="pengumuman"]').val(data_table[index]['pengumuman']);
+    j('#editEmployeeModal').find('[name="final"]').val(data_table[index]['final']);
   });
 
 });
