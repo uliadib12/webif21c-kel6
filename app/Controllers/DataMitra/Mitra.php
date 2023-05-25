@@ -19,6 +19,20 @@ class Mitra extends BaseController
         // get post data
         $data = $this->getPostData();
 
+        // upload image
+        $img = $this->request->getFile('logo');
+        if (!$img->isValid() || !in_array($img->getExtension(), ['jpg', 'jpeg', 'png', 'gif'])) {
+            return redirect()->back()->withInput()->with('errors', 'Logo harus berupa gambar.');
+        }
+        $rand_name = $img->getRandomName();
+        if ($img->isValid() && ! $img->hasMoved()) {
+            $img->move(ROOTPATH . 'public/uploads/images/', $rand_name);
+            $data['logo'] = $rand_name;
+        }
+        else {
+            return redirect()->back()->withInput()->with('errors', $img->getErrorString());
+        }
+
         if (!$mitraModel->insert($data)) {
             return redirect()->back()->withInput()->with('errors', $mitraModel->errors());
         }
@@ -39,6 +53,26 @@ class Mitra extends BaseController
         $id = request()->getPost('id_mitra');
         $data = $this->getPostData();
 
+        // delete image
+        $data = $mitraModel->find($id[0]);
+        if (file_exists(ROOTPATH . 'public/uploads/images/' . $data['logo'])) {
+            unlink(ROOTPATH . 'public/uploads/images/' . $data['logo']);
+        }
+
+        // upload image
+        $img = $this->request->getFile('logo');
+        if (!$img->isValid() || !in_array($img->getExtension(), ['jpg', 'jpeg', 'png', 'gif'])) {
+            return redirect()->back()->withInput()->with('errors', 'Logo harus berupa gambar.');
+        }
+        $rand_name = $img->getRandomName();
+        if ($img->isValid() && ! $img->hasMoved()) {
+            $img->move(ROOTPATH . 'public/uploads/images/', $rand_name);
+            $data['logo'] = $rand_name;
+        }
+        else {
+            return redirect()->back()->withInput()->with('errors', $img->getErrorString());
+        }
+
         if (!$mitraModel->update($id, $data)) {
             return redirect()->back()->withInput()->with('errors', $mitraModel->errors());
         }
@@ -58,6 +92,12 @@ class Mitra extends BaseController
         // get post data
         $id = request()->getPost('id_mitra');
 
+        // delete image
+        $data = $mitraModel->find($id[0]);
+        if (file_exists(ROOTPATH . 'public/uploads/images/' . $data['logo'])) {
+            unlink(ROOTPATH . 'public/uploads/images/' . $data['logo']);
+        }
+
         // looping id
         foreach ($id as $i) {
             if (!$mitraModel->delete($i)) {
@@ -71,7 +111,6 @@ class Mitra extends BaseController
     private function getPostData()
     {
         $data = [
-            'logo' => request()->getPost('logo'),
             'nama' => request()->getPost('nama'),
             'no_telp' => request()->getPost('no_telp'),
             'email' => request()->getPost('email'),

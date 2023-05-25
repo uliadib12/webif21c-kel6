@@ -1,3 +1,6 @@
+<?php
+helper('form');
+?>
 <!DOCTYPE html>
 
 <head>
@@ -58,7 +61,7 @@
                         '<label for="checkbox"></label>' .
                         '</span>' .
                         '</td>' .
-                        '<td>' . esc($item['logo']) . '</td>' .
+                        '<td>' . '<img src="/uploads/images/'.esc($item['logo']).'" alt="logo">' . '</td>' .
                         '<td>' . esc($item['nama']) . '</td>' .
                         '<td>' . esc($item['no_telp']) . '</td>' .
                         '<td>' . esc($item['email']) . '</td>' .
@@ -129,7 +132,7 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/data-mitra/add" method="POST">
+            <?= form_open_multipart('/data-mitra/add', ["id" => "addForm"]) ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Add Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -171,7 +174,7 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/data-mitra/edit" method="POST">
+            <?= form_open_multipart('/data-mitra/edit', ["id" => "addForm"]) ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -204,7 +207,7 @@
                 <div id="notification" style="display: none;"></div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-success" value="Add" />
+                    <input type="submit" class="btn btn-success" value="Edit" />
                 </div>
             </form>
         </div>

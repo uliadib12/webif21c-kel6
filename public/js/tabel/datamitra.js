@@ -45,7 +45,6 @@ j(document).ready(function () {
 
   // edit kategori
   j(document).on("click", ".editKategoriButton", function () {
-    console.log('edit');
     // get index
     let index = j(this).data('index');
 
