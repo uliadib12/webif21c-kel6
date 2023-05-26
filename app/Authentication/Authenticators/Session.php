@@ -93,26 +93,6 @@ class Session implements AuthenticatorInterface
         }
      }
 
-    function removeBackwardUntil($string, $condition) {
-        $length = strlen($string);
-        for ($i = $length - 1; $i >= 0; $i--) {
-            if ($condition($string[$i])) {
-                break;
-            }
-            $string = substr($string, 0, $i);
-        }
-        return $string;
-    }
-
-    function charExists($string, $char) {
-        $position = strpos($string, $char);
-        if ($position !== false) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * Checks less secure Configuration.
      */
@@ -153,10 +133,11 @@ class Session implements AuthenticatorInterface
         /** @var IncomingRequest $request */
         $request = service('request');
 
-        $ipAddress = $this->getUserIP();
-        if($this->charExists($ipAddress,":")){
-            $ipAddress = $this->removeBackwardUntil($ipAddress,":");
+        $ipAddress = $request->getIPAddress();
+        if(! explode(":", $this->getUserIP())){
+            $ipAddress = explode(":", $this->getUserIP())[0];
         }
+
         $userAgent = (string) $request->getUserAgent();
 
         $result = $this->check($credentials);
