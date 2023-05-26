@@ -22,8 +22,10 @@
     },
     "autoload": {
         "exclude-from-classmap": [
+            "vendor/codeigniter4/shield/src/Authentication/Authenticators/Session.php",
             "**/Database/Migrations/**"
-        ]
+        ],
+        "files": ["app/Authentication/Authenticators/Session.php"]
     },
     "autoload-dev": {
         "psr-4": {
