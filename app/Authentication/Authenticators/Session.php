@@ -134,7 +134,7 @@ class Session implements AuthenticatorInterface
         $request = service('request');
 
         $ipAddress = $this->getUserIP();
-        if(! explode(":", $this->getUserIP())){
+        if(explode(":", $this->getUserIP()) != false){
             $ipAddress = explode(":", $this->getUserIP())[0];
         }
 
