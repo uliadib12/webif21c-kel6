@@ -1,7 +1,10 @@
 name: Migration
 
 on:
-  workflow_dispatch: {}
+  workflow_run:
+    workflows: ["Build and deploy PHP app to Azure Web App - TeknoExpo"]
+    types:
+      - completed
 
 jobs:
   post-request:
