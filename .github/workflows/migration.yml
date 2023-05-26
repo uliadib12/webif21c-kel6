@@ -11,4 +11,4 @@ jobs:
       - name: Make POST request
         run: |
           sudo apt-get update && sudo apt-get install -y httpie
-          http --json POST https://teknoexpo.azurewebsites.net/utils/migrate private_key=${{ secrets.PRIVATE_KEY }}
+          http --form POST https://teknoexpo.azurewebsites.net/utils/migrate private_key='${{ secrets.PRIVATE_KEY }}'
