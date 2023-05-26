@@ -88,7 +88,9 @@ $routes->group('data-mitra', ['filter' => 'group:admin,superadmin'], static func
 });
 
 $routes->group('utils', static function ($routes) {
+    $routes->post('get-migrate', 'Utils\MigrateController::getMigrate');
     $routes->post('migrate', 'Utils\MigrateController::migrate');
+    $routes->post('rollback', 'Utils\MigrateController::rollback');
 });
 
 /*
