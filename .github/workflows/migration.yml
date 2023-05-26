@@ -8,10 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Perform POST Request
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: https://teknoexpo.azurewebsites.net/utils/migrate/
-          method: 'POST'
-          customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"private_key": "${{ secrets.PRIVATE_KEY }}"}'
+      - name: Make POST request
+        run: |
+          sudo apt-get update && sudo apt-get install -y httpie
+          http --json POST https://teknoexpo.azurewebsites.net/utils/migrate private_key=${{ secrets.PRIVATE_KEY }}
