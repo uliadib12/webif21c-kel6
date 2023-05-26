@@ -1,0 +1,22 @@
+name: Rollback
+
+on:
+    workflow_dispatch:
+        inputs:
+            number:
+                description: 'Enter a number for batch migration'
+                required: true
+                type: number
+
+jobs:
+  post-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install httpie
+        run: |
+          sudo apt-get update && sudo apt-get install -y httpie
+      
+      - name: Make Post Request
+        run: |
+          http --ignore-stdin --form POST https://teknoexpo.azurewebsites.net/utils/rollback private_key='${{ secrets.PRIVATE_KEY }}' batch='${{ github.event.inputs.number }}'

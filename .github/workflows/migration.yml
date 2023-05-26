@@ -2,7 +2,7 @@ name: Migration
 
 on:
   workflow_run:
-    workflows: ["Build and deploy PHP app to Azure Web App - TeknoExpo"]
+    workflows: ["Build and Deploy"]
     types:
       - completed
 
@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Make POST request
+      - name: Install httpie
         run: |
           sudo apt-get update && sudo apt-get install -y httpie
+      
+      - name: Make Post Request
+        run: |
           http --ignore-stdin --form POST https://teknoexpo.azurewebsites.net/utils/migrate private_key='${{ secrets.PRIVATE_KEY }}'
