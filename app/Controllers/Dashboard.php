@@ -6,17 +6,23 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        $users = auth()->getProvider();
-        $jumlah_user = $users->countAll();
         $kategori_model = new \App\Models\CategoryModel();
-        $kategori_model = new \App\Models\MitraModel();
         $jumlah_kategori = $kategori_model->countAllResults();
+
+        $group_model = new \CodeIgniter\Shield\Models\GroupModel();
+        $jumlah_admin = count($group_model->where('group', 'admin')->get()->getResultArray());
+        $jumlah_user = count($group_model->where('group', 'user')->get()->getResultArray());
+
+        $mitra_model = new \App\Models\MitraModel();
+        $jumlah_mitra = $mitra_model->countAllResults();
 
         return view('dashboard', [
             'kategori' => 'dashboard',
             'user' => auth()->user(),
             'jumlah_user' => $jumlah_user,
-            'jumlah_kategori' => $jumlah_kategori
+            'jumlah_admin' => $jumlah_admin,
+            'jumlah_kategori' => $jumlah_kategori,
+            'jumlah_mitra' => $jumlah_mitra,
         ]);
     }
     public function dataMitra()
