@@ -12,7 +12,7 @@
                     <i class="fa-solid fa-user-tie fs-5 text-center"></i>
                     <div class="ms-3 mb-2">
                         <div class="d-flex align-items-center p-3">
-                            <h3 class="mb-0"><?=$jumlah_user?></h3>
+                            <h3 class="mb-0"><?=$jumlah_admin?></h3>
                             <span class="d-block ms-2">Admin's</span>
                         </div>
                         <p class="fs-normal mb-0">Status</p>
