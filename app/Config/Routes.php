@@ -56,12 +56,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->get('ctf', 'Dashboard/Laporan::ctf');
     });
 
-    $routes->group('sertifikasi', static function ($routes) {
-        $routes->get('desain-web', 'Dashboard/Sertifikasi::desainWeb');
-        $routes->get('pemrograman-mobile', 'Dashboard/Sertifikasi::pemrogramanMobile');
-        $routes->get('ui-ux', 'Dashboard/Sertifikasi::uiUx');
-        $routes->get('ctf', 'Dashboard/Sertifikasi::ctf');
-    });
 
     $routes->group('chart', static function ($routes) {
         $routes->get('desain-web', 'Dashboard::chart_desainWeb');
@@ -69,6 +63,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->get('ui-ux', 'Dashboard::chart_uiUx');
         $routes->get('ctf', 'Dashboard::chart_ctf');
     });
+
+    $routes->get('sertifikasi', 'Dashboard::sertifikasi');
 
     $routes->get('data-mitra', 'Dashboard::dataMitra');
 

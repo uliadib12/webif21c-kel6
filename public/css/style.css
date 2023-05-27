@@ -1401,17 +1401,55 @@ footer {
 }
 
 /* card Load Styles */
+.toggle-content {
+  display: none;
+  padding-bottom: 3rem;
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 2rem;
+  color: #001431;
+  font-size: medium;
+}
+
+.toggle-btn i {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-content.show {
+  display: block;
+}
+
+.toggle-btn.active i {
+  transform: rotate(-180deg);
+}
+.toggle-btn.active .divider {
+  width: 100%;
+}
+.divider {
+  display: inline-block;
+  width: 5%;
+  height: 1.5px;
+  background-color: black;
+  margin: 0 5px;
+}
+/* Lazy Load Styles */
 .card-image {
   display: block;
-  min-height: 15rem; /* layout hack */
-  background: center center no-repeat;
+  min-height: 20rem; /* layout hack */
+  background: #fff center center no-repeat;
   background-size: cover;
   filter: blur(3px); /* blur the lowres image */
 }
 
 .card-image > img {
   display: block;
-  width: 90%;
+  width: 100%;
   opacity: 0; /* visually hide the img element */
 }
 
@@ -1421,7 +1459,6 @@ footer {
 }
 
 /* Layout Styles */
-
 .card-list {
   display: block;
   margin: 1rem auto;
@@ -1434,102 +1471,78 @@ footer {
 .card-event {
   display: inline-block;
   width: 90%;
-  max-width: 16rem;
+  max-width: 20rem;
   margin: 1rem;
   font-size: 1rem;
+  border-radius: 1rem;
   text-decoration: none;
   overflow: hidden;
-  border-radius: 0px 20px 0px 20px;
   box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
-  transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease, border-radius 0.6s ease-in-out;
 }
 
 .card-event:hover {
-  transform: translateY(0rem) scale(1.0125);
+  transform: translateY(-0.5rem) scale(1.0125);
+  border-radius: 0px 2rem 0px 2rem;
   box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
 }
 
 .card-description {
   display: block;
-  padding: 0.1em 0.1em;
-  color: #f1e6e6;
+  padding: 1em 0.5em;
+  color: #ffffff;
   text-decoration: none;
+  box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.1);
   background: linear-gradient(to right, #0b2b76 5%, #001431);
-  transition: background 0.5s ease-in-out;
 }
-.card-description:hover {
-  background: linear-gradient(to right, #001431 5%, #0b2b76);
+.card-event:hover .card-description {
+  background: linear-gradient(to right, #0b2b76 5%, #001431);
+  animation: changeBackground 1s linear infinite;
+}
+@keyframes changeBackground {
+  0% {
+    background: linear-gradient(to right, #0b2b76 10%, #001431);
+  }
+  25% {
+    background: linear-gradient(to right, #0b2b76 25%, #001431);
+  }
+  50% {
+    background: linear-gradient(to right, #0b2b76 50%, #001431);
+  }
+  65% {
+    background: linear-gradient(to right, #0b2b76 70%, #001431);
+  }
+  70% {
+    background: linear-gradient(to right, #001431 5%, #0b2b76);
+  }
+  90% {
+    background: linear-gradient(to right, #001431 25%, #0b2b76);
+  }
+  100% {
+    background: linear-gradient(to right, #001431 50%, #0b2b76);
+  }
 }
 .card-description > h2 {
-  color: #f1e6e6;
-  margin: 0.5em;
+  color: #ffff;
+  margin: 0 0 0.5em;
 }
 
 .card-description > p {
   margin: 0;
 }
-
-.card-image {
-  position: relative;
-}
-
-.card-image::after {
-  content: 'Selengkapnya';
-  position: absolute;
-  background-color: #000;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 12px;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.card-image:hover::after {
-  /* content: ''; */
-  visibility: visible;
-  opacity: 1;
-}
-.col-lg-4 .box {
-  background-color: #001431;
-  color: #fff;
-  border-radius: 0px 20px 0px 20px;
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 40px 10px rgba(0, 0, 0, 0.1);
-}
-.col-lg-4 .box:hover {
-  background-image: linear-gradient(340deg, #001431, #d40808);
-  background-size: 100% 200%;
-  animation: gradient 5s ease-in-out infinite;
-}
-.col-lg-4 .box {
-  position: relative;
-  overflow: hidden;
-  border-radius: 3px;
-  transition: all 0.5s ease-in-out;
-}
-
-.col-lg-4 .box .d-flex {
-  font-size: larger;
-}
-.col-lg-4 .box i {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
   background-color: #d40808;
-  border-radius: 0px 20px 0px 20px;
+  box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 5px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  display: none;
 }
 
-.col-lg .box i {
-  position: absolute;
-  height: 70px;
-  width: 70px;
-  font-size: 22px;
-  padding: 15px;
-  top: -25px;
-  left: -25px;
-  background-color: rgba(0, 0, 0, 0.15);
-  line-height: 60px;
-  text-align: right;
-  border-radius: 50%;
+#back-to-top:hover {
+  background-color: #a30d0d;
 }
