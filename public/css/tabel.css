@@ -295,3 +295,124 @@ table.table .avatar {
     padding-bottom: 1em;
   }
 }
+
+/* .row {
+  display: flex;
+  justify-content: center;
+  width: 100%;  
+} */
+
+.toggle-btn i {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-content.show {
+  display: block;
+}
+
+.toggle-btn.active .divider {
+  width: 100%;
+}
+.divider {
+  display: inline-block;
+  width: 5%;
+  height: 1.5px;
+  background-color: black;
+  margin: 0 5px;
+}
+.custom-dropdown {
+  position: relative;
+  list-style: none;
+}
+
+.custom-dropdown > a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: linear-gradient(to top, #0b2b76 10%, #001431);
+  box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.custom-dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  transition: background-color 0.2s ease-out;
+}
+
+.dropdown-menu li:hover {
+  border-radius: 0px 7px 0px 7px;
+  background-color: #0b2b76;
+}
+
+.dropdown-menu .has-submenu {
+  position: relative;
+}
+.dropdown-menu .has-submenu:hover {
+  border-bottom: solid 2px #ffff;
+  border-left: solid 0.1px #ffff;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+.has-submenu a {
+  text-decoration: none;
+  /* padding-left: 1.2rem; */
+}
+
+.dropdown-menu .submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #0b2b76;
+  box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.dropdown-menu .has-submenu:hover .submenu {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.submenu li {
+  padding: 10px;
+  transition: background-color 0.2s ease-out;
+}
+
+.submenu li:hover {
+  background-color: #d40808;
+}
+.submenu li a {
+  text-decoration: none;
+  padding: 0;
+}

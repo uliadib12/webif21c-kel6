@@ -12,7 +12,7 @@
                     <i class="fa-solid fa-user-tie fs-5 text-center"></i>
                     <div class="ms-3 mb-2">
                         <div class="d-flex align-items-center p-3">
-                            <h3 class="mb-0"><?=$jumlah_admin?></h3>
+                            <h3 class="mb-0"><?= $jumlah_admin ?></h3>
                             <span class="d-block ms-2">Admin's</span>
                         </div>
                         <p class="fs-normal mb-0">Status</p>
@@ -44,45 +44,48 @@
                 </div>
             </div>
         </div>
-        <div class="row statistics mt-4"">
+    </section>
+    <section class="statistics mt-4">
+        <div class="row">
             <div class=" col-lg-4">
-            <div class="box d-flex">
-                <i class="fa-solid fa-clipboard fs-5 text-center"></i>
-                <div class="ms-3 mb-2">
-                    <div class="d-flex align-items-center p-3">
-                        <h3 class="mb-0">2</h3>
-                        <span class="d-block ms-2">Tugas</span>
+                <div class="box d-flex">
+                    <i class="fa-solid fa-clipboard fs-5 text-center"></i>
+                    <div class="ms-3 mb-2">
+                        <div class="d-flex align-items-center p-3">
+                            <h3 class="mb-0">2</h3>
+                            <span class="d-block ms-2">Tugas</span>
+                        </div>
+                        <p class="fs-normal mb-0">Status</p>
                     </div>
-                    <p class="fs-normal mb-0">Status</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="box d-flex">
+                    <i class="fa-solid fa-file-signature fs-5 text-center"></i>
+                    <div class="ms-3 mb-2">
+                        <div class="d-flex align-items-center p-3">
+                            <h3 class="mb-0">34</h3>
+                            <span class="d-block ms-2">Laporan</span>
+                        </div>
+                        <p class="fs-normal mb-0">Status</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="box d-flex">
+                    <i class="fa-solid fa-handshake fs-5 text-center"></i>
+                    <div class="ms-3 mb-2">
+                        <div class="d-flex align-items-center p-3">
+                            <h3 class="mb-0"><?= $jumlah_mitra ?></h3>
+                            <span class="d-block ms-2">Mitra</span>
+                        </div>
+                        <p class="fs-normal mb-0">Status</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="box d-flex">
-                <i class="fa-solid fa-file-signature fs-5 text-center"></i>
-                <div class="ms-3 mb-2">
-                    <div class="d-flex align-items-center p-3">
-                        <h3 class="mb-0">34</h3>
-                        <span class="d-block ms-2">Laporan</span>
-                    </div>
-                    <p class="fs-normal mb-0">Status</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="box d-flex">
-                <i class="fa-solid fa-handshake fs-5 text-center"></i>
-                <div class="ms-3 mb-2">
-                    <div class="d-flex align-items-center p-3">
-                        <h3 class="mb-0"><?= $jumlah_mitra ?></h3>
-                        <span class="d-block ms-2">Mitra</span>
-                    </div>
-                    <p class="fs-normal mb-0">Status</p>
-                </div>
-            </div>
-        </div>
+    </section>
 </div>
-</section>
 
 <section class="charts mt-4">
     <div class="row">

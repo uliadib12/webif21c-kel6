@@ -6,9 +6,9 @@
             <h5 class="fs-6 mb-0">
                 <a class="text-decoration-none" href="#">
                     <?php if (isset($user)) : ?>
-                    <?= esc($user->username) ?>
+                        <?= esc($user->username) ?>
                     <?php else : ?>
-                    Login
+                        Login
                     <?php endif ?>
                 </a>
             </h5>
@@ -33,15 +33,6 @@
             </ul>
         </li>
         <li class="has-dropdown">
-            <i class="fa-solid fa-chart-simple"></i><a href="#"> Charts</a>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li id="desainWeb"><a href="#">Desain Web</a></li>
-                <li id="pemrogramanMobile"><a href="#">Pemrograman Mobile</a></li>
-                <li id="uiUx"><a href="#">UI/UX</a></li>
-                <li id="ctf"><a href="#">CTF</a></li>
-            </ul>
-        </li>
-        <li class="has-dropdown">
             <i class="fa-brands fa-redhat"></i><a href="#"> Kepanitiaan</a>
             <ul class="sidebar-dropdown list-unstyled">
                 <li id="sk"><a href="#">SK</a></li>
@@ -51,11 +42,13 @@
         <li class="has-dropdown">
             <i class="fa-solid fa-file-signature"></i><a href="#"> Laporan</a>
             <ul class="sidebar-dropdown list-unstyled">
-                <li><a href="#">Desain Web</a></li>
-                <li><a href="#">Pemrograman Mobile</a></li>
-                <li><a href="#">UI/UX</a></li>
-                <li><a href="#">CTF</a></li>
+                <li><a href="#">To Do!</a></li>
+                <li><a href="#">Done</a></li>
             </ul>
+        </li>
+        <li id="chart" class="icon-container">
+            <i class="fa-solid fa-chart-simple"></i>
+            <a href="#"> Charts</a>
         </li>
         <li id="sertifikasi" class="icon-container">
             <i class="fa-solid fa-address-card"></i>
