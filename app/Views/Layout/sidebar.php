@@ -6,9 +6,9 @@
             <h5 class="fs-6 mb-0">
                 <a class="text-decoration-none" href="#">
                     <?php if (isset($user)) : ?>
-                        <?= esc($user->username) ?>
+                    <?= esc($user->username) ?>
                     <?php else : ?>
-                        Login
+                    Login
                     <?php endif ?>
                 </a>
             </h5>
@@ -57,14 +57,9 @@
                 <li><a href="#">CTF</a></li>
             </ul>
         </li>
-        <li class="has-dropdown">
-            <i class="fa-solid fa-address-card"></i><a href="#"> Sertivikasi</a>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a href="#">Desain Web</a></li>
-                <li><a href="#">Pemrograman Mobile</a></li>
-                <li><a href="#">UI/UX</a></li>
-                <li><a href="#">CTF</a></li>
-            </ul>
+        <li id="sertifikasi" class="icon-container">
+            <i class="fa-solid fa-address-card"></i>
+            <a href="#"> Sertifikasi</a>
         </li>
         <li id="dataMitra" class="icon-container">
             <i class="fa-regular fa-handshake"></i>
