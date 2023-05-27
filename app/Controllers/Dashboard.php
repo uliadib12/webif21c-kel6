@@ -4,6 +4,13 @@ namespace App\Controllers;
 
 class Dashboard extends BaseController
 {
+    private $user;
+
+    public function __construct()
+    {
+        $this->user = auth()->user();
+    }
+
     public function index()
     {
         $kategori_model = new \App\Models\CategoryModel();
@@ -18,7 +25,7 @@ class Dashboard extends BaseController
 
         return view('dashboard', [
             'kategori' => 'dashboard',
-            'user' => auth()->user(),
+            'user' => $this->user,
             'jumlah_user' => $jumlah_user,
             'jumlah_admin' => $jumlah_admin,
             'jumlah_kategori' => $jumlah_kategori,
@@ -50,12 +57,12 @@ class Dashboard extends BaseController
             'dashboard',
             [
                 'kategori' => 'datamitra',
+                'user' => $this->user,
                 'page' => $page,
                 'pageCount' => $pageCount,
                 'data' => $data,
                 'maxPaginate' => $maxPaginate,
                 'countAllRow' => $countAllRow,
-                'user' => auth()->user()
             ]
         );
     }
@@ -85,42 +92,42 @@ class Dashboard extends BaseController
             'dashboard',
             [
                 'kategori' => 'penjadwalan',
+                'user' => $this->user,
                 'page' => $page,
                 'pageCount' => $pageCount,
                 'data' => $data,
                 'maxPaginate' => $maxPaginate,
                 'countAllRow' => $countAllRow,
-                'user' => auth()->user()
             ]
         );
     }
     public function pengingat_dataKegiatan()
     {
-        return view('dashboard', ['kategori' => 'dataKegiatan', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'dataKegiatan', 'user' => $this->user,]);
     }
     public function kepanitiaan_panitia()
     {
-        return view('dashboard', ['kategori' => 'panitia', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'panitia', 'user' => $this->user,]);
     }
     public function kepanitiaan_sk()
     {
-        return view('dashboard', ['kategori' => 'sk', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'sk', 'user' => $this->user,]);
     }
 
     public function chart_desainWeb()
     {
-        return view('dashboard', ['kategori' => 'desainWeb', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'desainWeb', 'user' => $this->user,]);
     }
     public function chart_pemrogramanMobile()
     {
-        return view('dashboard', ['kategori' => 'pemrogramanMobile', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'pemrogramanMobile', 'user' => $this->user,]);
     }
     public function chart_uiUx()
     {
-        return view('dashboard', ['kategori' => 'uiUx', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'uiUx', 'user' => $this->user,]);
     }
     public function chart_ctf()
     {
-        return view('dashboard', ['kategori' => 'ctf', 'user' => auth()->user()]);
+        return view('dashboard', ['kategori' => 'ctf', 'user' => $this->user,]);
     }
 }
