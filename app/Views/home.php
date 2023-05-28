@@ -72,7 +72,7 @@
                         <div class="login_bt">
                             <ul>
                                 <li>
-                                    <a href="/login"><span class="user_icon"><i class="fa fa-user"
+                                    <a href="<?= (isset($user)) ? "/profile" : "/login" ?>"><span class="user_icon"><i class="fa fa-user"
                                                 aria-hidden="true"></i></span>
                                         <?php if (isset($user)) : ?>
                                         <?= esc($user->username) ?>

@@ -34,7 +34,12 @@ service('auth')->routes($routes);
 $routes->get('/', 'Home::index');
 $routes->post('login-v1', 'Auth::login');
 
-$routes->get('profile', 'User\Profile::index');
+$routes->get('profile', 'User\Profile::index', ['filter' => 'group:user,admin,superadmin']);
+
+$routes->group('profile', ['filter' => 'group:user,admin,superadmin'] , static function ($routes){
+    $routes->get('/', 'User\Profile::index');
+    $routes->post('update-user', 'User\Profile::updateUser');
+});
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');

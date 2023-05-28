@@ -13,6 +13,17 @@
         <input type="file" id="fileInput" accept="image/*" onchange="gantiFotoProfil()">
     </div>
 
+    <?php if (session()->getFlashdata('success')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('success'); ?>
+    </div>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('error')) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?= session()->getFlashdata('error'); ?>
+    </div>
+    <?php endif; ?>
+
     <ul class="nav nav-tabs" style="margin-bottom: 20px;" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">Data User</a>
@@ -24,21 +35,21 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
-            <form action="/update-profile" method="post">
+            <form action="/profile/update-user" method="post">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" value="JohnDoe" required />
+                <input type="text" name="username" id="username" value="<?= $user->username ?>" required />
 
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="johndoe@example.com" readonly />
+                <input type="email" name="email" id="email" value="<?= $user->email ?>" readonly require />
 
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" required />
+                <input type="password" name="password" id="password" />
 
-                <label for="new-password">New Password</label>
-                <input type="password" name="new-password" id="new-password" />
+                <label for="new_password">New Password</label>
+                <input type="password" name="new_password" id="new_password" />
 
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" name="confirm-password" id="confirm-password" />
+                <label for="confirm_new_password">Confirm Password</label>
+                <input type="password" name="confirm_new_password" id="confirm_new_password" />
 
                 <input type="submit" value="Save Changes" />
             </form>
