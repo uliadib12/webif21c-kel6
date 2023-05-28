@@ -41,7 +41,7 @@
 
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="<?= $user->email ?>" readonly require />
-
+                <hr/>
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" />
 
