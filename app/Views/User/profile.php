@@ -1,31 +1,85 @@
 <head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/v.css" />
     <link rel="stylesheet" href="/css/tabel.css" />
     <link rel="stylesheet" href="/css/keterangan.css" />
 </head>
 
 <div class="profile">
-   <img class="img-fluid" width="200" src=" /images/AlbertEinstein.jpg" alt="profile" />
-   <input type="file" id="fileInput" accept="image/*" onchange="gantiFotoProfil()">
+    <img class="img-fluid" width="200" src=" /images/AlbertEinstein.jpg" alt="profile" />
+   
+    <div style="margin-bottom: 10px; padding-left: 80px ;text-align: center;">
+        <input type="file" id="fileInput" accept="image/*" onchange="gantiFotoProfil()">
+    </div>
 
-    <form action="/update-profile" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="JohnDoe" required />
+    <ul class="nav nav-tabs" style="margin-bottom: 20px;" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">Data User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Data Profile</a>
+        </li>
+    </ul>
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="johndoe@example.com" required />
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+            <form action="/update-profile" method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" value="JohnDoe" required />
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="johndoe@example.com" readonly />
 
-        <label for="new-password">New Password</label>
-        <input type="password" name="new-password" id="new-password" />
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required />
 
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" name="confirm-password" id="confirm-password" />
+                <label for="new-password">New Password</label>
+                <input type="password" name="new-password" id="new-password" />
 
-        <input type="submit" value="Save Changes" />
-    </form>
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" />
+
+                <input type="submit" value="Save Changes" />
+            </form>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <form action="/update-profile" method="post">
+                <label for="nama_lengkap">Nama Lengkap</label>
+                <input type="text" name="nama_lengkap" id="nama_lengkap" value="JohnDoe" required />
+                
+                <label for="npm">NPM</label>
+                <input type="number" class="form-control" id="npm" name="npm" min="0" max="100" step="1">
+
+                <label for="kelas">Kelas</label>
+                <input type="text" name="kelas" id="kelas" value="" required />
+
+                <label for="fakultas">Fakultas</label>
+                <select class="form-control" id="fakultas">
+                    <option>Fakultas Teknik dan Ilmu Komputer</option>
+                    <option>Fakultas Ekonomi dan Bisnis</option>
+                    <option>Fakultas Sastra dan Ilmu Pendidikan</option>
+                </select>
+
+                <label for="jurusan">Jurusan</label>
+                <select class="form-control" id="jurusan">
+                    <option>Informatika</option>
+                    <option>Sistem Informasi</option>
+                    <option>Teknik Sipil</option>
+                </select>
+
+                <label for="alamat">Alamat</label>
+                <input type="text" name="alamat" id="alamat" required />
+
+                <label for="no_telp">Nomor Telepon</label>
+                <input type="number" class="form-control" id="no_telp" name="no_telp" min="0" max="100" step="1">
+                
+                <div style="margin-bottom: 20px;"></div>
+                <input type="submit" value="Save Changes" />
+            </form>
+        </div>
+    </div>
+
     <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
@@ -44,15 +98,11 @@
             <thead>
                 <tr>
                     <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
+
                     </th>
                     <th>Event</th>
                     <th>Tanggal</th>
                     <th>Keterangan</th>
-     
                 </tr>
             </thead>
             <tbody>
@@ -72,26 +122,12 @@
                 </tr>
             </tbody>
         </table>
-        <div class="clearfix">
-            <div class="hint-text">Showing <b>5</b> out of
-                <b>25</b> entries
-            </div>
-            <ul class="pagination">
-                <li class="page-item disabled"><a href="#">Previous</a></li>
-                <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
-            </ul>
-        </div>
     </div>
 </div>
 <!-- Add Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="width: auto;">
         <div class="event-details">
     <h2>EXPO</h2>
     <img class="img-fluid" width="200" src=" /images/AlbertEinstein.jpg" alt="profile" />
@@ -109,7 +145,7 @@
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="width: auto;">
             <form id="deleteForm" action="delete_data.php" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Kategori</h4>
@@ -129,8 +165,9 @@
     </div>
 </div>
 
-
-<script src="/js/tabel.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/tabel/datamitra.js"></script>
 <script>
         function gantiFotoProfil() {
             var fileInput = document.getElementById("fileInput");
