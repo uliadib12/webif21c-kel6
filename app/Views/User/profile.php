@@ -60,7 +60,7 @@
                 <input type="text" name="nama_lengkap" id="nama_lengkap" value="JohnDoe" required />
                 
                 <label for="npm">NPM</label>
-                <input type="number" class="form-control" id="npm" name="npm" min="0" max="100" step="1">
+                <input type="number" class="form-control" id="npm" name="npm">
 
                 <label for="kelas">Kelas</label>
                 <input type="text" name="kelas" id="kelas" value="" required />
@@ -83,7 +83,7 @@
                 <input type="text" name="alamat" id="alamat" required />
 
                 <label for="no_telp">Nomor Telepon</label>
-                <input type="number" class="form-control" id="no_telp" name="no_telp" min="0" max="100" step="1">
+                <input type="number" class="form-control" id="no_telp" name="no_telp">
                 
                 <div style="margin-bottom: 20px;"></div>
                 <input type="submit" value="Save Changes" />
