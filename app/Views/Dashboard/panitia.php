@@ -12,11 +12,11 @@
     </div>
     <section class="statistics mt-3">
         <div class="row">
-            <div class="col-lg-2">
-                <div class="box d-flex">
+            <div class="col-lg-2 ">
+                <div id="EventDropdown" class="box d-flex custom-dropdown">
                     <div class="row ms-1 mb-1">
                         <div class="d-flex align-items-center p-3">
-                            <li id="EventDropdown" class="custom-dropdown">
+                            <li class="custom-dropdown">
                                 <a href="#" class="dropdown-toggle"><span class="d-block ms-3">Event </span></a>
                                 <ul class="dropdown-menu">
                                     <li class="has-submenu">
@@ -38,11 +38,10 @@
                 </div>
             </div>
             <div class="col-lg-2">
-                <div class="box d-flex">
+                <div id="MenuDropdown" class="box d-flex custom-dropdown">
                     <div class="row ms-1 mb-1">
                         <div class="d-flex p-3">
-                            <!-- <h3 class="mb-0">2</h3> -->
-                            <li id="MenuDropdown" class="custom-dropdown">
+                            <li class="custom-dropdown">
                                 <a href="#" class="dropdown-toggle"><span class="d-block ms-3">Menu</span></a>
                                 <ul class="dropdown-menu">
                                     <li class="has-submenu">
@@ -74,9 +73,11 @@
                     <h2><b>Panitia</b> <span>Expo</span></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
+                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
+                            class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
+                            class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
@@ -113,8 +114,10 @@
                     <td>Anggota</td>
                     <td>Adityamfu@gmail.com</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
+                                data-toggle="tooltip" title="Edit"></i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
+                                data-toggle="tooltip" title="Delete"></i></a>
                     </td>
                 </tr>
                 <tr>
@@ -130,8 +133,10 @@
                     <td>Ketua</td>
                     <td>Uliadib@gmail.com</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
+                                data-toggle="tooltip" title="Edit"></i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
+                                data-toggle="tooltip" title="Delete"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -276,70 +281,118 @@
         </form>
     </div>
 </div>
-
+<div class="container">
+    <p class="p-3" style="font-size:medium">
+        Tutup SideBar untuk melihat struktur lebih jelas!
+    </p>
+</div>
 <div class="p-4 org-tree">
     <div class="tree">
         <ul>
             <li>
-                <a href="#">Ketua Pelaksana</a>
-                <ul>
-                    <a href="#">Sekertaris</a>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="#">Staff</a>
-                        <ul class="vertical">
-                            <li><a href="#">Human Resources</a></li>
-                            <li><a href="#">Finance</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">IT/IS</a></li>
-                            <li><a href="#">Service Delivery</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">BAMs</a>
-                        <ul class="vertical">
-                            <li><a href="#">Applications</a></li>
-                            <li><a href="#">Mobility</a></li>
-                            <li><a href="#">Collaboration</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Knowledge Committee</a></li>
-                    <li>
-                        <a href="#">Delivery Lund</a>
-                        <ul>
-                            <li>
-                                <a href="#">Team Leads</a>
-                                <ul class="vertical">
-                                    <li><a href="#">Team 1</a></li>
-                                    <li><a href="#">Team 2</a></li>
-                                    <li><a href="#">Team 3</a></li>
-                                    <li><a href="#">Team 4</a></li>
-                                    <li><a href="#">Team 5</a></li>
-                                    <li><a href="#">Team 6</a></li>
-                                    <li><a href="#">Team 7</a></li>
-                                    <li><a href="#">Team 8</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Sales</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Delivery Stockholm</a>
-                        <ul>
-                            <li>
-                                <a href="#">Team Leads</a>
-                                <ul class="vertical">
-                                    <li><a href="#">Hokutō</a></li>
-                                    <li><a href="#">The Other Team</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Sales</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <a href="#">
+                    <h4>Penanggung Jawab</h4>
+                    <p>Dr. H. M. Nasrullah Yusuf</p>
+                </a>
+                <div class="tree">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <h4>Ketua Pelaksana</h4>
+                                <p>Aditya Muhammad</p>
+                            </a>
+                            <ul class="child">
+                                <li>
+                                    <a href="#">
+                                        <h4>Sekertaris</h4>
+                                        <p>Vera Afridita</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h4>Koordinator</h4>
+                                        <p>Adib Ulinuha</p>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <h4>Divisi Humas</h4>
+                                                <p>Aditya Saputra</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h4>Divisi Perlengkapan</h4>
+                                                <p>Verlando Akbar</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h4>Divisi Konsumsi</h4>
+                                                <p>Ni Ketut Triayu</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h4>Divisi Acara</h4>
+                                                <p>Theorema Fosheca</p>
+                                            </a>
+                                            <ul class="vertical">
+                                                <li><a href="#">UI/UX</a></li>
+                                                <li><a href="#">Robotic</a></li>
+                                                <li><a href="#">CTF</a></li>
+                                                <li><a href="#">iOT</a></li>
+                                                <li><a href="#">Web Dev</a></li>
+                                                <li><a href="#">Mobile Dev</a></li>
+                                                <li><a href="#">Game For Education</a></li>
+                                                <li><a href="#">Kemanan Jaringan</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h4>Divisi Dokumentasi</h4>
+                                                <p>Nur Fadila</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h4>Divisi Keamanan</h4>
+                                                <p>Ilham Nasul</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h4>Bendahara</h4>
+                                        <p>Dinara Indri P</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>
 </div>
-<script src="/js/tabel/penjadwalan.js"></script>
+<a href="javascript:void(0);" id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-caret-up"></i></a>
+<script>
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById('back-to-top').style.display = 'block';
+    } else {
+        document.getElementById('back-to-top').style.display = 'none';
+    }
+}
+
+function scrollToTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>
+<script src="/js/tabel/panitia.js"></script>

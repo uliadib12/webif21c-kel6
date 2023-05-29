@@ -1,12 +1,20 @@
+.org-tree {
+  max-width: 100%;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  overflow: auto;
+}
 .tree * {
   margin: 0;
   padding: 0;
 }
 
 .tree ul {
-  padding-top: 20px;
+  padding-top: 40px;
   position: relative;
-
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -17,7 +25,7 @@
   text-align: center;
   list-style-type: none;
   position: relative;
-  padding: 20px 5px 0 5px;
+  padding: 20px 0px 0 5px;
 
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -32,18 +40,18 @@
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 1px solid #8dc63f;
+  border-top: 1.4px solid #001431;
   width: 50%;
   height: 20px;
 }
 .tree li::after {
   right: auto;
   left: 50%;
-  border-left: 1px solid #8dc63f;
+  border-left: 1.4px solid #001431;
 }
 
 /*to remove left-right connectors from elements without 
-any siblings*/
+  any siblings*/
 .tree li:only-child::after,
 .tree li:only-child::before {
   display: none;
@@ -55,7 +63,7 @@ any siblings*/
 }
 
 /*Remove left connector from first child and 
-right connector from last child*/
+  right connector from last child*/
 .tree li:first-child::before,
 .tree li:last-child::after {
   border: 0 none;
@@ -63,7 +71,7 @@ right connector from last child*/
 
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before {
-  border-right: 1px solid #8dc63f;
+  border-right: 1.4px solid #001431;
   border-radius: 0 5px 0 0;
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
@@ -80,13 +88,13 @@ right connector from last child*/
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 1px solid #8dc63f;
+  border-left: 1.4px solid #001431;
   width: 0;
-  height: 20px;
+  height: 40px;
 }
 
 .tree li a {
-  border: 1px solid #8dc63f;
+  border: 1.4px solid #001431;
   padding: 1em 0.75em;
   text-decoration: none;
   color: #666767;
@@ -94,11 +102,9 @@ right connector from last child*/
   font-size: 0.85em;
   display: inline-block;
 
-  /*
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-  */
+  border-radius: 0px 9px 0px 9px;
+  -webkit-border-radius: 0px 9px 0px 9px;
+  -moz-border-radius: 0px 9px 0px 9px;
 
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -139,8 +145,8 @@ ul.vertical ul {
 .tree ul.vertical li::before {
   top: -20px;
   left: 0px;
-  border-bottom: 1px solid #8dc63f;
-  border-left: 1px solid #8dc63f;
+  border-bottom: 1.4px solid #001431;
+  border-left: 1.4px solid #001431;
   width: 20px;
   height: 60px;
 }
@@ -156,16 +162,22 @@ div.tree > ul > li > ul > li > a {
   width: 11em;
 }
 
-div.tree > ul > li > a {
-  font-size: 1em;
+div.tree > ul > li > a > h4 {
+  font-size: 1.2em;
   font-weight: bold;
 }
-
+p {
+  font-size: smaller;
+}
+h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
 .tree li a:hover,
 .tree li a:hover + ul li a {
-  background: #8dc63f;
-  color: white;
-  /* border: 1px solid #aaa; */
+  background: #001431;
+  color: #b6bac3;
+  border: 1.4px solid #aaa;
 }
 /*Connector styles on hover*/
 .tree li a:hover + ul li::after,
@@ -174,13 +186,51 @@ div.tree > ul > li > a {
 .tree li a:hover + ul ul::before {
   border-color: #aaa;
 }
-/* CSS untuk Organogram Kepanitiaan */
 
+/* CSS untuk Organogram Kepanitiaan */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #d40808;
+  box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 5px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+#back-to-top:hover {
+  background-color: #a30d0d;
+    transform: translateY(-5px);
+}
+#back-to-top:hover .fa-solid {
+  animation: moveIcon 0.5s ease-in-out infinite alternate;
+}
+@keyframes moveIcon {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-7px);
+  }
+}
 /* ...Kode CSS sebelumnya... */
 
 /* Responsive */
-@media only screen and (max-width: 768px) {
-  .tree ul,
+@media (max-width: 600px) {
+  .org-tree {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1268px) {
+  .org-tree {
+    display: none;
+  }
+  /* .tree ul,
   .tree ul ul {
     overflow-x: auto;
     white-space: nowrap;
@@ -209,7 +259,7 @@ div.tree > ul > li > a {
   .tree li a {
     padding: 10px 0.75em;
     margin-left: 0;
-  }
+  } */
 }
 
 /* ...Kode CSS setelahnya... */

@@ -1532,7 +1532,7 @@ footer {
 }
 #back-to-top {
   position: fixed;
-  bottom: 20px;
+  bottom: 30px;
   right: 20px;
   padding: 10px 15px;
   background-color: #d40808;
@@ -1541,8 +1541,21 @@ footer {
   border-radius: 5px;
   text-decoration: none;
   display: none;
+  transition: all 0.3s ease;
 }
 
 #back-to-top:hover {
   background-color: #a30d0d;
+  transform: translateY(-5px);
+}
+#back-to-top:hover .fa-solid {
+  animation: moveIcon 0.5s ease-in-out infinite alternate;
+}
+@keyframes moveIcon {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-7px);
+  }
 }
