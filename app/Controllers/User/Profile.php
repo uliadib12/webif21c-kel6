@@ -8,8 +8,9 @@ class Profile extends BaseController
 {
     public function index()
     {
-        $user = service('auth')->user();
+        $user = auth()->user();
         return view('User/profile', [
+            'profilePicture' => $user->profile_picture ?? null,
             'user' => $user,    
         ]);
     }
@@ -118,5 +119,40 @@ class Profile extends BaseController
         }
 
         return redirect()->back()->with('success', 'User Updated Successfully');
+    }
+
+    public function updateProfilePicture(){
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'profile_picture' => 'uploaded[profile_picture]|max_size[profile_picture,10024]|is_image[profile_picture]|mime_in[profile_picture,image/jpg,image/jpeg,image/png]',
+        ]);
+
+        if (!$validation->run(['profile_picture' => $this->request->getFile('profile_picture')])) {
+            return redirect()->back()->withInput()->with('error', "Invalid Profile Picture");
+        }
+
+        $file = $this->request->getFile('profile_picture');
+        $rand_name = $file->getRandomName();
+        $file->move(ROOTPATH . 'public/uploads/images/', $rand_name);
+
+        // Get the User Provider (UserModel by default)
+        $users = auth()->getProvider();
+
+        // Get Current User ID
+        $current_user_id = auth()->id();
+
+        // Set New User Data
+        $user = $users->findById($current_user_id);
+        $user->fill([
+            'profile_picture' => $rand_name,
+        ]);
+        try{
+            $users->save($user);
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', "Failed to Update Profile Picture");
+        }
+
+        return redirect()->back()->with('success', 'Profile Picture Updated Successfully');
     }
 }

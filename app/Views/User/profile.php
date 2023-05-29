@@ -1,3 +1,6 @@
+<?php
+helper('form');
+?>
 <head>
     <title>Profile</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -7,10 +10,12 @@
 </head>
 
 <div class="profile">
-    <img class="img-fluid" width="200" src=" /images/AlbertEinstein.jpg" alt="profile" />
+    <img class="img-fluid" width="200" src="<?= isset($profilePicture) ? "/uploads/images/".$profilePicture : "/images/default-profile-picture.jpg" ?>" alt="profile" />
    
     <div style="margin-bottom: 10px; padding-left: 80px ;text-align: center;">
-        <input type="file" id="fileInput" accept="image/*" onchange="gantiFotoProfil()">
+        <?= form_open_multipart('/profile/update-profile-picture', ['id' => 'profilePictureForm']) ?>
+            <input type="file" id="fileInput" name="profile_picture" accept="image/*" onchange="sendProfilePicture()">
+        </form>
     </div>
 
     <?php if (session()->getFlashdata('success')) : ?>
@@ -55,38 +60,62 @@
             </form>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <form action="/update-profile" method="post">
-                <label for="nama_lengkap">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" id="nama_lengkap" value="JohnDoe" required />
-                
-                <label for="npm">NPM</label>
-                <input type="number" class="form-control" id="npm" name="npm">
+            <form action="/update-profile" method="post">
+                <div class="form-group">
+                    <label for="nama_lengkap">Nama Lengkap</label>
+                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="JohnDoe" required />
+                </div>
 
-                <label for="kelas">Kelas</label>
-                <input type="text" name="kelas" id="kelas" value="" required />
+                <div class="form-group">
+                    <label for="npm">NPM</label>
+                    <input type="number" class="form-control" id="npm" name="npm">
+                </div>
 
-                <label for="fakultas">Fakultas</label>
-                <select class="form-control" id="fakultas">
-                    <option>Fakultas Teknik dan Ilmu Komputer</option>
-                    <option>Fakultas Ekonomi dan Bisnis</option>
-                    <option>Fakultas Sastra dan Ilmu Pendidikan</option>
-                </select>
+                <div class="form-group">
+                    <label for="kelas">Kelas</label>
+                    <input type="text" name="kelas" id="kelas" value="" required />
+                </div>
 
-                <label for="jurusan">Jurusan</label>
-                <select class="form-control" id="jurusan">
-                    <option>Informatika</option>
-                    <option>Sistem Informasi</option>
-                    <option>Teknik Sipil</option>
-                </select>
+                <div class="form-group">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select class="form-control" id="jenis_kelamin">
+                        <option>Laki - Laki</option>
+                        <option>Perempuan</option>
+                    </select>
+                </div>
 
-                <label for="alamat">Alamat</label>
-                <input type="text" name="alamat" id="alamat" required />
+                <div class="form-group">
+                    <label for="fakultas">Fakultas</label>
+                    <select class="form-control" id="fakultas">
+                        <option>Fakultas Teknik dan Ilmu Komputer</option>
+                        <option>Fakultas Ekonomi dan Bisnis</option>
+                        <option>Fakultas Sastra dan Ilmu Pendidikan</option>
+                    </select>
+                </div>
 
-                <label for="no_telp">Nomor Telepon</label>
-                <input type="number" class="form-control" id="no_telp" name="no_telp">
-                
-                <div style="margin-bottom: 20px;"></div>
-                <input type="submit" value="Save Changes" />
+                <div class="form-group">
+                    <label for="jurusan">Jurusan</label>
+                    <select class="form-control" id="jurusan">
+                        <option>Informatika</option>
+                        <option>Sistem Informasi</option>
+                        <option>Teknik Sipil</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" name="alamat" id="alamat" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="no_telp">Nomor Telepon</label>
+                    <input type="number" class="form-control" id="no_telp" name="no_telp">
+                </div>
+
+                <div class="form-group">
+                    <div style="margin-bottom: 20px;"></div>
+                    <input type="submit" value="Save Changes" />
+                </div>
             </form>
         </div>
     </div>
@@ -179,7 +208,14 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/tabel/datamitra.js"></script>
+
 <script>
+    function sendProfilePicture(){
+        let profilePictureForm = document.getElementById('profilePictureForm');
+        profilePictureForm.submit();
+    }
+</script>
+<!-- <script>
         function gantiFotoProfil() {
             var fileInput = document.getElementById("fileInput");
             var previewImage = document.getElementById("img-fluid");
@@ -193,7 +229,7 @@
 
             reader.readAsDataURL(file);
         }
-    </script>
+</script>
 <script>
     var chart = document.getElementById('chart3');
     var myChart = new Chart(chart, {
@@ -253,4 +289,4 @@
             },
         },
     });
-</script>
+</script> -->
