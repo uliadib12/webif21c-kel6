@@ -60,56 +60,56 @@ helper('form');
             </form>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <form action="/update-profile" method="post">
+            <form action="/profile/update-profile" method="post">
                 <div class="form-group">
                     <label for="nama_lengkap">Nama Lengkap</label>
-                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="JohnDoe" required />
+                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $profile['nama_lengkap'] ?? "" ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="npm">NPM</label>
-                    <input type="number" class="form-control" id="npm" name="npm">
+                    <input type="number" class="form-control" id="npm" name="npm" value="<?= (($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : ($profile['npm'] ?? "")?>">
                 </div>
 
                 <div class="form-group">
                     <label for="kelas">Kelas</label>
-                    <input type="text" name="kelas" id="kelas" value="" required />
+                    <input type="text" name="kelas" id="kelas" value="<?= $profile['kelas'] ?? "" ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <select class="form-control" id="jenis_kelamin">
-                        <option>Laki - Laki</option>
-                        <option>Perempuan</option>
+                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                        <option <?= (($profile['jenis_kelamin'] ?? "") == "Laki-Laki") ? "selected" : "" ?> >Laki-Laki</option>
+                        <option <?= (($profile['jenis_kelamin'] ?? "") == "Perempuan") ? "selected" : "" ?> >Perempuan</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="fakultas">Fakultas</label>
-                    <select class="form-control" id="fakultas">
-                        <option>Fakultas Teknik dan Ilmu Komputer</option>
-                        <option>Fakultas Ekonomi dan Bisnis</option>
-                        <option>Fakultas Sastra dan Ilmu Pendidikan</option>
+                    <select class="form-control" id="fakultas" name="fakultas">
+                        <option <?= (($profile['fakultas'] ?? "" ) == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?> >Fakultas Teknik dan Ilmu Komputer</option>
+                        <option <?= (($profile['fakultas'] ?? "" ) == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?> >Fakultas Ekonomi dan Bisnis</option>
+                        <option <?= (($profile['fakultas'] ?? "" ) == "Fakultas Sastra dan Ilmu Pendidikan") ? "selected" : "" ?> >Fakultas Sastra dan Ilmu Pendidikan</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="jurusan">Jurusan</label>
-                    <select class="form-control" id="jurusan">
-                        <option>Informatika</option>
-                        <option>Sistem Informasi</option>
-                        <option>Teknik Sipil</option>
+                    <select class="form-control" id="jurusan" name="jurusan">
+                        <option <?= (($profile['jurusan'] ?? "" ) == "Informatika") ? "selected" : "" ?> >Informatika</option>
+                        <option <?= (($profile['jurusan'] ?? "" ) == "Sistem Informasi") ? "selected" : "" ?> >Sistem Informasi</option>
+                        <option <?= (($profile['jurusan'] ?? "" ) == "Teknik Sipil") ? "selected" : "" ?> >Teknik Sipil</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="alamat">Alamat</label>
-                    <input type="text" name="alamat" id="alamat" required />
+                    <input type="text" name="alamat" id="alamat" value="<?= $profile['alamat'] ?? "" ?>" />
                 </div>
 
                 <div class="form-group">
-                    <label for="no_telp">Nomor Telepon</label>
-                    <input type="number" class="form-control" id="no_telp" name="no_telp">
+                    <label for="no_hp">Nomor Telepon</label>
+                    <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $profile['no_hp'] ?? "" ?>">
                 </div>
 
                 <div class="form-group">

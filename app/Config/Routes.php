@@ -39,6 +39,7 @@ $routes->get('profile', 'User\Profile::index', ['filter' => 'group:user,admin,su
 $routes->group('profile', ['filter' => 'group:user,admin,superadmin'] , static function ($routes){
     $routes->get('/', 'User\Profile::index');
     $routes->post('update-user', 'User\Profile::updateUser');
+    $routes->post('update-profile', 'User\Profile::updateProfile');
     $routes->post('update-profile-picture', 'User\Profile::updateProfilePicture');
 });
 

@@ -3,15 +3,19 @@
 namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
+use App\Models\ProfileModel;
 
 class Profile extends BaseController
 {
     public function index()
     {
         $user = auth()->user();
+        $profileModel = new ProfileModel();
+        $profile = $profileModel->where('id_user', auth()->id())->first() ?? [];
         return view('User/profile', [
             'profilePicture' => $user->profile_picture ?? null,
-            'user' => $user,    
+            'user' => $user,   
+            'profile' => $profile,
         ]);
     }
 
@@ -119,6 +123,57 @@ class Profile extends BaseController
         }
 
         return redirect()->back()->with('success', 'User Updated Successfully');
+    }
+
+    public function updateProfile(){
+        // Get Profile Model
+        $profileModel = new ProfileModel();
+
+        $profile = $profileModel->where('id_user', auth()->id())->first();
+
+        // If Profile is not created yet
+        if($profile == NULL){
+            $data = [
+                'id_user' => auth()->id(),
+                'nama_lengkap' => $this->request->getPost('nama_lengkap'),
+                'npm' => $this->request->getPost('npm'),
+                'kelas' => $this->request->getPost('kelas'),
+                'jenis_kelamin' => $this->request->getPost('jenis_kelamin') ?? '',
+                'fakultas' => $this->request->getPost('fakultas') ?? '',
+                'jurusan' => $this->request->getPost('jurusan') ?? '',
+                'alamat' => $this->request->getPost('alamat'),
+                'no_hp' => $this->request->getPost('no_hp'),
+            ];
+
+            // insert new profile    
+            $result = $profileModel->insert($data);
+            
+            if(!$result){
+                return redirect()->back()->with('error', "Failed to Update Profile");
+            }
+
+            return redirect()->back()->with('success', 'Profile Updated Successfully');
+        }
+
+        // If Profile is already created
+        $data = [
+            'nama_lengkap' => $this->request->getPost('nama_lengkap'),
+            'npm' => $this->request->getPost('npm'),
+            'kelas' => $this->request->getPost('kelas'),
+            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+            'fakultas' => $this->request->getPost('fakultas'),
+            'jurusan' => $this->request->getPost('jurusan'),
+            'alamat' => $this->request->getPost('alamat'),
+            'no_hp' => $this->request->getPost('no_hp'),
+        ];
+
+        $result = $profileModel->update($profile['id'], $data);
+
+        if(!$result){
+            return redirect()->back()->with('error', "Failed to Update Profile");
+        }
+
+        return redirect()->back()->with('success', 'Profile Updated Successfully');   
     }
 
     public function updateProfilePicture(){
