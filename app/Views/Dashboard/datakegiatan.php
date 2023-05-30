@@ -53,14 +53,14 @@ helper('form');
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $key => $item) {
-                    function truncateString($string, $maxLength) {
+                <?php 
+                function truncateString($string, $maxLength) {
                         if (strlen($string) > $maxLength) {
                             $string = substr($string, 0, $maxLength - 3) . '...';
                         }
                         return $string;
-                    }
-
+                    };
+                foreach ($data as $key => $item) {
                     echo
                     '<tr>' .
                         '<td>' .
