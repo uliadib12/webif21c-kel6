@@ -34,15 +34,6 @@ service('auth')->routes($routes);
 $routes->get('/', 'Home::index');
 $routes->post('login-v1', 'Auth::login');
 
-$routes->get('profile', 'User\Profile::index', ['filter' => 'group:user,admin,superadmin']);
-
-$routes->group('profile', ['filter' => 'group:user,admin,superadmin'] , static function ($routes){
-    $routes->get('/', 'User\Profile::index');
-    $routes->post('update-user', 'User\Profile::updateUser');
-    $routes->post('update-profile', 'User\Profile::updateProfile');
-    $routes->post('update-profile-picture', 'User\Profile::updateProfilePicture');
-});
-
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->get('users', 'Dashboard::user');
@@ -80,11 +71,25 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('setting', 'Dashboard::setting');
 });
 
+$routes->group('profile', ['filter' => 'group:user,admin,superadmin'] , static function ($routes){
+    $routes->get('/', 'User\Profile::index');
+    $routes->post('update-user', 'User\Profile::updateUser');
+    $routes->post('update-profile', 'User\Profile::updateProfile');
+    $routes->post('update-profile-picture', 'User\Profile::updateProfilePicture');
+});
+
+$routes->group('kegiatan', ['filter' => 'group:admin,superadmin'] , static function ($routes){
+    $routes->post('add', 'Event\Kegiatan::addData');
+    $routes->post('edit', 'Event\Kegiatan::editData');
+    $routes->post('delete', 'Event\Kegiatan::deleteData');
+});
+
 $routes->group('penjadwalan', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->post('add', 'Pengingat\Penjadwalan::addData');
     $routes->post('edit', 'Pengingat\Penjadwalan::editData');
     $routes->post('delete', 'Pengingat\Penjadwalan::deleteData');
 });
+
 
 $routes->group('data-mitra', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->post('add', 'DataMitra\Mitra::addData');

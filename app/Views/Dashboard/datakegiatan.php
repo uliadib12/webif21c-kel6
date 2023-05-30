@@ -23,7 +23,16 @@ helper('form');
                 </div>
             </div>
         </div>
-
+        <?php if (session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+        <div class="alert alert-danger" role="alert">
+            <?= session()->getFlashdata('error'); ?>
+        </div>
+        <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -127,7 +136,7 @@ helper('form');
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/penjadwalan/add" method="POST">
+            <?= form_open_multipart('/kegiatan/add', ["id" => "addForm"]) ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Add Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -135,12 +144,12 @@ helper('form');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Poster</label>
-                        <input type="file" class="form-control" name="logo"
+                        <input type="file" class="form-control" name="poster"
                             accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
                         <label>Banner</label>
-                        <input type="file" class="form-control" name="logo"
+                        <input type="file" class="form-control" name="banner"
                             accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
@@ -162,7 +171,7 @@ helper('form');
                     </div>
                     <div class="form-group">
                         <label>Penanggung Jawab</label>
-                        <input type="text" class="form-control" name="penJawab" required />
+                        <input type="text" class="form-control" name="penanggung_jawab" required />
                     </div>
                 </div>
                 <!-- Notifikasi -->
@@ -179,7 +188,7 @@ helper('form');
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addForm" action="/penjadwalan/edit" method="POST">
+            <?= form_open_multipart('/kegiatan/edit', ["id" => "addForm"]) ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Add Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -222,7 +231,7 @@ helper('form');
                     <div id="notification" style="display: none;"></div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                        <input type="submit" class="btn btn-success" value="Add" />
+                        <input type="submit" class="btn btn-success" value="Edit" />
                     </div>
                 </div>
             </form>
@@ -232,7 +241,7 @@ helper('form');
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
-        <form id="deleteForm" action="/penjadwalan/delete" method="POST">
+        <form id="deleteForm" action="/kegiatan/delete" method="POST">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Kategori</h4>

@@ -72,7 +72,7 @@ class Dashboard extends BaseController
         $maxPaginate = 5;
 
         $model = new \App\Models\EventModel();
-        $countAllRow = $model->countAll();
+        $countAllRow = $model->countAllResults();
 
         $data = $model->orderBy('id_event', 'DESC')->paginate($maxPaginate);
 
