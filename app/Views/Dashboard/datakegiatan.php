@@ -54,6 +54,13 @@ helper('form');
             </thead>
             <tbody>
                 <?php foreach ($data as $key => $item) {
+                    function truncateString($string, $maxLength) {
+                        if (strlen($string) > $maxLength) {
+                            $string = substr($string, 0, $maxLength - 3) . '...';
+                        }
+                        return $string;
+                    }
+
                     echo
                     '<tr>' .
                         '<td>' .
@@ -65,7 +72,7 @@ helper('form');
                         '<td>' . '<img src="/uploads/images/'.esc($item['gambar_poster']).'" alt="logo">' . '</td>' .
                         '<td>' . '<img src="/uploads/images/'.esc($item['gambar_banner']).'" alt="logo">' . '</td>' .
                         '<td>' . esc($item['nama']) . '</td>' .
-                        '<td>' . esc($item['keterangan']) . '</td>' .
+                        '<td>' . esc(truncateString($item['keterangan'], 20)) . '</td>' .
                         '<td>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</td>' .
                         '<td>' . esc($item['tempat']) . '</td>' .
                         '<td>' . esc($item['penanggung_jawab']) . '</td>' .
