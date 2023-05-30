@@ -28,8 +28,8 @@
         <li class="has-dropdown">
             <i class="fa-solid fa-calendar"></i><a href="#"> Event</a>
             <ul class="sidebar-dropdown list-unstyled">
-                <li id="penjadwalan"><a href="#">Penjadwalan</a></li>
-                <li id="dataKegiatan"><a href="#">Data Kegiatan</a></li>
+                <li id="dataKegiatan"><a href="#">Kegiatan</a></li>
+                <li id="penjadwalan"><a href="#">Kategori</a></li>
             </ul>
         </li>
         <li class="has-dropdown">

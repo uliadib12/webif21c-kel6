@@ -8,5 +8,16 @@ class CategoryModel extends Model
 {
     protected $table = 'kategori';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['kategori', 'pendaftaran', 'jamAwalPendaftaran', 'jamAkhirPendaftaran', 'penyisihan', 'jamAwalPenyisihan', 'jamAkhirPenyisihan', 'pengumuman', 'final'];
+    protected $allowedFields = [
+        'id_event',
+        'kategori', 
+        'pendaftaran', 
+        'jamAwalPendaftaran', 
+        'jamAkhirPendaftaran', 
+        'penyisihan', 
+        'jamAwalPenyisihan', 
+        'jamAkhirPenyisihan', 
+        'pengumuman', 
+        'final'
+    ];
 }

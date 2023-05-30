@@ -67,6 +67,38 @@ class Dashboard extends BaseController
         );
     }
 
+    public function pengingat_dataKegiatan()
+    {
+        $maxPaginate = 5;
+
+        $model = new \App\Models\EventModel();
+        $countAllRow = $model->countAll();
+
+        $data = $model->orderBy('id_event', 'DESC')->paginate($maxPaginate);
+
+        $page = request()->getVar('page');
+        if ($page == null) {
+            $page = 1;
+        }
+
+        // calculate number of page
+        $pageCount = $countAllRow / $maxPaginate;
+        // if page count is not integer, round up
+        if (!is_int($pageCount)) {
+            $pageCount = ceil($pageCount);
+        }
+
+        return view('dashboard', [
+            'kategori' => 'dataKegiatan', 
+            'user' => $this->user,
+            'page' => $page,
+            'pageCount' => $pageCount,
+            'data' => $data,
+            'maxPaginate' => $maxPaginate,
+            'countAllRow' => $countAllRow,
+        ]);
+    }
+
     public function pengingat_penjadwalan()
     {
         $maxPaginate = 5;
@@ -100,10 +132,6 @@ class Dashboard extends BaseController
                 'countAllRow' => $countAllRow,
             ]
         );
-    }
-    public function pengingat_dataKegiatan()
-    {
-        return view('dashboard', ['kategori' => 'dataKegiatan', 'user' => $this->user,]);
     }
     public function kepanitiaan_panitia()
     {

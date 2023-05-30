@@ -1,3 +1,6 @@
+<?php
+helper('form');
+?>
 <!DOCTYPE html>
 
 <head>
@@ -31,73 +34,90 @@
                         </span>
                     </th>
                     <th>Poster</th>
+                    <th>Banner</th>
                     <th>Nama Event</th>
+                    <th>Informasi</th>
                     <th>Tanggal</th>
-                    <th>Kapasitas</th>
                     <th>Tempat</th>
                     <th>Penanggung Jawab</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                            <label for="checkbox5"></label>
-                        </span>
-                    </td>
-                    <td> <img src="/images/seminar-pendidikan.jpg" alt="post"> </td>
-                    <td>Seminar Pendidikan</td>
-                    <td>15 - 16 Februari 2024</td>
-                    <td style="text-align:center">100</td>
-                    <td>Gedung GSG</td>
-                    <td>Dr. H. M. Nasrullah Yusuf</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                            <label for="checkbox5"></label>
-                        </span>
-                    </td>
-                    <td> <img src="/images/desainweb.jpg" alt="post"> </td>
-                    <td>Desain Web</td>
-                    <td>16 - 20 Februari 2024</td>
-                    <td style="text-align:center">500</td>
-                    <td>Online</td>
-                    <td>Dr. H. M. Nasrullah Yusuf</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa-solid fa-pen-clip"
-                                data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"
-                                data-toggle="tooltip" title="Delete"></i></a>
-                    </td>
-                </tr>
+                <?php foreach ($data as $key => $item) {
+                    echo
+                    '<tr>' .
+                        '<td>' .
+                        '<span class="custom-checkbox">' .
+                        '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
+                        '<label for="checkbox"></label>' .
+                        '</span>' .
+                        '</td>' .
+                        '<td>' . '<img src="/uploads/images/'.esc($item['gambar_poster']).'" alt="logo">' . '</td>' .
+                        '<td>' . '<img src="/uploads/images/'.esc($item['gambar_banner']).'" alt="logo">' . '</td>' .
+                        '<td>' . esc($item['nama']) . '</td>' .
+                        '<td>' . esc($item['keterangan']) . '</td>' .
+                        '<td>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</td>' .
+                        '<td>' . esc($item['tempat']) . '</td>' .
+                        '<td>' . esc($item['penanggung_jawab']) . '</td>' .
+                        '<td>' .
+                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                        '</td>' .
+                        '</tr>';
+                }
+                ?>
             </tbody>
         </table>
         <div class="clearfix">
             <div class="hint-text">Showing <b>
+                    <?php
+                    if ($page == $pageCount) {
+                        echo $countAllRow;
+                    }
 
+                    if ($page < $pageCount) {
+                        echo $maxPaginate * $page;
+                    }
+                    ?>
                 </b> out of
-                <b></b> entries
+                <b><?= $countAllRow ?></b> entries
             </div>
             <ul class="pagination">
 
-                <li class="page-item "><a href="
-                
+                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>"><a href="
+                <?php
+                if ($page == 1) {
+                    echo '#';
+                } else {
+                    echo '?page=' . ($page - 1);
+                }
+                ?>
                 " class="page-link">Previous</a></li>
 
+                <?php
+                for ($i = 1; $i <= $pageCount; $i++) {
+                    // /add class active if $i == $page
+                    if ($i == $page) {
+                        echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                        continue;
+                    }
+                    echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                }
+                ?>
 
-
-                <li class="page-item "><a href="
-                
+                <li class="page-item <?= ($page == $pageCount) ? "disabled" : "" ?>"><a href="
+                <?php
+                if ($page == $pageCount) {
+                    echo '#';
+                } else {
+                    if ($pageCount == 0) {
+                        echo '#';
+                    } else {
+                        echo '?page=' . ($page + 1);
+                    }
+                }
+                ?>
                 " class="page-link">Next</a></li>
             </ul>
         </div>
@@ -119,16 +139,22 @@
                             accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                     </div>
                     <div class="form-group">
+                        <label>Banner</label>
+                        <input type="file" class="form-control" name="logo"
+                            accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+                    </div>
+                    <div class="form-group">
                         <label>Nama Event</label>
                         <input type="text" class="form-control" name="nama" required />
+                    </div>
+                    <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
+                    <div class="form-group">
+                        <label>Informasi</label>
+                        <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Tanggal</label>
                         <input type="date" class="form-control" name="tanggal" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Kapasitas</label>
-                        <input type="number" class="form-control" name="kapasitas" required />
                     </div>
                     <div class="form-group">
                         <label>Tempat</label>
@@ -137,11 +163,6 @@
                     <div class="form-group">
                         <label>Penanggung Jawab</label>
                         <input type="text" class="form-control" name="penJawab" required />
-                    </div>
-                    <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
-                    <div class="form-group">
-                        <label>Informasi</label>
-                        <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
                     </div>
                 </div>
                 <!-- Notifikasi -->
@@ -163,42 +184,46 @@
                     <h4 class="modal-title">Add Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Poster</label>
-                        <input type="file" class="form-control" name="logo"
-                            accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control" name="id" required />
+                        <div class="form-group">
+                            <label>Poster</label>
+                            <input type="file" class="form-control" name="poster"
+                                accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Banner</label>
+                            <input type="file" class="form-control" name="banner"
+                                accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Event</label>
+                            <input type="text" class="form-control" name="nama" required />
+                        </div>
+                        <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
+                        <div class="form-group">
+                            <label>Informasi</label>
+                            <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal</label>
+                            <input type="date" class="form-control" name="tanggal" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Tempat</label>
+                            <input type="text" class="form-control" name="tempat" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Penanggung Jawab</label>
+                            <input type="text" class="form-control" name="penanggung_jawab" required />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Nama Event</label>
-                        <input type="text" class="form-control" name="nama" required />
+                    <!-- Notifikasi -->
+                    <div id="notification" style="display: none;"></div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                        <input type="submit" class="btn btn-success" value="Add" />
                     </div>
-                    <div class="form-group">
-                        <label>Tanggal</label>
-                        <input type="date" class="form-control" name="tanggal" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Kapasitas</label>
-                        <input type="number" class="form-control" name="kapasitas" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Tempat</label>
-                        <input type="text" class="form-control" name="tempat" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Penanggung Jawab</label>
-                        <input type="text" class="form-control" name="penJawab" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Informasi</label>
-                        <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
-                    </div>
-                </div>
-                <!-- Notifikasi -->
-                <div id="notification" style="display: none;"></div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-success" value="Add" />
                 </div>
             </form>
         </div>
@@ -231,4 +256,7 @@
     </div>
 </div>
 
-<script src="/js/tabel/penjadwalan.js"></script>
+<script>
+var data_table = <?php echo json_encode($data); ?>
+</script>
+<script src="/js/tabel/kegiatan.js"></script>

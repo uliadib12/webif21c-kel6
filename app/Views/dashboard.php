@@ -84,7 +84,7 @@
             });
         </script>
 
-        <script>
+        <!-- <script>
             const desainWeb = document.querySelector('#desainWeb');
             const pemrogramanMobile = document.querySelector('#pemrogramanMobile');
             const uiUx = document.querySelector('#uiUx');
@@ -102,7 +102,7 @@
             ctf.addEventListener('click', function redirec() {
                 window.location.href = '/dashboard/chart/ctf';
             });
-        </script>
+        </script> -->
 
         <script>
             const navbarToggler = document.querySelector('.navbar-toggler');
