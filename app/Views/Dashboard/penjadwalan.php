@@ -8,7 +8,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Manage <b>Event's</b></h2>
+                    <h2>Tabel <b>Kegiatan</b></h2>
                 </div>
                 <div class="col-sm-6">
                     <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
