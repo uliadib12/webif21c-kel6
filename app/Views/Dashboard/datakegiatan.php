@@ -14,24 +14,22 @@ helper('form');
                     <h2>Tabel <b>Kegiatan</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
-                            class="fa-solid fa-user-plus"></i>
+                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
-                            class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
         </div>
         <?php if (session()->getFlashdata('success')) : ?>
-        <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('success'); ?>
-        </div>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
         <?php endif; ?>
         <?php if (session()->getFlashdata('error')) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?= session()->getFlashdata('error'); ?>
-        </div>
+            <div class="alert alert-danger" role="alert">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
         <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
@@ -53,13 +51,15 @@ helper('form');
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $key => $item) {
-                    function truncateString($string, $maxLength) {
-                        if (strlen($string) > $maxLength) {
-                            $string = substr($string, 0, $maxLength - 3) . '...';
-                        }
-                        return $string;
+                <?php
+                function truncateString($string, $maxLength)
+                {
+                    if (strlen($string) > $maxLength) {
+                        $string = substr($string, 0, $maxLength - 3) . '...';
                     }
+                    return $string;
+                };
+                foreach ($data as $key => $item) {
 
                     echo
                     '<tr>' .
@@ -69,8 +69,8 @@ helper('form');
                         '<label for="checkbox"></label>' .
                         '</span>' .
                         '</td>' .
-                        '<td>' . '<img src="/uploads/images/'.esc($item['gambar_poster']).'" alt="logo">' . '</td>' .
-                        '<td>' . '<img src="/uploads/images/'.esc($item['gambar_banner']).'" alt="logo">' . '</td>' .
+                        '<td>' . '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' . '</td>' .
+                        '<td>' . '<img src="/uploads/images/' . esc($item['gambar_banner']) . '" alt="logo">' . '</td>' .
                         '<td>' . esc($item['nama']) . '</td>' .
                         '<td>' . esc(truncateString($item['keterangan'], 20)) . '</td>' .
                         '<td>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</td>' .
@@ -144,49 +144,47 @@ helper('form');
     <div class="modal-dialog">
         <div class="modal-content">
             <?= form_open_multipart('/kegiatan/add', ["id" => "addForm"]) ?>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Data</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-header">
+                <h4 class="modal-title">Add Data</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Poster</label>
+                    <input type="file" class="form-control" name="poster" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Poster</label>
-                        <input type="file" class="form-control" name="poster"
-                            accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Banner</label>
-                        <input type="file" class="form-control" name="banner"
-                            accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Event</label>
-                        <input type="text" class="form-control" name="nama" required />
-                    </div>
-                    <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
-                    <div class="form-group">
-                        <label>Informasi</label>
-                        <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Tanggal</label>
-                        <input type="date" class="form-control" name="tanggal" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Tempat</label>
-                        <input type="text" class="form-control" name="tempat" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Penanggung Jawab</label>
-                        <input type="text" class="form-control" name="penanggung_jawab" required />
-                    </div>
+                <div class="form-group">
+                    <label>Banner</label>
+                    <input type="file" class="form-control" name="banner" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                 </div>
-                <!-- Notifikasi -->
-                <div id="notification" style="display: none;"></div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-success" value="Add" />
+                <div class="form-group">
+                    <label>Nama Event</label>
+                    <input type="text" class="form-control" name="nama" required />
                 </div>
+                <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
+                <div class="form-group">
+                    <label>Informasi</label>
+                    <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <input type="date" class="form-control" name="tanggal" required />
+                </div>
+                <div class="form-group">
+                    <label>Tempat</label>
+                    <input type="text" class="form-control" name="tempat" required />
+                </div>
+                <div class="form-group">
+                    <label>Penanggung Jawab</label>
+                    <input type="text" class="form-control" name="penanggung_jawab" required />
+                </div>
+            </div>
+            <!-- Notifikasi -->
+            <div id="notification" style="display: none;"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                <input type="submit" class="btn btn-success" value="Add" />
+            </div>
             </form>
         </div>
     </div>
@@ -196,54 +194,52 @@ helper('form');
     <div class="modal-dialog">
         <div class="modal-content">
             <?= form_open_multipart('/kegiatan/edit', ["id" => "addForm"]) ?>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Data</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-header">
+                <h4 class="modal-title">Add Data</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control" name="id" required />
+                <div class="form-group">
+                    <label>Poster</label>
+                    <input type="file" class="form-control" name="poster" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                 </div>
-                    <div class="modal-body">
-                        <input type="hidden" class="form-control" name="id" required />
-                        <div class="form-group">
-                            <label>Poster</label>
-                            <input type="file" class="form-control" name="poster"
-                                accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Banner</label>
-                            <input type="file" class="form-control" name="banner"
-                                accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Nama Event</label>
-                            <input type="text" class="form-control" name="nama" required />
-                        </div>
-                        <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
-                        <div class="form-group">
-                            <label>Informasi</label>
-                            <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Tanggal</label>
-                            <input type="date" class="form-control" name="tanggal" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Tempat</label>
-                            <input type="text" class="form-control" name="tempat" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Penanggung Jawab</label>
-                            <input type="text" class="form-control" name="penanggung_jawab" required />
-                        </div>
-                    </div>
-                    <!-- Notifikasi -->
-                    <div id="notification" style="display: none;"></div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                        <input type="submit" class="btn btn-success" value="Edit" />
-                    </div>
+                <div class="form-group">
+                    <label>Banner</label>
+                    <input type="file" class="form-control" name="banner" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                 </div>
-            </form>
+                <div class="form-group">
+                    <label>Nama Event</label>
+                    <input type="text" class="form-control" name="nama" required />
+                </div>
+                <!-- inputan informasi tidak ditampilkan di tabel, akan ditampilkan di home-event -->
+                <div class="form-group">
+                    <label>Informasi</label>
+                    <textarea id="informasi" class="form-control" name="informasi" rows="4" cols="25"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <input type="date" class="form-control" name="tanggal" required />
+                </div>
+                <div class="form-group">
+                    <label>Tempat</label>
+                    <input type="text" class="form-control" name="tempat" required />
+                </div>
+                <div class="form-group">
+                    <label>Penanggung Jawab</label>
+                    <input type="text" class="form-control" name="penanggung_jawab" required />
+                </div>
+            </div>
+            <!-- Notifikasi -->
+            <div id="notification" style="display: none;"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                <input type="submit" class="btn btn-success" value="Edit" />
+            </div>
         </div>
+        </form>
     </div>
+</div>
 </div>
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
@@ -273,6 +269,6 @@ helper('form');
 </div>
 
 <script>
-var data_table = <?php echo json_encode($data); ?>
+    var data_table = <?php echo json_encode($data); ?>
 </script>
 <script src="/js/tabel/kegiatan.js"></script>

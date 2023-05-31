@@ -1441,8 +1441,9 @@ footer {
 /* Lazy Load Styles */
 .card-image {
   display: block;
-  min-height: 20rem; /* layout hack */
-  background: #fff center center no-repeat;
+  max-height: 20rem;
+  min-height: 20rem;
+  background: #fff no-repeat;
   background-size: cover;
   filter: blur(3px); /* blur the lowres image */
 }

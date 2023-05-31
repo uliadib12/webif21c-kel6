@@ -1,292 +1,317 @@
 <?php
 helper('form');
 ?>
+
 <head>
-    <title>Profile</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/v.css" />
-    <link rel="stylesheet" href="/css/tabel.css" />
-    <link rel="stylesheet" href="/css/keterangan.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/profile.css" />
+  <link rel="stylesheet" href="https://cdn.oesmith.co.uk/morris-0.5.1.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
 </head>
 
-<div class="profile">
-    <img class="img-fluid" width="200" src="<?= isset($profilePicture) ? "/uploads/images/".$profilePicture : "/images/default-profile-picture.jpg" ?>" alt="profile" />
-   
-    <div style="margin-bottom: 10px; padding-left: 80px ;text-align: center;">
-        <?= form_open_multipart('/profile/update-profile-picture', ['id' => 'profilePictureForm']) ?>
-            <input type="file" id="fileInput" name="profile_picture" accept="image/*" onchange="sendProfilePicture()">
-        </form>
-    </div>
-
-    <?php if (session()->getFlashdata('success')) : ?>
-    <div class="alert alert-success" role="alert">
-        <?= session()->getFlashdata('success'); ?>
-    </div>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('error')) : ?>
-    <div class="alert alert-danger" role="alert">
-        <?= session()->getFlashdata('error'); ?>
-    </div>
-    <?php endif; ?>
-
-    <ul class="nav nav-tabs" style="margin-bottom: 20px;" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">Data User</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Data Profile</a>
-        </li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
-            <form action="/profile/update-user" method="post">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" value="<?= $user->username ?>" required />
-
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="<?= $user->email ?>" readonly require />
-                <hr/>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" />
-
-                <label for="new_password">New Password</label>
-                <input type="password" name="new_password" id="new_password" />
-
-                <label for="confirm_new_password">Confirm Password</label>
-                <input type="password" name="confirm_new_password" id="confirm_new_password" />
-
-                <input type="submit" value="Save Changes" />
-            </form>
-        </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <form action="/profile/update-profile" method="post">
-                <div class="form-group">
-                    <label for="nama_lengkap">Nama Lengkap</label>
-                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $profile['nama_lengkap'] ?? "" ?>" />
-                </div>
-
-                <div class="form-group">
-                    <label for="npm">NPM</label>
-                    <input type="number" class="form-control" id="npm" name="npm" value="<?= (($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : ($profile['npm'] ?? "")?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="kelas">Kelas</label>
-                    <input type="text" name="kelas" id="kelas" value="<?= $profile['kelas'] ?? "" ?>" />
-                </div>
-
-                <div class="form-group">
-                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                        <option <?= (($profile['jenis_kelamin'] ?? "") == "Laki-Laki") ? "selected" : "" ?> >Laki-Laki</option>
-                        <option <?= (($profile['jenis_kelamin'] ?? "") == "Perempuan") ? "selected" : "" ?> >Perempuan</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="fakultas">Fakultas</label>
-                    <select class="form-control" id="fakultas" name="fakultas">
-                        <option <?= (($profile['fakultas'] ?? "" ) == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?> >Fakultas Teknik dan Ilmu Komputer</option>
-                        <option <?= (($profile['fakultas'] ?? "" ) == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?> >Fakultas Ekonomi dan Bisnis</option>
-                        <option <?= (($profile['fakultas'] ?? "" ) == "Fakultas Sastra dan Ilmu Pendidikan") ? "selected" : "" ?> >Fakultas Sastra dan Ilmu Pendidikan</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="jurusan">Jurusan</label>
-                    <select class="form-control" id="jurusan" name="jurusan">
-                        <option <?= (($profile['jurusan'] ?? "" ) == "Informatika") ? "selected" : "" ?> >Informatika</option>
-                        <option <?= (($profile['jurusan'] ?? "" ) == "Sistem Informasi") ? "selected" : "" ?> >Sistem Informasi</option>
-                        <option <?= (($profile['jurusan'] ?? "" ) == "Teknik Sipil") ? "selected" : "" ?> >Teknik Sipil</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="alamat">Alamat</label>
-                    <input type="text" name="alamat" id="alamat" value="<?= $profile['alamat'] ?? "" ?>" />
-                </div>
-
-                <div class="form-group">
-                    <label for="no_hp">Nomor Telepon</label>
-                    <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $profile['no_hp'] ?? "" ?>">
-                </div>
-
-                <div class="form-group">
-                    <div style="margin-bottom: 20px;"></div>
-                    <input type="submit" value="Save Changes" />
-                </div>
-            </form>
-        </div>
-    </div>
-
+<body class="profile-page sidebar-collapse">
+  <nav class="navbarb">
     <div class="container">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2>Event Story</h2>
-                </div>
-                <div class="col-sm-6">
-                    
-                    <a href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
-                        <span>Delete</span></a>
-                </div>
+      <div class="logo">
+        <a class="navbar-brand" data-placement="bottom" href="/"> Tekno Expo</a>
+      </div>
+
+      <div id="mainListDiv" class="main_list">
+        <ul class="navlinks">
+          <li><a href="#">User</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Challages</a></li>
+          <li><a href="#">RankBoard</a></li>
+          <li><a href="#">Help?</a></li>
+        </ul>
+      </div>
+
+      <span class="navTrigger">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="page-header clear-filter" filter-color="orange">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('/images/bg.png')"></div>
+      <div class="container">
+        <div class="content">
+          <div class="user-description img-prf">
+            <div class="photo-container">
+              <img src="<?= isset($profilePicture) ? "/uploads/images/" . $profilePicture : "/images/default-profile-picture.jpg" ?>" alt="" />
             </div>
+          </div>
+          <div class="user-description">
+            <h3 class="title"><?= $user->username  ?></h3>
+            <p class="category">Informatika /<span style="letter-spacing: normal">IF 21C</span></p>
+            <div class="inf">
+              <p style="margin-right: 1rem; color: #ec5757">2131203</p>
+              <p><?= $user->email ?></p>
+            </div>
+            <p class="kt">Capture The Flag</p>
+          </div>
         </div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>
-
-                    </th>
-                    <th>Event</th>
-                    <th>Tanggal</th>
-                    <th>Keterangan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                            <label for="checkbox1"></label>
-                        </span>
-                    </td>
-                    <td>Expo</td>
-                    <td>16-06-22</td>
-                    <td>
-                    <a href="#addEmployeeModal" data-toggle="modal"><i class="btn"></i>
-                        <span>detail</span></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- Add Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: auto;">
-        <div class="event-details">
-    <h2>EXPO</h2>
-    <img class="img-fluid" width="200" src=" /images/AlbertEinstein.jpg" alt="profile" />
-    <p>Date: 16-06-22</p>
-    <p>Location: GSG</p>
-    <p>Description: Tekno Expo adalah acara tahunan yang diselenggarakan
-         oleh Himpunan Mahasiswa Fakultas Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia.
-          Terdiri atas empat kategori, yaitu Desain Web, Pemrograman Game, UI/UX, dan CTF.</p>
-
-    <a class="download-btn" href="/path/to/certificate.pdf" download>Download Certificate</a>
-</div>
+        <div class="content">
+          <div class="social-description">
+            <h2>#6</h2>
+            <p>Rank</p>
+          </div>
+          <div class="social-description">
+            <h2>1500</h2>
+            <p>Points</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: auto;">
-            <form id="deleteForm" action="delete_data.php" method="POST">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Kategori</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="deleteId" id="deleteId" />
-                    <p>Data yang dipilih akan terhapus, hapus data?</p>
-                    <p class="text-warning"><small>Tampilkan data yang dipilih!</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                    <input type="submit" class="btn btn-danger" value="Delete" />
-                </div>
-            </form>
+
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="nav-align-center">
+              <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#task" role="tablist">
+                    <i class="fa-solid fa-calendar-day"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#home" role="tablist">
+                    <i class="fa-solid fa-house"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#settings" role="tablist">
+                    <i class="fa-solid fa-gear"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+
+        <div class="tab-content sp">
+          <div class="tab-pane active" id="home" role="tabpanel">
+            <div class="col-md-10 ml-auto mr-auto">
+              <div class="row collections">
+                <div class="col">
+                  <div class="collections">
+                    <div class="text-center">
+                      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                      <h2>G-Charts</h2>
+                      <h5>Grafik</h5>
+                      <div id="bar-chart"></div>
+                      <br />
+                      <h5>Page Hits per Country</h5>
+                      <div id="pie-chart"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="task" role="tabpanel">
+            <div class="col-md-10 ml-auto mr-auto">
+              <div class="row collections">
+                <div class="text-center">
+                  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                  <h2>G-Charts</h2>
+                  <h5>Perkembangan Live</h5>
+                  <div id="line-chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane " id="settings" role="tabpanel">
+            <div class="col-md-10 ml-auto mr-auto">
+              <div class="row collections">
+                <div class="col">
+                  <div class="profile">
+                    <div class="image-container">
+                      <?= form_open_multipart('/profile/update-profile-picture', ['id' => 'profilePictureForm']) ?>
+                      <input type="file" id="file-input" name="profile_picture" id="fileInput" name="profile_picture" accept="image/*" onchange="sendProfilePicture()" style="display: none" />
+                      <img id="preview-image" src="<?= isset($profilePicture) ? "/uploads/images/" . $profilePicture : "/images/default-profile-picture.jpg" ?>" alt="profile" />
+                      <label for="file-input" title="Pilih Gambar" class="image-icon"><i class="fa-solid fa-pen-to-square"></i></label>
+                      </form>
+                    </div>
+                    <?php if (session()->getFlashdata('success')) : ?>
+                      <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                      </div>
+                    <?php endif; ?>
+                    <?php if (session()->getFlashdata('error')) : ?>
+                      <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('error'); ?>
+                      </div>
+                    <?php endif; ?>
+                    <ul class="nav nav-tabs" style="margin-bottom: 20px" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">Data User</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Data
+                          Profile</a>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+                        <form class="eprofil" action="/profile/update-user" method="post">
+                          <div class="epchild">
+                            <div class="form-group">
+                              <label for="username">Username</label>
+                              <input type="text" class="form-control" name="username" id="username" value="<?= $user->username ?>" required />
+                            </div>
+                            <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" class="form-control" name="email" id="email" value="<?= $user->email ?>" readonly require />
+                            </div>
+                            <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-control" name="password" id="password" />
+                            </div>
+                          </div>
+                          <div class="epchild">
+                            <div class="form-group">
+                              <label for="new_password">New Password</label>
+                              <input type="password" class="form-control" name="new_password" id="new_password" />
+                            </div>
+                            <div class="form-group">
+                              <label for="confirm_new_password">Confirm
+                                Password</label>
+                              <input type="password" class="form-control" name="confirm_new_password" id="confirm_new_password" />
+                            </div>
+                            <div class="modal-footer">
+                              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                              <input type="submit" class="btn btn-success" value="Save" />
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form class="eprofile" action="/profile/update-profile" method="post">
+                          <div class="epchild">
+                            <div class="form-group">
+                              <label for="nama_lengkap">Nama Lengkap</label>
+                              <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= $profile['nama_lengkap'] ?? "" ?>" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="npm">NPM</label>
+                              <input type="number" class="form-control" id="npm" name="npm" value="<?= (($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : ($profile['npm'] ?? "") ?>">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="kelas">Kelas</label>
+
+                              <input type="text" class="form-control" name="kelas" id="kelas" value="<?= $profile['kelas'] ?? "" ?>" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="jenis_kelamin">Jenis Kelamin</label>
+                              <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                                <option <?= (($profile['jenis_kelamin'] ?? "") == "Laki-Laki") ? "selected" : "" ?>>
+                                  Laki-Laki</option>
+                                <option <?= (($profile['jenis_kelamin'] ?? "") == "Perempuan") ? "selected" : "" ?>>
+                                  Perempuan</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="epchild">
+                            <div class="form-group">
+                              <label for="fakultas">Fakultas</label>
+                              <select class="form-control" id="fakultas" name="fakultas">
+                                <option <?= (($profile['fakultas'] ?? "") == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?>>
+                                  Fakultas Teknik dan Ilmu Komputer</option>
+                                <option <?= (($profile['fakultas'] ?? "") == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?>>
+                                  Fakultas Ekonomi dan Bisnis</option>
+                                <option <?= (($profile['fakultas'] ?? "") == "Fakultas Sastra dan Ilmu Pendidikan") ? "selected" : "" ?>>
+                                  Fakultas Sastra dan Ilmu Pendidikan</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="jurusan">Jurusan</label>
+                              <select class="form-control" id="jurusan" name="jurusan">
+                                <option <?= (($profile['jurusan'] ?? "") == "Informatika") ? "selected" : "" ?>>
+                                  Informatika</option>
+                                <option <?= (($profile['jurusan'] ?? "") == "Sistem Informasi") ? "selected" : "" ?>>
+                                  Sistem Informasi</option>
+                                <option <?= (($profile['jurusan'] ?? "") == "Teknik Sipil") ? "selected" : "" ?>>
+                                  Teknik Sipil</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="alamat">Alamat</label>
+                              <input type="text" class="form-control" name="alamat" id="alamat" value="" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="no_hp">Nomor Telepon</label>
+                              <input type="number" class="form-control" id="no_hp" name="no_hp" value="" />
+                            </div>
+                          </div>
+                        </form>
+                        <div class="modal-footer">
+                          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                          <input type="submit" class="btn btn-success" value="Save" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/tabel/datamitra.js"></script>
-
-<script>
-    function sendProfilePicture(){
-        let profilePictureForm = document.getElementById('profilePictureForm');
-        profilePictureForm.submit();
+  <script src="/js/chart.js"></script>
+  <script>
+    function sendProfilePicture() {
+      let profilePictureForm = document.getElementById('profilePictureForm');
+      profilePictureForm.submit();
     }
-</script>
-<!-- <script>
-        function gantiFotoProfil() {
-            var fileInput = document.getElementById("fileInput");
-            var previewImage = document.getElementById("img-fluid");
-
-            var file = fileInput.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-        }
-</script>
-<script>
-    var chart = document.getElementById('chart3');
-    var myChart = new Chart(chart, {
-        type: 'line',
-        data: {
-            labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'],
-            datasets: [{
-                    label: 'Lost',
-                    lineTension: 0.2,
-                    borderColor: '#d9534f',
-                    borderWidth: 1.5,
-                    showLine: true,
-                    data: [3, 30, 16, 30, 16, 36, 21, 40, 20, 30],
-                    backgroundColor: 'transparent',
-                },
-                {
-                    label: 'Lost',
-                    lineTension: 0.2,
-                    borderColor: '#5cb85c',
-                    borderWidth: 1.5,
-                    data: [6, 20, 5, 20, 5, 25, 9, 18, 20, 15],
-                    backgroundColor: 'transparent',
-                },
-                {
-                    label: 'Lost',
-                    lineTension: 0.2,
-                    borderColor: '#f0ad4e',
-                    borderWidth: 1.5,
-                    data: [12, 20, 15, 20, 5, 35, 10, 15, 35, 25],
-                    backgroundColor: 'transparent',
-                },
-                {
-                    label: 'Lost',
-                    lineTension: 0.2,
-                    borderColor: '#337ab7',
-                    borderWidth: 1.5,
-                    data: [16, 25, 10, 25, 10, 30, 14, 23, 14, 29],
-                    backgroundColor: 'transparent',
-                },
-            ],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        drawBorder: false,
-                    },
-                    ticks: {
-                        stepSize: 12,
-                    },
-                }, ],
-                xAxes: [{
-                    gridLines: {
-                        display: false,
-                    },
-                }, ],
-            },
-        },
+  </script>
+  <script>
+    $(window).scroll(function() {
+      if ($(document).scrollTop() > 50) {
+        $('.navbarb').addClass('affix');
+        console.log('OK');
+      } else {
+        $('.navbarb').removeClass('affix');
+      }
     });
-</script> -->
+
+    //   hamburger
+    $('.navTrigger').click(function() {
+      $(this).toggleClass('active');
+      console.log('Clicked menu');
+      $('#mainListDiv').toggleClass('show_list');
+      $('#mainListDiv').fadeIn();
+    });
+  </script>
+  <!-- Jquery needed -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+  </script>
+  <script src="/js/profile.js"></script>
+</body>

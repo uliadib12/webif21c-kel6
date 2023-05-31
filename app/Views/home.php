@@ -14,12 +14,9 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <meta name="description"
-        content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!" />
+    <meta name="description" content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!" />
     <meta name="keywords" content="calendar, events, reminders, javascript, html, css, open source coding" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="/css/loading.css" />
 
@@ -45,9 +42,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" width="100" /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -72,29 +67,26 @@
                         <div class="login_bt">
                             <ul>
                                 <li>
-                                    <a href="<?= (isset($user)) ? "/profile" : "/login" ?>"><span class="user_icon"><i class="fa fa-user"
-                                                aria-hidden="true"></i></span>
+                                    <a href="<?= (isset($user)) ? "/profile" : "/login" ?>"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                         <?php if (isset($user)) : ?>
-                                        <?= esc($user->username) ?>
+                                            <?= esc($user->username) ?>
                                         <?php else : ?>
-                                        Login
+                                            Login
                                         <?php endif ?>
                                     </a>
                                 </li>
                                 <li>
                                     <?php if (isset($isDashboard) && $isDashboard != NULL) : ?>
-                                    <a href="/dashboard"><span class="user_icon"><i class="fa fa-tachometer"
-                                                aria-hidden="true"></i></span>
-                                        Dashboard
-                                    </a>
+                                        <a href="/dashboard"><span class="user_icon"><i class="fa fa-tachometer" aria-hidden="true"></i></span>
+                                            Dashboard
+                                        </a>
                                     <?php endif ?>
                                 </li>
                                 <li>
                                     <?php if (isset($user)) : ?>
-                                    <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out"
-                                                aria-hidden="true"></i></span>
-                                        Logout
-                                    </a>
+                                        <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                                            Logout
+                                        </a>
                                     <?php endif ?>
                                 </li>
                             </ul>
@@ -242,8 +234,7 @@
         </div>
     </div>
     <!-- box section end -->
-    <button id="calendarButton" onclick="showHideCalendar()"><i id="calendarIcon" class="far fa-calendar-alt"
-            style="font-size: 2.3em"></i></button>
+    <button id="calendarButton" onclick="showHideCalendar()"><i id="calendarIcon" class="far fa-calendar-alt" style="font-size: 2.3em"></i></button>
     <!-- calendar start -->
     <div id="calendar" class="calendar-container" style="display: none; transition: all 0.3s ease-in-out; opacity: 0">
         <div class="left">
@@ -278,30 +269,8 @@
                 <div class="event-date">12th december 2022</div>
             </div>
             <div class="events"></div>
-            <div class="add-event-wrapper">
-                <div class="add-event-header">
-                    <div class="title">Add Event</div>
-                    <i class="fas fa-times close"></i>
-                </div>
-                <div class="add-event-body">
-                    <div class="add-event-input">
-                        <input type="text" placeholder="Event Name" class="event-name" />
-                    </div>
-                    <div class="add-event-input">
-                        <input type="text" placeholder="Event Time From" class="event-time-from" />
-                    </div>
-                    <div class="add-event-input">
-                        <input type="text" placeholder="Event Time To" class="event-time-to" />
-                    </div>
-                </div>
-                <div class="add-event-footer">
-                    <button class="add-event-btn">Add Event</button>
-                </div>
-            </div>
         </div>
-        <button class="add-event">
-            <i class="fas fa-plus"></i>
-        </button>
+
     </div>
     <!-- calendar end -->
 
@@ -391,63 +360,42 @@
             </div>
         </div>
         <ul class="card-list">
-            <li class="card-event">
-                <a class="card-image" title="Selengkapnya" href="" target="_blank"
-                    style="background-image:url('/images/web.jpeg');" data-image-full="/images/web.jpeg">
-                    <img src="/images/web.jpeg" alt="Gebyar" />
-                </a>
-                <a class="card-description" href="" target="_blank">
-                    <h2>Gebyar</h2>
-                    <p>24 Mei - 13 Juni 2024</p>
-                </a>
-            </li>
-            <li class="card-event">
-                <a class="card-image" title="Selengkapnya" href="" target="_blank"
-                    style="background-image:url('/images/web.jpeg');" data-image-full="/images/web.jpeg">
-                    <img src="/images/web.jpeg" alt="Gebyar" />
-                </a>
-                <a class="card-description" href="" target="_blank">
-                    <h2>Gebyar</h2>
-                    <p>24 Mei 2024</p>
-                </a>
-            </li>
-            <li class="card-event">
-                <a class="card-image" title="Selengkapnya" href="" style="background-image:url('/images/web.jpeg');"
-                    target="_blank" data-image-full="/images/web.jpeg">
-                    <img src="/images/web.jpeg" alt="Gebyar" />
-                </a>
-                <a class="card-description" href="" target="_blank">
-                    <h2>Gebyar</h2>
-                    <p>24 Mei 2024</p>
-                </a>
-            </li>
+            <?php foreach ($dataEvent as $key => $item) {
+
+                if ($key < 3) {
+                    echo
+                    '<li class="card-event">' .
+                        '<a class="card-image" title="Selengkapnya" href="" target="_blank" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
+                        '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' .
+                        '</a>' .
+                        '<a class="card-description" href="" target="_blank">' .
+                        '<h2>' . $item['nama'] . '</h2>' .
+                        '<p>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</p>' .
+                        '</a>' .
+                        '</li>';
+                };
+            } ?>
         </ul>
         <div class="toggle-btn">
             <span class="divider"></span> Selengkapnya <i class="fas fa-angle-down"></i><span class="divider"></span>
         </div>
         <div class="toggle-content">
             <ul class="card-list">
-                <li class="card-event">
-                    <a class="card-image" title="Selengkapnya" href="" target="_blank"
-                        style="background-image:url('/images/web.jpeg');" data-image-full="/images/web.jpeg">
-                        <img src="/images/web.jpeg" alt="Gebyar" />
-                    </a>
-                    <a class="card-description" href="" target="_blank">
-                        <h2>Gebyar</h2>
-                        <p>24 Mei - 13 Juni 2024</p>
-                    </a>
-                </li>
-                <li class="card-event">
-                    <a class="card-image" title="Selengkapnya" href="" target="_blank"
-                        style="background-image:url('/images/web.jpeg');" data-image-full="/images/web.jpeg">
-                        <img src="/images/web.jpeg" alt="Gebyar" />
-                    </a>
-                    <a class="card-description" href="" target="_blank">
-                        <h2>Gebyar</h2>
-                        <p>24 Mei - 13 Juni 2024</p>
-                    </a>
-                </li>
+                <?php foreach ($dataEvent as $key => $item) {
 
+                    if ($key >= 3) {
+                        echo
+                        '<li class="card-event">' .
+                            '<a class="card-image" title="Selengkapnya" href="" target="_blank" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
+                            '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' .
+                            '</a>' .
+                            '<a class="card-description" href="" target="_blank">' .
+                            '<h2>' . $item['nama'] . '</h2>' .
+                            '<p>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</p>' .
+                            '</a>' .
+                            '</li>';
+                    };
+                } ?>
             </ul>
         </div>
 
@@ -590,8 +538,7 @@
                     <div class="col-xl-4 col-lg-4 mb-50">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" class="img-fluid"
-                                        alt="logo" /></a>
+                                <a href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" class="img-fluid" alt="logo" /></a>
                             </div>
                         </div>
                     </div>
@@ -655,6 +602,11 @@
         </div>
     </div>
     <a href="javascript:void(0);" id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-caret-up"></i></a>
+    <script>
+        var dataEvent = <?php echo json_encode($dataEvent); ?>;
+        console.log(dataEvent);
+    </script>
+
     <!-- copyright section end -->
     <!-- Javascript files-->
     <!-- <script>
@@ -669,60 +621,62 @@
         }
       }
     </script> -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const toggleBtn = document.querySelector(".toggle-btn");
-        const toggleContent = document.querySelector(".toggle-content");
 
-        toggleBtn.addEventListener("click", function() {
-            toggleBtn.classList.toggle("active");
-            toggleContent.classList.toggle("show");
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.querySelector(".toggle-btn");
+            const toggleContent = document.querySelector(".toggle-content");
+
+            toggleBtn.addEventListener("click", function() {
+                toggleBtn.classList.toggle("active");
+                toggleContent.classList.toggle("show");
+            });
         });
-    });
     </script>
     <script>
-    function showHideCalendar() {
-        var calendar = document.getElementById('calendar');
-        var calendarIcon = document.getElementById('calendarIcon');
-        var calendarButton = document.getElementById('calendarButton');
-        if (calendar.style.display === 'none') {
-            calendar.style.display = 'flex';
-            calendar.style.opacity = 1;
-            calendarIcon.classList.remove('fa-calendar-alt');
-            calendarIcon.classList.add('fa-calendar-times');
-            calendarButton.style.backgroundColor = '#f8f8f8';
-            setTimeout(function() {
-                calendar.style.transform = 'translateY(0)';
-            }, 100);
-        } else {
-            calendar.style.transform = 'translateY(-20px)';
-            calendar.style.opacity = 0;
-            calendarIcon.classList.remove('fa-calendar-times');
-            calendarIcon.classList.add('fa-calendar-alt');
-            calendarButton.style.backgroundColor = 'transparent';
-            setTimeout(function() {
-                calendar.style.display = 'none';
-            }, 300);
+        function showHideCalendar() {
+            var calendar = document.getElementById('calendar');
+            var calendarIcon = document.getElementById('calendarIcon');
+            var calendarButton = document.getElementById('calendarButton');
+            if (calendar.style.display === 'none') {
+                calendar.style.display = 'flex';
+                calendar.style.opacity = 1;
+                calendarIcon.classList.remove('fa-calendar-alt');
+                calendarIcon.classList.add('fa-calendar-times');
+                calendarButton.style.backgroundColor = '#f8f8f8';
+                setTimeout(function() {
+                    calendar.style.transform = 'translateY(0)';
+                }, 100);
+            } else {
+                calendar.style.transform = 'translateY(-20px)';
+                calendar.style.opacity = 0;
+                calendarIcon.classList.remove('fa-calendar-times');
+                calendarIcon.classList.add('fa-calendar-alt');
+                calendarButton.style.backgroundColor = 'transparent';
+                setTimeout(function() {
+                    calendar.style.display = 'none';
+                }, 300);
+            }
         }
-    }
     </script>
     <script>
-    window.onscroll = function() {
-        scrollFunction();
-    };
+        window.onscroll = function() {
+            scrollFunction();
+        };
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById('back-to-top').style.display = 'block';
-        } else {
-            document.getElementById('back-to-top').style.display = 'none';
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById('back-to-top').style.display = 'block';
+            } else {
+                document.getElementById('back-to-top').style.display = 'none';
+            }
         }
-    }
 
-    function scrollToTop() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
+        function scrollToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
     </script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
