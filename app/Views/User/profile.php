@@ -46,20 +46,32 @@ helper('form');
     <div class="page-header clear-filter" filter-color="orange">
       <div class="page-header-image" data-parallax="true" style="background-image: url('/images/bg.png')"></div>
       <div class="container">
-        <div class="content">
+        <div class="content" style="display: flex; justify-content: center; align-items: center;">
           <div class="user-description img-prf">
             <div class="photo-container">
               <img src="<?= isset($profilePicture) ? "/uploads/images/" . $profilePicture : "/images/default-profile-picture.jpg" ?>" alt="" />
             </div>
           </div>
           <div class="user-description">
-            <h3 class="title"><?= $user->username  ?></h3>
-            <p class="category">Informatika /<span style="letter-spacing: normal">IF 21C</span></p>
+            <h3 class="title" style="padding-top: 0px;"><?= esc($user->username)  ?></h3>
+              <?php if (isset($profile) && count($profile) != 0) : ?>
+                <?php if ($profile['jurusan'] != "" && $profile['kelas'] != "") : ?>
+                  <p style="margin-right: 1rem; color: #ec5757">
+                    <p class="category"><?= esc($profile['jurusan']) ?> / <span style="letter-spacing: normal"><?= esc($profile['kelas']) ?></span></p>
+                  </p>
+                <?php endif; ?>
+              <?php endif; ?>
             <div class="inf">
-              <p style="margin-right: 1rem; color: #ec5757">2131203</p>
-              <p><?= $user->email ?></p>
+              <?php if (isset($profile) && count($profile) != 0) : ?>
+                <?php if ($profile['npm'] != "" && $profile['npm'] != "0") : ?>
+                  <p style="margin-right: 1rem; color: #ec5757">
+                    <?= esc($profile['npm']) ?>
+                  </p>
+                <?php endif; ?>
+              <?php endif; ?>
+              <p><?= esc($user->email) ?></p>
             </div>
-            <p class="kt">Capture The Flag</p>
+            <!-- <p class="kt">Capture The Flag</p> -->
           </div>
         </div>
         <div class="content">
@@ -145,6 +157,11 @@ helper('form');
                       <label for="file-input" title="Pilih Gambar" class="image-icon"><i class="fa-solid fa-pen-to-square"></i></label>
                       </form>
                     </div>
+                    <?php if (isset($profile) && count($profile) == 0) : ?>
+                      <div class="alert alert-warning" role="alert">
+                        Please complete your profile
+                      </div>
+                    <?php endif; ?>
                     <?php if (session()->getFlashdata('success')) : ?>
                       <div class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('success'); ?>
@@ -171,11 +188,11 @@ helper('form');
                           <div class="epchild">
                             <div class="form-group">
                               <label for="username">Username</label>
-                              <input type="text" class="form-control" name="username" id="username" value="<?= $user->username ?>" required />
+                              <input type="text" class="form-control" name="username" id="username" value="<?= esc($user->username) ?>" required />
                             </div>
                             <div class="form-group">
                               <label for="email">Email</label>
-                              <input type="email" class="form-control" name="email" id="email" value="<?= $user->email ?>" readonly require />
+                              <input type="email" class="form-control" name="email" id="email" value="<?= esc($user->email) ?>" readonly require />
                             </div>
                             <div class="form-group">
                               <label for="password">Password</label>
@@ -200,75 +217,83 @@ helper('form');
                         </form>
                       </div>
                       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <form class="eprofile" action="/profile/update-profile" method="post">
-                          <div class="epchild">
-                            <div class="form-group">
-                              <label for="nama_lengkap">Nama Lengkap</label>
-                              <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= $profile['nama_lengkap'] ?? "" ?>" />
+                        <form class="container" action="/profile/update-profile" method="post">
+                          <div class="row">
+
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="nama_lengkap">Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= esc($profile['nama_lengkap']) ?? "" ?>" />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="npm">NPM</label>
+                                <input type="number" class="form-control" id="npm" name="npm" value="<?= (($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : (esc($profile['npm']) ?? "") ?>">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="kelas">Kelas</label>
+
+                                <input type="text" class="form-control" name="kelas" id="kelas" value="<?= esc($profile['kelas']) ?? "" ?>" />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="jenis_kelamin">Jenis Kelamin</label>
+                                <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                                  <option <?= ((esc($profile['jenis_kelamin']) ?? "") == "Laki-Laki") ? "selected" : "" ?>>
+                                    Laki-Laki</option>
+                                  <option <?= ((esc($profile['jenis_kelamin']) ?? "") == "Perempuan") ? "selected" : "" ?>>
+                                    Perempuan</option>
+                                </select>
+                              </div>
                             </div>
 
-                            <div class="form-group">
-                              <label for="npm">NPM</label>
-                              <input type="number" class="form-control" id="npm" name="npm" value="<?= (($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : ($profile['npm'] ?? "") ?>">
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="fakultas">Fakultas</label>
+                                <select class="form-control" id="fakultas" name="fakultas">
+                                  <option <?= ((esc($profile['fakultas']) ?? "") == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?>>
+                                    Fakultas Teknik dan Ilmu Komputer</option>
+                                  <option <?= ((esc($profile['fakultas']) ?? "") == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?>>
+                                    Fakultas Ekonomi dan Bisnis</option>
+                                  <option <?= ((esc($profile['fakultas']) ?? "") == "Fakultas Sastra dan Ilmu Pendidikan") ? "selected" : "" ?>>
+                                    Fakultas Sastra dan Ilmu Pendidikan</option>
+                                </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="jurusan">Jurusan</label>
+                                <select class="form-control" id="jurusan" name="jurusan">
+                                  <option <?= ((esc($profile['jurusan']) ?? "") == "Informatika") ? "selected" : "" ?>>
+                                    Informatika</option>
+                                  <option <?= ((esc($profile['jurusan']) ?? "") == "Sistem Informasi") ? "selected" : "" ?>>
+                                    Sistem Informasi</option>
+                                  <option <?= ((esc($profile['jurusan']) ?? "") == "Teknik Sipil") ? "selected" : "" ?>>
+                                    Teknik Sipil</option>
+                                </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" class="form-control" name="alamat" id="alamat" value="<?= esc($profile['alamat']) ?? "" ?>" />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="no_hp">Nomor Telepon</label>
+                                <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= esc($profile['no_hp']) ?? "" ?>">
+                              </div>
                             </div>
 
-                            <div class="form-group">
-                              <label for="kelas">Kelas</label>
+                          </div>
 
-                              <input type="text" class="form-control" name="kelas" id="kelas" value="<?= $profile['kelas'] ?? "" ?>" />
-                            </div>
-
-                            <div class="form-group">
-                              <label for="jenis_kelamin">Jenis Kelamin</label>
-                              <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                                <option <?= (($profile['jenis_kelamin'] ?? "") == "Laki-Laki") ? "selected" : "" ?>>
-                                  Laki-Laki</option>
-                                <option <?= (($profile['jenis_kelamin'] ?? "") == "Perempuan") ? "selected" : "" ?>>
-                                  Perempuan</option>
-                              </select>
+                          <div class="row">
+                            <div class="modal-footer col">
+                              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                              <input type="submit" class="btn btn-success" value="Save" />
                             </div>
                           </div>
 
-                          <div class="epchild">
-                            <div class="form-group">
-                              <label for="fakultas">Fakultas</label>
-                              <select class="form-control" id="fakultas" name="fakultas">
-                                <option <?= (($profile['fakultas'] ?? "") == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?>>
-                                  Fakultas Teknik dan Ilmu Komputer</option>
-                                <option <?= (($profile['fakultas'] ?? "") == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?>>
-                                  Fakultas Ekonomi dan Bisnis</option>
-                                <option <?= (($profile['fakultas'] ?? "") == "Fakultas Sastra dan Ilmu Pendidikan") ? "selected" : "" ?>>
-                                  Fakultas Sastra dan Ilmu Pendidikan</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="jurusan">Jurusan</label>
-                              <select class="form-control" id="jurusan" name="jurusan">
-                                <option <?= (($profile['jurusan'] ?? "") == "Informatika") ? "selected" : "" ?>>
-                                  Informatika</option>
-                                <option <?= (($profile['jurusan'] ?? "") == "Sistem Informasi") ? "selected" : "" ?>>
-                                  Sistem Informasi</option>
-                                <option <?= (($profile['jurusan'] ?? "") == "Teknik Sipil") ? "selected" : "" ?>>
-                                  Teknik Sipil</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="alamat">Alamat</label>
-                              <input type="text" class="form-control" name="alamat" id="alamat" value="" />
-                            </div>
-
-                            <div class="form-group">
-                              <label for="no_hp">Nomor Telepon</label>
-                              <input type="number" class="form-control" id="no_hp" name="no_hp" value="" />
-                            </div>
-                          </div>
                         </form>
-                        <div class="modal-footer">
-                          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                          <input type="submit" class="btn btn-success" value="Save" />
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -280,7 +305,10 @@ helper('form');
       </div>
     </div>
   </div>
-
+  
+  <script>
+    var profile = <?= json_encode($profile) ?>;
+  </script>
   <script src="/js/chart.js"></script>
   <script>
     function sendProfilePicture() {
