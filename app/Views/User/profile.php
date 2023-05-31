@@ -223,26 +223,26 @@ helper('form');
                             <div class="col">
                               <div class="form-group">
                                 <label for="nama_lengkap">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= esc($profile['nama_lengkap']) ?? "" ?>" />
+                                <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= isset($profile['nama_lengkap']) ? esc($profile['nama_lengkap']) : '' ?>" />
                               </div>
 
                               <div class="form-group">
                                 <label for="npm">NPM</label>
-                                <input type="number" class="form-control" id="npm" name="npm" value="<?= (($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : (esc($profile['npm']) ?? "") ?>">
+                                <input type="number" class="form-control" id="npm" name="npm" value="<?= isset($profile['npm']) ? ((($profile['npm'] ?? "") === "0" || ($profile['npm'] ?? "") == "" || ($profile['npm'] ?? "") == NULL) ? "" : (esc($profile['npm']) ?? "")) : '' ?>">
                               </div>
 
                               <div class="form-group">
                                 <label for="kelas">Kelas</label>
 
-                                <input type="text" class="form-control" name="kelas" id="kelas" value="<?= esc($profile['kelas']) ?? "" ?>" />
+                                <input type="text" class="form-control" name="kelas" id="kelas" value="<?= isset($profile['kelas']) ? esc($profile['kelas']) : '' ?>" />
                               </div>
 
                               <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                                  <option <?= ((esc($profile['jenis_kelamin']) ?? "") == "Laki-Laki") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['jenis_kelamin']) ? $profile['jenis_kelamin'] : "") == "Laki-Laki") ? "selected" : "" ?>>
                                     Laki-Laki</option>
-                                  <option <?= ((esc($profile['jenis_kelamin']) ?? "") == "Perempuan") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['jenis_kelamin']) ? $profile['jenis_kelamin'] : "") == "Perempuan") ? "selected" : "" ?>>
                                     Perempuan</option>
                                 </select>
                               </div>
@@ -252,11 +252,11 @@ helper('form');
                               <div class="form-group">
                                 <label for="fakultas">Fakultas</label>
                                 <select class="form-control" id="fakultas" name="fakultas">
-                                  <option <?= ((esc($profile['fakultas']) ?? "") == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['fakultas']) ? $profile['fakultas'] : "") == "Fakultas Teknik dan Ilmu Komputer") ? "selected" : "" ?>>
                                     Fakultas Teknik dan Ilmu Komputer</option>
-                                  <option <?= ((esc($profile['fakultas']) ?? "") == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['fakultas']) ? $profile['fakultas'] : "") == "Fakultas Ekonomi dan Bisnis") ? "selected" : "" ?>>
                                     Fakultas Ekonomi dan Bisnis</option>
-                                  <option <?= ((esc($profile['fakultas']) ?? "") == "Fakultas Sastra dan Ilmu Pendidikan") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['fakultas']) ? $profile['fakultas'] : "") == "Fakultas Ilmu Kesehatan") ? "selected" : "" ?>>
                                     Fakultas Sastra dan Ilmu Pendidikan</option>
                                 </select>
                               </div>
@@ -264,23 +264,23 @@ helper('form');
                               <div class="form-group">
                                 <label for="jurusan">Jurusan</label>
                                 <select class="form-control" id="jurusan" name="jurusan">
-                                  <option <?= ((esc($profile['jurusan']) ?? "") == "Informatika") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['jurusan']) ? $profile['jurusan'] : "") == "Teknik Informatika") ? "selected" : "" ?>>
                                     Informatika</option>
-                                  <option <?= ((esc($profile['jurusan']) ?? "") == "Sistem Informasi") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['jurusan']) ? $profile['jurusan'] : "") == "Sistem Informasi") ? "selected" : "" ?>>
                                     Sistem Informasi</option>
-                                  <option <?= ((esc($profile['jurusan']) ?? "") == "Teknik Sipil") ? "selected" : "" ?>>
+                                  <option <?= ((isset($profile['jurusan']) ? $profile['jurusan'] : "") == "Manajemen") ? "selected" : "" ?>>
                                     Teknik Sipil</option>
                                 </select>
                               </div>
 
                               <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" id="alamat" value="<?= esc($profile['alamat']) ?? "" ?>" />
+                                <input type="text" class="form-control" name="alamat" id="alamat" value="<?= isset($profile['alamat']) ? $profile['alamat'] : "" ?>" />
                               </div>
 
                               <div class="form-group">
                                 <label for="no_hp">Nomor Telepon</label>
-                                <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= esc($profile['no_hp']) ?? "" ?>">
+                                <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= isset($profile['no_hp']) ? $profile['no_hp'] : "" ?>">
                               </div>
                             </div>
 
