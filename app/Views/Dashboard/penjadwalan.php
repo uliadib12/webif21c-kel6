@@ -3,32 +3,90 @@
 <head>
     <link rel="stylesheet" href="/css/tabel.css" />
 </head>
+<div class="p-4">
+    <div class="welcome">
+        <div class="content p-3">
+            <h1 class="fs-3">Manage Kategori Event</h1>
+            <p class="mb-0">Kategori berisi semua Kategori dalam Event yang diadakan!</p>
+            <p class="mb-0">Menu Berfungsi untuk Action!</p>
+        </div>
+    </div>
+    <section class="statistics mt-3">
+        <div class="row">
+            <div class="col-lg-2 ">
+                <div id="EventDropdown" class="box d-flex custom-dropdown">
+                    <div class="row ms-1 mb-1">
+                        <div class="d-flex align-items-center p-3">
+                            <li class="custom-dropdown">
+                                <a href="#" class="dropdown-toggle"><span class="d-block ms-3">Event </span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="has-submenu">
+                                        <a href="#">Seminar Pendidikan</a>
+                                    </li>
+                                    <li class="has-submenu">
+                                        <a href="#">Gemastik</a>
+                                    </li>
+                                    <li class="has-submenu">
+                                        <a href="#">Gebyar islami</a>
+                                    </li>
+                                    <li class="has-submenu">
+                                        <a href="#">Hari Musik</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div id="MenuDropdown" class="box d-flex custom-dropdown">
+                    <div class="row ms-1 mb-1">
+                        <div class="d-flex p-3">
+                            <li class="custom-dropdown">
+                                <a href="#" class="dropdown-toggle"><span class="d-block ms-3">Menu</span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="has-submenu">
+                                        <a href="#">Sertifikat</a>
+                                        <!-- <ul class="submenu list-unstyled">
+                                            <li><a href="#">Seminar Pendidikan</a></li>
+                                        </ul> -->
+                                    </li>
+                                    <li class="has-submenu">
+                                        <a href="#">Laporan</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Tabel <b>Kegiatan</b></h2>
+                    <h2>Penjadwalan <b>Kampus Expo</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i
-                            class="fa-solid fa-user-plus"></i>
+                    <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
                         <span>Add</span></a>
-                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i
-                            class="fa-solid fa-trash"></i>
+                    <a id="deletSelectCategory" href="#deleteEmployeeModal" class="btn btn-del" data-toggle="modal"><i class="fa-solid fa-trash"></i>
                         <span>Delete</span></a>
                 </div>
             </div>
         </div>
         <?php if (session()->getFlashdata('success')) : ?>
-        <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('success'); ?>
-        </div>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
         <?php endif; ?>
         <?php if (session()->getFlashdata('error')) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?= session()->getFlashdata('error'); ?>
-        </div>
+            <div class="alert alert-danger" role="alert">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
         <?php endif; ?>
         <table class="table table-striped table-hover">
             <thead>
@@ -48,9 +106,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $key=>$item) {
+                <?php foreach ($data as $key => $item) {
                     echo
-                        '<tr>' .
+                    '<tr>' .
                         '<td>' .
                         '<span class="custom-checkbox">' .
                         '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
@@ -253,6 +311,6 @@
     </div>
 </div>
 <script>
-var data_table = <?php echo json_encode($data); ?>
+    var data_table = <?php echo json_encode($data); ?>
 </script>
 <script src="/js/tabel/penjadwalan.js"></script>
