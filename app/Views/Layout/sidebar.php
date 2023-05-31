@@ -4,11 +4,11 @@
         <img class="img-fluid" width="65" src=" /images/AlbertEinstein.jpg" alt="profile" />
         <div class="ms-2">
             <h5 class="fs-6 mb-0">
-                <a class="text-decoration-none" href="#">
+                <a class="text-decoration-none" href="<?= (isset($user)) ? "/profile" : "/login" ?>">
                     <?php if (isset($user)) : ?>
-                        <?= esc($user->username) ?>
+                    <?= esc($user->username) ?>
                     <?php else : ?>
-                        Login
+                    Login
                     <?php endif ?>
                 </a>
             </h5>
