@@ -103,6 +103,7 @@ $routes->group('utils', static function ($routes) {
     $routes->post('rollback', 'Utils\MigrateController::rollback');
 });
 
+$routes->get('admin','admin::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
