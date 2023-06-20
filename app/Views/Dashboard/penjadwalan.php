@@ -18,42 +18,15 @@
                     <div class="row ms-1 mb-1">
                         <div class="d-flex align-items-center p-3">
                             <li class="custom-dropdown">
-                                <a href="#" class="dropdown-toggle"><span class="d-block ms-3">Event </span></a>
+                                <a href="#" class="dropdown-toggle">
+                                    <span id='nama-event' class="d-block ms-3">Event </span>
+                                </a>
                                 <ul class="dropdown-menu">
-                                    <li class="has-submenu">
-                                        <a href="#">Seminar Pendidikan</a>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Gemastik</a>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Gebyar islami</a>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Hari Musik</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div id="MenuDropdown" class="box d-flex custom-dropdown">
-                    <div class="row ms-1 mb-1">
-                        <div class="d-flex p-3">
-                            <li class="custom-dropdown">
-                                <a href="#" class="dropdown-toggle"><span class="d-block ms-3">Menu</span></a>
-                                <ul class="dropdown-menu">
-                                    <li class="has-submenu">
-                                        <a href="#">Sertifikat</a>
-                                        <!-- <ul class="submenu list-unstyled">
-                                            <li><a href="#">Seminar Pendidikan</a></li>
-                                        </ul> -->
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Laporan</a>
-                                    </li>
+                                <?php foreach ($event as $key => $item) {
+                                    echo '<li class="has-submenu">
+                                        <a href="?event='.$item['id_event'].'">'.$item['nama'].'</a>
+                                    </li>';
+                                } ?>
                                 </ul>
                             </li>
                         </div>
@@ -63,12 +36,21 @@
         </div>
     </section>
 </div>
-<div class="container">
+<div class="container <?php if(!isset($event_pilih['nama'])){
+    echo 'invisible';
+}  ?>">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Penjadwalan <b>Kampus Expo</b></h2>
+                    <h2>Penjadwalan <b><?php if(isset($event_pilih['nama']))
+                    {
+                        echo $event_pilih['nama'];
+                    } 
+                    else{
+                        echo 'Event';
+                    }
+                    ?></b></h2>
                 </div>
                 <div class="col-sm-6">
                     <a href="#addEmployeeModal" class="btn btn-add" data-toggle="modal"><i class="fa-solid fa-user-plus"></i>
@@ -106,82 +88,32 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $key => $item) {
-                    echo
-                    '<tr>' .
-                        '<td>' .
-                        '<span class="custom-checkbox">' .
-                        '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
-                        '<label for="checkbox"></label>' .
-                        '</span>' .
-                        '</td>' .
-                        '<td>' . esc($item['kategori']) . '</td>' .
-                        '<td>' . esc(date('d F Y', strtotime($item['pendaftaran']))) . '<br>' . esc(substr($item['jamAwalPendaftaran'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPendaftaran'], 0, -3)) . ' WIB</td>' .
-                        '<td>' . esc(date('d F Y', strtotime($item['penyisihan']))) . '<br>' . esc(substr($item['jamAwalPenyisihan'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPenyisihan'], 0, -3)) . ' WIB</td>' .
-                        '<td>' . esc(date('d F Y', strtotime($item['pengumuman']))) . '</td>' .
-                        '<td>' . esc(date('d F Y', strtotime($item['final']))) . '</td>'     .
-                        '<td>' .
-                        '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
-                        '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
-                        '</td>' .
-                        '</tr>';
+                <?php 
+                if(isset($data)){
+                    foreach ($data as $key => $item) {
+                        echo
+                        '<tr>' .
+                            '<td>' .
+                            '<span class="custom-checkbox">' .
+                            '<input type="checkbox" class="checkbox" name="options[]" value="' . $key . '">' .
+                            '<label for="checkbox"></label>' .
+                            '</span>' .
+                            '</td>' .
+                            '<td>' . esc($item['kategori']) . '</td>' .
+                            '<td>' . esc(date('d F Y', strtotime($item['pendaftaran']))) . '<br>' . esc(substr($item['jamAwalPendaftaran'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPendaftaran'], 0, -3)) . ' WIB</td>' .
+                            '<td>' . esc(date('d F Y', strtotime($item['penyisihan']))) . '<br>' . esc(substr($item['jamAwalPenyisihan'], 0, -3)) . ' - ' . esc(substr($item['jamAkhirPenyisihan'], 0, -3)) . ' WIB</td>' .
+                            '<td>' . esc(date('d F Y', strtotime($item['pengumuman']))) . '</td>' .
+                            '<td>' . esc(date('d F Y', strtotime($item['final']))) . '</td>'     .
+                            '<td>' .
+                            '<a href="#editEmployeeModal" class="editKategoriButton edit" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-pen-clip" data-toggle="tooltip" title="Edit"></i></a>' .
+                            '<a href="#deleteEmployeeModal" class="deleteKategoriButton delete" data-toggle="modal" data-index="' . $key . '"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></a>' .
+                            '</td>' .
+                            '</tr>';
+                    }
                 }
                 ?>
             </tbody>
         </table>
-        <div class="clearfix">
-            <div class="hint-text">Showing <b>
-                    <?php
-                    if ($page == $pageCount) {
-                        echo $countAllRow;
-                    }
-
-                    if ($page < $pageCount) {
-                        echo $maxPaginate * $page;
-                    }
-                    ?>
-                </b> out of
-                <b><?= $countAllRow ?></b> entries
-            </div>
-            <ul class="pagination">
-
-                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>"><a href="
-                <?php
-                if ($page == 1) {
-                    echo '#';
-                } else {
-                    echo '?page=' . ($page - 1);
-                }
-                ?>
-                " class="page-link">Previous</a></li>
-
-                <?php
-                for ($i = 1; $i <= $pageCount; $i++) {
-                    // /add class active if $i == $page
-                    if ($i == $page) {
-                        echo '<li class="page-item active"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
-                        continue;
-                    }
-                    echo '<li class="page-item"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
-                }
-                ?>
-
-                <li class="page-item <?= ($page == $pageCount) ? "disabled" : "" ?>"><a href="
-                <?php
-                if ($page == $pageCount) {
-                    echo '#';
-                } else {
-                    if ($pageCount == 0) {
-                        echo '#';
-                    } else {
-                        echo '?page=' . ($page + 1);
-                    }
-                }
-                ?>
-                " class="page-link">Next</a></li>
-            </ul>
-        </div>
-    </div>
 </div>
 <!-- Add Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
@@ -195,6 +127,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <input name="id_event" type="hidden" value="<?php
+                        if(isset($event_pilih['id_event'])){
+                            echo $event_pilih['id_event'];
+                        }
+                        ?>"/>
                     <div class="form-group">
                         <label>Kategori</label>
                         <input type="text" class="form-control" name="kategori" required />
@@ -247,6 +184,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                    <input type="hidden" name="id_event" value="<?php
+                        if(isset($event_pilih['id_event'])){
+                            echo $event_pilih['id_event'];
+                        }
+                          ?>" />
                         <input type="hidden" class="form-control" name="id" required />
                         <label>Kategori</label>
                         <input type="text" class="form-control" name="kategori" required />
@@ -311,6 +253,7 @@
     </div>
 </div>
 <script>
-    var data_table = <?php echo json_encode($data); ?>
+    let data_table = <?php echo json_encode($data); ?>;
+    let data_event = <?php echo json_encode($event); ?>;
 </script>
 <script src="/js/tabel/penjadwalan.js"></script>

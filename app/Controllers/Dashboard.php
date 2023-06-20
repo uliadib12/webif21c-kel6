@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use CodeIgniter\HTTP\URI;
 
 class Dashboard extends BaseController
 {
@@ -101,23 +102,18 @@ class Dashboard extends BaseController
 
     public function pengingat_penjadwalan()
     {
-        $maxPaginate = 5;
-
         $model = new \App\Models\CategoryModel();
-        $countAllRow = $model->countAll();
 
-        $data = $model->orderBy('id', 'DESC')->paginate($maxPaginate);
+        // get all event
+        $eventModel = new \App\Models\EventModel();
+        $event = $eventModel->findAll();
 
-        $page = request()->getVar('page');
-        if ($page == null) {
-            $page = 1;
-        }
+        $id_event = request()->getVar('event');
 
-        // calculate number of page
-        $pageCount = $countAllRow / $maxPaginate;
-        // if page count is not integer, round up
-        if (!is_int($pageCount)) {
-            $pageCount = ceil($pageCount);
+        if($id_event != null) {
+            $event_pilih = $eventModel->find($id_event);
+            $kategoriModel = new \App\Models\CategoryModel();
+            $data = $kategoriModel->where('id_event', $event_pilih['id_event'])->orderBy('id', 'DESC')->findAll();
         }
 
         return view(
@@ -125,11 +121,9 @@ class Dashboard extends BaseController
             [
                 'kategori' => 'penjadwalan',
                 'user' => $this->user,
-                'page' => $page,
-                'pageCount' => $pageCount,
-                'data' => $data,
-                'maxPaginate' => $maxPaginate,
-                'countAllRow' => $countAllRow,
+                'data' => $data ?? null,
+                'event' => $event ?? null,
+                'event_pilih' => $event_pilih ?? null,
             ]
         );
     }

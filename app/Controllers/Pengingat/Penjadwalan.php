@@ -67,6 +67,7 @@ class Penjadwalan extends BaseController
 
     private function getPostData(){
         $data = [
+            'id_event' => request()->getPost('id_event'), // fuck
             'kategori' => request()->getPost('kategori'),
             'pendaftaran' => request()->getPost('pendaftaran'),
             'jamAwalPendaftaran' => request()->getPost('jamAwalPendaftaran'),
