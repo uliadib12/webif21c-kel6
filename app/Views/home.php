@@ -365,10 +365,10 @@
                 if ($key < 3) {
                     echo
                     '<li class="card-event">' .
-                        '<a class="card-image" title="Selengkapnya" href="" target="_blank" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
+                        '<a class="card-image" title="Selengkapnya" href="/event/' . $item['id_event'] . '" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
                         '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' .
                         '</a>' .
-                        '<a class="card-description" href="" target="_blank">' .
+                        '<a class="card-description" href="">' .
                         '<h2>' . $item['nama'] . '</h2>' .
                         '<p>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</p>' .
                         '</a>' .
@@ -386,10 +386,10 @@
                     if ($key >= 3) {
                         echo
                         '<li class="card-event">' .
-                            '<a class="card-image" title="Selengkapnya" href="" target="_blank" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
+                            '<a class="card-image" title="Selengkapnya" href="" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
                             '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' .
                             '</a>' .
-                            '<a class="card-description" href="" target="_blank">' .
+                            '<a class="card-description" href="">' .
                             '<h2>' . $item['nama'] . '</h2>' .
                             '<p>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</p>' .
                             '</a>' .
