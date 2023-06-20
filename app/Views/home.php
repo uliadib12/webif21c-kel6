@@ -48,16 +48,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Register</a>
+                            <a class="nav-link" href="#event">Event</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#documentation">Documentation</a>
+                            <a class="nav-link" href="#doc">Documentation</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact Us</a>
@@ -106,12 +106,11 @@
                                     <div class="banner_taital_main">
                                         <h1 class="banner_taital">Tekno Expo</h1>
                                         <p class="banner_text">
-                                            Tekno Expo adalah acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa
-                                            Fakultas Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia.
-                                            Terdiri atas empat kategori, yaitu Desain Web, Pemrograman Game,
-                                            UI/UX, dan CTF.
+                                            Tekno Expo adalah wadah untuk seluruh event yang akan di selenggarakan di
+                                            Universitas Teknokrat Indonesia, dimana para mahasiswa berlomba menunjukkan
+                                            skil serta kemampuan dalam bidang keahliannya, dengan tujuan untuk
+                                            menghasilkan generasi yang cerdas dan menjadi Sang Juara!
                                         </p>
-                                        <div class="readmore_btn"><a href="#">Read More</a></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -125,12 +124,11 @@
                                     <div class="banner_taital_main">
                                         <h1 class="banner_taital">Tekno Expo</h1>
                                         <p class="banner_text">
-                                            Tekno Expo adalah acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa
-                                            Fakultas Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia.
-                                            Terdiri atas empat kategori, yaitu Desain Web, Pemrograman Game,
-                                            UI/UX, dan CTF.
+                                            Tekno Expo adalah wadah untuk seluruh event yang akan di selenggarakan di
+                                            Universitas Teknokrat Indonesia, dimana para mahasiswa berlomba menunjukkan
+                                            skil serta kemampuan dalam bidang keahliannya, dengan tujuan untuk
+                                            menghasilkan generasi yang cerdas dan menjadi Sang Juara!
                                         </p>
-                                        <div class="readmore_btn"><a href="#">Read More</a></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -144,12 +142,11 @@
                                     <div class="banner_taital_main">
                                         <h1 class="banner_taital">Tekno Expo</h1>
                                         <p class="banner_text">
-                                            Tekno Expo adalah acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa
-                                            Fakultas Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia.
-                                            Terdiri atas empat kategori, yaitu Desain Web, Pemrograman Game,
-                                            UI/UX, dan CTF.
+                                            Tekno Expo adalah wadah untuk seluruh event yang akan di selenggarakan di
+                                            Universitas Teknokrat Indonesia, dimana para mahasiswa berlomba menunjukkan
+                                            skil serta kemampuan dalam bidang keahliannya, dengan tujuan untuk
+                                            menghasilkan generasi yang cerdas dan menjadi Sang Juara!
                                         </p>
-                                        <div class="readmore_btn"><a href="#">Read More</a></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -183,7 +180,6 @@
                             <div class="box_right">
                                 <p class="book_text">Opening</p>
                                 <h4 class="appoinment_text">Online/Offline</h4>
-                                <span class="image_text">25 Februari 2024</span>
                             </div>
                         </div>
                     </a>
@@ -197,7 +193,6 @@
                             <div class="box_right">
                                 <p class="book_text">Registration</p>
                                 <h4 class="appoinment_text">Online</h4>
-                                <span class="image_text">4 Maret 2024</span>
                             </div>
                         </div>
                     </a>
@@ -210,8 +205,7 @@
                             </div>
                             <div class="box_right">
                                 <p class="book_text">Competition</p>
-                                <h4 class="appoinment_text"><strike> Started</strike></h4>
-                                <span class="image_text">10 Maret 2024</span>
+                                <h4 class="appoinment_text">Offline</h4>
                             </div>
                         </div>
                     </a>
@@ -224,8 +218,7 @@
                             </div>
                             <div class="box_right">
                                 <p class="book_text">Sertifikat</p>
-                                <h4 class="appoinment_text">Online</h4>
-                                <span class="image_text">3 April 2024</span>
+                                <h4 class="appoinment_text">Online/Offline</h4>
                             </div>
                         </div>
                     </a>
@@ -279,7 +272,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="judul">Kategori</h1>
+                    <h1 class="judul">Discover</h1>
                 </div>
             </div>
         </div>
@@ -290,12 +283,13 @@
                         <div class="house_icon">
                             <img src="/images/icon-1.png" class="image_1" />
                             <img src="/images/icon-4.png" class="image_2" />
-                            <h3 class="corporate_text">Desain Web</h3>
+                            n<h3 class="corporate_text">Grand Launching</h3>
                             <div class="up">
                                 <p class="chunks_text">
-                                    Desain web adalah proses merancang tampilan untuk website. yang melibatkan pemilihan
-                                    elemen visual, warna, tipografi, dan gambar, serta mempertimbangkan aspek navigasi,
-                                    fungsionalitas, dan interaksi.
+                                    Grand Lauching menjadi pembuka dari seluruh rangkaian Event yang di selenggarakan,
+                                    diadakan secara online dan offline dan akan diisi dengan sambutan
+                                    dari Rektor Universitas Teknokrat Indonesia,
+                                    Penampilan UKM, dan QnA.
                                 </p>
                                 <div class="readmore_button"><a href="#">Read More</a></div>
                             </div>
@@ -305,26 +299,11 @@
                         <div class="house_icon">
                             <img src="/images/icon-2.png" class="image_1" />
                             <img src="/images/icon-5.png" class="image_2" />
-                            <h3 class="corporate_text">Pemrograman Mobile</h3>
+                            <h3 class="corporate_text">UKM Teknokrat</h3>
                             <div class="up">
-                                <p class="chunks_text">
-                                    Pemrograman mobile adalah proses membuat aplikasi mobile seperti smartphone dan
-                                    tablet. Melibatkan pengembangan aplikasi yang dapat dijalankan pada SO mobile
-                                    seperti Android, iOS, atau Windows Mobile.
-                                </p>
-                                <div class="readmore_button"><a href="#">Read More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service_box">
-                        <div class="house_icon">
-                            <img src="/images/icon-2.png" class="image_1" />
-                            <img src="/images/icon-5.png" class="image_2" />
-                            <h3 class="corporate_text">UI/UX</h3>
-                            <div class="up">
-                                <p class="chunks_text">UI/UX adalah singkatan dari User Interface (UI) dan User
-                                    Experience (UX). Kedua istilah ini sering digunakan dalam desain produk digital
-                                    seperti website, aplikasi mobile, dan software.</p>
+                                <p class="chunks_text">UKM Teknokrat merupakan Unit Kegiatan Mahasiswa Universitas
+                                    Teknokrat Indonesia terdapat kurang lebih 10 UKM aktif dan menjadi wadah mahasiswa
+                                    untuk berlatih dan belajar untuk mempardalam kemampuan di bidang yang disukai.</p>
                                 <div class="readmore_button"><a href="#">Read More</a></div>
                             </div>
                         </div>
@@ -333,12 +312,12 @@
                         <div class="house_icon">
                             <img src="/images/icon-3.png" class="image_1" />
                             <img src="/images/icon-6.png" class="image_2" />
-                            <h3 class="corporate_text">Capture The Flag</h3>
+                            <h3 class="corporate_text">Clossing & Awards</h3>
                             <div class="up">
                                 <p class="chunks_text">
-                                    Capture the Flag adalah salah satu jenis dari kompetisi hacking yang dimana
-                                    mengharuskan seorang / tim untuk mengambil sebuah file / string yang sudah
-                                    disembunyikan sistem yang dimana disebut dengan istilah “Flag”.
+                                    Rangkaian acara yang menjadi puncak dari seluruh event.
+                                    Proses Seleksi dilakukan secara adil dan kompetitif oleh juri yang berkompeten
+                                    dibidangnya, sehingga menghasilkan juara yang layak.
                                 </p>
                                 <div class="readmore_button"><a href="#">Read More</a></div>
                             </div>
@@ -352,7 +331,7 @@
 
     <!-- event section start -->
     <div class="services_section layout-padding">
-        <div class="container">
+        <div id="event" class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="judul">Event</h1>
@@ -413,12 +392,10 @@
                         <div class="about_text_main">
                             <h1 class="about_taital">About Us</h1>
                             <p class="about_text">
-                                Tekno Expo adalah acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa
-                                Fakultas
-                                Teknik dan ilmu Komputer (FTIK) Universitas Teknokrat Indonesia. Terdiri atas
-                                empat
-                                kategori, yaitu Desain Web, Pemrograman Game, UI/UX,
-                                dan CTF.
+                                Tekno Expo adalah wadah untuk seluruh event yang akan di selenggarakan di
+                                Universitas Teknokrat Indonesia, dimana para mahasiswa berlomba menunjukkan
+                                skil serta kemampuan dalam bidang keahliannya, dengan tujuan untuk
+                                menghasilkan generasi yang cerdas dan menjadi Sang Juara!
                             </p>
                             <div class="readmore_bt"><a href="#">Read More</a></div>
                         </div>
@@ -429,9 +406,9 @@
     </div>
     <!-- about section end -->
     <!-- studies section start -->
-    <div id="#documentation" class="card-section layout_padding">
+    <div class="card-section layout_padding">
         <div class="container">
-            <div class="row">
+            <div id="doc" class="row">
                 <div class="col-sm-12">
                     <h1 class="judul" style="padding-top: 3em">Dokumentasi Tahunan</h1>
                 </div>
@@ -481,7 +458,7 @@
     <!-- news section end -->
     <!-- footer section start -->
     <!-- footer section end -->
-    <footer id="#contact" class="footer-section">
+    <footer id="contact" class="footer-section">
         <div class="container">
             <div class="footer-content pt-5 pb-5">
                 <div class="row">
@@ -498,10 +475,10 @@
                                 <h3>SITE MAPS</h3>
                             </div>
                             <ul>
-                                <li><a href="./index.html">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li><a href="#about">About Us</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#documentation">Documentation</a></li>
+                                <li><a href="#event">Register</a></li>
+                                <li><a href="#doc">Documentation</a></li>
                                 <li><a href="#contact">Contact</a></li>
                             </ul>
                         </div>
