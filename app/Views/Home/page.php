@@ -26,7 +26,7 @@
     </nav>
     <div class="wrapper">
         <div class="page-header clear-filter" filter-color="orange">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('/images/bg.png')"></div>
+            <div class="page-header-image" data-parallax="true" style="background-image: url('/uploads/images/<?= $event['gambar_banner'] ?>')"></div>
             <div class="container">
                 <div class="content" style="display: flex; justify-content: center; align-items: center">
                     <div class="user-description">
