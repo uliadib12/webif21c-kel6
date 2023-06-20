@@ -557,7 +557,7 @@ p.chunks_text {
 
 .readmore_button {
   width: 160px;
-  margin-top: 30px;
+  margin-top: 13px;
 }
 
 .readmore_button a {
@@ -667,12 +667,12 @@ p.chunks_text {
 @media (max-width: 768px) {
   #carrousel {
     margin: 70px 0px 0px 0px;
- }
+  }
 }
 @media (max-width: 425px) {
   #carrousel {
     margin: 50px 0px 0px 0px;
- }
+  }
 }
 #carrousel .title {
   margin-bottom: 10px;
@@ -695,9 +695,9 @@ p.chunks_text {
   -o-transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  -webkit-box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, .25);
-  -moz-box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, .25);
-  box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, .25);
+  -webkit-box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, 0.25);
+  box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, 0.25);
 }
 #carrousel .owl-carousel .owl-item {
   height: 300px;
@@ -711,12 +711,12 @@ p.chunks_text {
 @media (max-width: 768px) {
   #carrousel .owl-carousel .owl-item {
     height: 270px;
- }
+  }
 }
 @media (max-width: 380px) {
   #carrousel .owl-carousel .owl-item {
     height: 200px;
- }
+  }
 }
 #carrousel .owl-carousel .owl-stage-outer {
   padding-bottom: 10px;
@@ -732,7 +732,7 @@ p.chunks_text {
   z-index: 2;
 }
 #carrousel .owl-item.medium.mdright {
- /*border: solid 1px red;
+  /*border: solid 1px red;
  */
   position: relative;
   left: -30px;
@@ -740,10 +740,10 @@ p.chunks_text {
 @media (min-width: 768px) {
   #carrousel .owl-item.medium.mdright {
     left: 0px;
- }
+  }
 }
 #carrousel .owl-item.medium.mdleft {
- /*border: solid 1px blue;
+  /*border: solid 1px blue;
  */
   position: relative;
   right: -30px;
@@ -751,15 +751,17 @@ p.chunks_text {
 @media (min-width: 768px) {
   #carrousel .owl-item.medium.mdleft {
     right: 0px;
- }
+  }
 }
-#carrousel .owl-item.smallRight.active { /* left side last img */
+#carrousel .owl-item.smallRight.active {
+  /* left side last img */
   transform: scale(0.7);
   -ms-transform: scale(0.7);
   position: relative;
   left: -100px;
 }
- #carrousel .owl-item.smallLeft.active { /* left side last img */
+#carrousel .owl-item.smallLeft.active {
+  /* left side last img */
   transform: scale(0.5);
   -ms-transform: scale(0.7);
   position: relative;
