@@ -8,7 +8,7 @@ class Peserta extends BaseController
 {
     public function daftarLomba()
     {
-        $id_kategori = $this->request->getUri()->getSegment(2);
+        $id_kategori = $this->request->getPost('id_kategori');
         $model = new PesertaKategoriModel();
 
         // check if user already registered
@@ -17,7 +17,7 @@ class Peserta extends BaseController
             'id_user' => auth()->id(),
         ];
         if($model->where($data)->first() != null) {
-            return $this->response->setJSON(['message' => 'Anda sudah terdaftar di kategori ini'])->setStatusCode(400);
+            return redirect()->back()->with('error', 'Anda sudah terdaftar pada kategori ini');
         }
 
         $data = [
@@ -26,10 +26,10 @@ class Peserta extends BaseController
             'created_at' => date('Y-m-d H:i:s'),
         ];
         if($model->insert($data)){
-            return $this->response->setJSON(['message' => 'Berhasil Daftar Kategori']);
+            return redirect()->back()->with('success', 'Data berhasil diubah');
         }
         else{
-            return $this->response->setJSON(['message' => 'Gagal Daftar Kategori'])->setStatusCode(400);
+            return redirect()->back()->with('error', 'Data gagal diubah');
         }
     }
 

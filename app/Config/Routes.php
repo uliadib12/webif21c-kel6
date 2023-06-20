@@ -34,9 +34,9 @@ service('auth')->routes($routes);
 $routes->get('/', 'Home::index');
 $routes->post('login-v1', 'Auth::login');
 
-$routes->get('event/(:num)','EventPage::index');
-$routes->post('daftarLomba/(:num)', 'Peserta::daftarLomba');
-$routes->post('delete-daftarkategori/(:num)', 'Peserta::deleteDaftarKategori');
+$routes->get('event/(:num)','EventPage::index', ['filter' => 'group:user,admin,superadmin']);
+$routes->post('daftarLomba/(:num)', 'Peserta::daftarLomba', ['filter' => 'group:user,admin,superadmin']);
+$routes->post('delete-daftarkategori/(:num)', 'Peserta::deleteDaftarKategori', ['filter' => 'group:user,admin,superadmin']);
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
