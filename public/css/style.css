@@ -660,205 +660,139 @@ p.chunks_text {
   width: 100%;
   height: 100%;
 }
-.card-container {
-  background: transparent;
-}
-.cards-wrapper {
-  display: flex;
-  overflow-x: scroll;
-  gap: 5em;
-  margin: 0 auto;
-  padding: 15px;
-}
 
-.card {
-  --bg-filter-opacity: 0.5;
-  background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
-  height: 20em;
-  width: 15em;
-  font-size: 1.5em;
-  color: white;
-  border-radius: 0px 50px 0px 50px;
-  padding: 1em;
-  /*margin: 2em;*/
-  display: flex;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0px 9px 15px 5px #645d5d;
-  transition: all, var(--transition-time);
-  position: relative;
-  overflow: hidden;
-  border: 10px solid #001431;
-  text-decoration: none;
+#carrousel {
+  margin: 10px;
 }
-
-.card:hover {
-  transform: rotate(0);
+@media (max-width: 768px) {
+  #carrousel {
+    margin: 70px 0px 0px 0px;
+  }
 }
-.card:hover .card-text {
-  padding-top: 0.2rem;
-  background-color: transparent;
+@media (max-width: 425px) {
+  #carrousel {
+    margin: 50px 0px 0px 0px;
+  }
 }
-.card:hover h1 {
-  color: #001431;
-  padding-top: 5rem;
-  background-color: transparent;
+#carrousel .title {
+  margin-bottom: 10px;
+  font-size: 30px;
 }
-
-.card-text h1 {
-  margin: 0;
-  font-size: 1.5em;
-  line-height: 1.2em;
-  color: #fff;
-  text-align: center;
-  border-radius: 0px 50px 0px 50px;
-  padding: 5px;
-  background-color: #001431;
-  backdrop-filter: blur(5px) saturate(160%) contrast(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(160%) contrast(180%);
-}
-
-.card p {
-  font-size: 0.75em;
-  opacity: 0;
-}
-.card:hover p {
-  opacity: 1;
-}
-.card .tags {
-  display: flex;
-  justify-content: center;
-}
-
-.card .tags .tag {
-  opacity: 0;
-  font-size: 0.75em;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 0.3rem;
-  padding: 0 0.5em;
-  margin-right: 0.5em;
-  line-height: 1.5em;
-  transition: all, var(--transition-time);
-}
-
-.card:hover .tags .tag {
-  opacity: 1;
-  background: var(--color);
-  color: white;
-}
-
-.card .date {
+#carrousel .owl-carousel img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
   position: absolute;
-  right: 0;
+  top: 0;
   bottom: 0;
-  float: right;
-  font-size: 0.75em;
-  padding: 1em;
-  line-height: 1em;
-  opacity: 0.8;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 300px;
+  object-fit: cover;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, 0.25);
+  box-shadow: 12px 12px 10px -10px rgba(0, 0, 0, 0.25);
 }
-.card:hover .date {
-  opacity: 0;
+#carrousel .owl-carousel .owl-item {
+  height: 300px;
+  position: relative;
+  transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transition: all 0.2s;
+  -webkit-transform: all 0.2s;
+  z-index: 1;
 }
-.card:before,
-.card:after {
-  content: '';
-  transform: scale(0);
-  transform-origin: top left;
-  position: absolute;
-  left: -50%;
-  top: -50%;
-  border-radius: 0px 50px 0px 50px;
-  z-index: -5;
-  transition: all, var(--transition-time);
-  transition-timing-function: ease-in-out;
+@media (max-width: 768px) {
+  #carrousel .owl-carousel .owl-item {
+    height: 270px;
+  }
 }
-
-.card:before {
-  background: #ddd;
-  width: 250%;
-  height: 250%;
-  border-radius: 0px 50px 0px 50px;
+@media (max-width: 380px) {
+  #carrousel .owl-carousel .owl-item {
+    height: 200px;
+  }
 }
-
-.card:after {
-  background: rgb(255, 255, 255);
-  width: 200%;
-  height: 200%;
-  border-radius: 0px 50px 0px 50px;
+#carrousel .owl-carousel .owl-stage-outer {
+  padding-bottom: 10px;
 }
-
-.card:hover {
-  color: var(--color);
-}
-
-.card:hover:before,
-.card:hover:after {
+#carrousel .owl-item.big {
   transform: scale(1);
-  border-radius: 0px 50px 0px 50px;
+  -ms-transform: scale(1);
+  z-index: 3;
 }
-
-.card-grid-space .num {
-  font-size: 3em;
-  margin-bottom: 1.2rem;
-  margin-left: 1rem;
+#carrousel .owl-item.medium {
+  transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  z-index: 2;
 }
-
-.info {
-  font-size: 1.2em;
-  display: flex;
-  padding: 1em 3em;
-  height: 3em;
+#carrousel .owl-item.medium.mdright {
+  /*border: solid 1px red;
+ */
+  position: relative;
+  left: -30px;
 }
-
-.info img {
-  height: 3em;
-  margin-right: 0.5em;
-}
-
-.info h1 {
-  font-size: 1em;
-  font-weight: normal;
-}
-
-/* MEDIA QUERIES */
-@media screen and (max-width: 1285px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr 1fr;
+@media (min-width: 768px) {
+  #carrousel .owl-item.medium.mdright {
+    left: 0px;
   }
 }
-
-@media screen and (max-width: 900px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .info {
-    justify-content: center;
-  }
-  .card-grid-space .num {
-    margin-left: 0;
-    text-align: center;
+#carrousel .owl-item.medium.mdleft {
+  /*border: solid 1px blue;
+ */
+  position: relative;
+  right: -30px;
+}
+@media (min-width: 768px) {
+  #carrousel .owl-item.medium.mdleft {
+    right: 0px;
   }
 }
-
-@media screen and (max-width: 500px) {
-  .cards-wrapper {
-    padding: 4rem 2rem;
-  }
-  .card {
-    max-width: calc(100vw - 4rem);
-  }
+#carrousel .owl-item.smallRight.active {
+  /* left side last img */
+  transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  position: relative;
+  left: -100px;
 }
-
-@media screen and (max-width: 450px) {
-  .info {
-    display: block;
-    text-align: center;
-  }
-  .info h1 {
-    margin: 0;
-  }
+#carrousel .owl-item.smallLeft.active {
+  /* left side last img */
+  transform: scale(0.5);
+  -ms-transform: scale(0.7);
+  position: relative;
+  right: -100px;
+}
+#carrousel .owl-nav {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+}
+#carrousel .owl-nav .owl-prev {
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  background: transparent !important;
+  color: #000 !important;
+  font-size: 40px !important;
+}
+#carrousel .owl-nav .owl-prev:hover {
+  color: #adadad !important;
+}
+#carrousel .owl-nav .owl-next {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  background: transparent !important;
+  color: #000 !important;
+  font-size: 40px !important;
+}
+#carrousel .owl-nav .owl-next:hover {
+  color: #adadad !important;
 }
 /* studies section end */
 
