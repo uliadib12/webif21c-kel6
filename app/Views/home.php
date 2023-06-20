@@ -467,18 +467,14 @@
                 <h1 class="judul">Sponsor</h1>
             </div>
             <div class="sponsor-list">
-                <div class="sponsor">
-                    <img src="/images/./mcd.png" alt="Sponsor 1" />
-                </div>
-                <div class="sponsor">
-                    <img src="/images/prime-v.png" alt="Sponsor 2" />
-                </div>
-                <div class="sponsor">
-                    <img src="/images/uniqlo.png" alt="Sponsor 3" />
-                </div>
-                <div class="sponsor">
-                    <img src="/images/nasa.png" alt="Sponsor 4" />
-                </div>
+                <?php foreach ($mitra as $key => $item) {
+                    if($key < 5){
+                        echo
+                        '<div class="sponsor-item">' .
+                        '<img width="90" src="/uploads/images/' . esc($item['logo']) . '" alt="logo">' .
+                        '</div>';
+                    }
+                } ?>
             </div>
         </div>
     </div>
