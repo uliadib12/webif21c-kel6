@@ -54,13 +54,13 @@ helper('form');
           </div>
           <div class="user-description">
             <h3 class="title" style="padding-top: 0px;"><?= esc($user->username)  ?></h3>
-              <?php if (isset($profile) && count($profile) != 0) : ?>
-                <?php if ($profile['jurusan'] != "" && $profile['kelas'] != "") : ?>
-                  <p style="margin-right: 1rem; color: #ec5757">
-                    <p class="category"><?= esc($profile['jurusan']) ?> / <span style="letter-spacing: normal"><?= esc($profile['kelas']) ?></span></p>
-                  </p>
-                <?php endif; ?>
+            <?php if (isset($profile) && count($profile) != 0) : ?>
+              <?php if ($profile['jurusan'] != "" && $profile['kelas'] != "") : ?>
+                <p style="margin-right: 1rem; color: #ec5757">
+                <p class="category"><?= esc($profile['jurusan']) ?> / <span style="letter-spacing: normal"><?= esc($profile['kelas']) ?></span></p>
+                </p>
               <?php endif; ?>
+            <?php endif; ?>
             <div class="inf">
               <?php if (isset($profile) && count($profile) != 0) : ?>
                 <?php if ($profile['npm'] != "" && $profile['npm'] != "0") : ?>
@@ -305,7 +305,7 @@ helper('form');
       </div>
     </div>
   </div>
-  
+
   <script>
     var profile = <?= json_encode($profile) ?>;
   </script>

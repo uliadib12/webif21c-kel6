@@ -437,69 +437,23 @@
                 </div>
             </div>
         </div>
-        <div class="card-container">
-            <div class="cards-wrapper">
-                <div class="card-grid-space">
-                    <a class="card" href="#" style="background-image: url('/images/web.jpeg')">
-                        <div class="card-text">
-                            <h1>Desain Web</h1>
-                            <p>Proses merancang tampilan website. yang melibatkan elemen visual, warna, gambar…
-                            </p>
-                            <div class="date">6 January 2018</div>
-                            <div class="tags">
-                                <div class="tag">HTML</div>
-                                <div class="tag">CSS</div>
-                                <div class="tag">JavaScript</div>
-                            </div>
-                        </div>
-                    </a>
+        <div id="carrousel">
+            <div class="container">
+
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        <img src="/images/uiux.jpeg">
+                        <img src="/images/ctf.jpeg">
+                        <img src="/images/mobile.jpeg">
+                        <img src="/images/web.jpeg">
+                        <img src="/images/bintang.png">
+                        <img src="/images/carrou.png">
+                        <img src="/images/imanuel.png">
+                    </div>
                 </div>
-                <div class="card-grid-space">
-                    <a class="card" href="#" style="background-image: url('/images/mobile.jpeg')">
-                        <div class="card-text">
-                            <h1>Mobile</h1>
-                            <p>Pembuatan aplikasi mobile yang dapat dijalankan pada SO mobile seperti Android,
-                                iOS…
-                            </p>
-                            <div class="date">9 Februari 2019</div>
-                            <div class="tags">
-                                <div class="tag">Java</div>
-                                <div class="tag">Dart</div>
-                                <div class="tag">Kotlin</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-grid-space">
-                    <a class="card" href="#" style="background-image: url('/images/ctf.jpeg')">
-                        <div class="card-text">
-                            <h1>CTF</h1>
-                            <p>Capture the Flag adalah salah satu jenis kompetisi hacking dimana peserta harus
-                                mengambil
-                                “Flag”…</p>
-                            <div class="date">4 Februari 2020</div>
-                            <div class="tags">
-                                <div class="tag">Exploit</div>
-                                <div class="tag">Reverse</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-grid-space">
-                    <a class="card" href="#" style="background-image: url('/images/uiux.jpeg')">
-                        <div class="card-text">
-                            <h1>UI/UX</h1>
-                            <p>Membuat inteface & pengalaman pengguna yang lebih baik dalam produk aplikasi, web
-                                dan
-                                layanan…</p>
-                            <div class="date">14 March 2021</div>
-                            <div class="tags">
-                                <div class="tag">Figma</div>
-                                <div class="tag">Sketch</div>
-                                <div class="tag">Canva</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="text-center">
+                    <button id="play-carousel" type="button" class="btn btn-dark">Play</button>
+                    <div class="status"></div>
                 </div>
             </div>
         </div>
