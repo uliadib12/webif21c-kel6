@@ -32,13 +32,13 @@
                 <li id="penjadwalan"><a href="#">Kategori</a></li>
             </ul>
         </li>
-        <li class="has-dropdown">
+        <!-- <li class="has-dropdown">
             <i class="fa-brands fa-redhat"></i><a href="#"> Kepanitiaan</a>
             <ul class="sidebar-dropdown list-unstyled">
                 <li id="sk"><a href="#">SK</a></li>
                 <li id="panitia"><a href="#">Panitia</a></li>
             </ul>
-        </li>
+        </li> -->
         <li id="sertifikasi" class="icon-container">
             <i class="fa-solid fa-address-card"></i>
             <a href="#"> Sertifikasi</a>
