@@ -39,17 +39,6 @@
                 <li id="panitia"><a href="#">Panitia</a></li>
             </ul>
         </li>
-        <li class="has-dropdown">
-            <i class="fa-solid fa-file-signature"></i><a href="#"> Laporan</a>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a href="#">To Do!</a></li>
-                <li><a href="#">Done</a></li>
-            </ul>
-        </li>
-        <li id="chart" class="icon-container">
-            <i class="fa-solid fa-chart-simple"></i>
-            <a href="#"> Charts</a>
-        </li>
         <li id="sertifikasi" class="icon-container">
             <i class="fa-solid fa-address-card"></i>
             <a href="#"> Sertifikasi</a>
@@ -57,10 +46,6 @@
         <li id="dataMitra" class="icon-container">
             <i class="fa-regular fa-handshake"></i>
             <a href="#"> Data Mitra</a>
-        </li>
-        <li id="setting" class=" icon-container">
-            <i class="fa-solid fa-gear"></i>
-            <a href="#"> Settings</a>
         </li>
         <li id="myDiv" class="icon-container">
             <i class="fa-solid fa-right-from-bracket"></i>
