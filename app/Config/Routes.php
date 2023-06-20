@@ -34,6 +34,9 @@ service('auth')->routes($routes);
 $routes->get('/', 'Home::index');
 $routes->post('login-v1', 'Auth::login');
 
+$routes->post('daftarLomba/(:num)', 'Peserta::daftarLomba');
+$routes->post('delete-daftarkategori/(:num)', 'Peserta::deleteDaftarKategori');
+
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->get('users', 'Dashboard::user');
