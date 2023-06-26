@@ -14,9 +14,12 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <meta name="description" content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!" />
+    <meta name="description"
+        content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!" />
     <meta name="keywords" content="calendar, events, reminders, javascript, html, css, open source coding" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="/css/loading.css" />
 
@@ -42,7 +45,9 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" width="100" /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -67,26 +72,29 @@
                         <div class="login_bt">
                             <ul>
                                 <li>
-                                    <a href="<?= (isset($user)) ? "/profile" : "/login" ?>"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <a href="<?= (isset($user)) ? "/profile" : "/login" ?>"><span class="user_icon"><i
+                                                class="fa fa-user" aria-hidden="true"></i></span>
                                         <?php if (isset($user)) : ?>
-                                            <?= esc($user->username) ?>
+                                        <?= esc($user->username) ?>
                                         <?php else : ?>
-                                            Login
+                                        Login
                                         <?php endif ?>
                                     </a>
                                 </li>
                                 <li>
                                     <?php if (isset($isDashboard) && $isDashboard != NULL) : ?>
-                                        <a href="/dashboard"><span class="user_icon"><i class="fa fa-tachometer" aria-hidden="true"></i></span>
-                                            Dashboard
-                                        </a>
+                                    <a href="/dashboard"><span class="user_icon"><i class="fa fa-tachometer"
+                                                aria-hidden="true"></i></span>
+                                        Dashboard
+                                    </a>
                                     <?php endif ?>
                                 </li>
                                 <li>
                                     <?php if (isset($user)) : ?>
-                                        <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
-                                            Logout
-                                        </a>
+                                    <a href="/logout"><span class="user_icon"><i class="fa fa-sign-out"
+                                                aria-hidden="true"></i></span>
+                                        Logout
+                                    </a>
                                     <?php endif ?>
                                 </li>
                             </ul>
@@ -227,7 +235,8 @@
         </div>
     </div>
     <!-- box section end -->
-    <button id="calendarButton" onclick="showHideCalendar()"><i id="calendarIcon" class="far fa-calendar-alt" style="font-size: 2.3em"></i></button>
+    <button id="calendarButton" onclick="showHideCalendar()"><i id="calendarIcon" class="far fa-calendar-alt"
+            style="font-size: 2.3em"></i></button>
     <!-- calendar start -->
     <div id="calendar" class="calendar-container" style="display: none; transition: all 0.3s ease-in-out; opacity: 0">
         <div class="left">
@@ -283,7 +292,7 @@
                         <div class="house_icon">
                             <img src="/images/icon-1.png" class="image_1" />
                             <img src="/images/icon-4.png" class="image_2" />
-                            n<h3 class="corporate_text">Grand Launching</h3>
+                            <h3 class="corporate_text">Grand Launching</h3>
                             <div class="up">
                                 <p class="chunks_text">
                                     Grand Lauching menjadi pembuka dari seluruh rangkaian Event yang di selenggarakan,
@@ -291,7 +300,6 @@
                                     dari Rektor Universitas Teknokrat Indonesia,
                                     Penampilan UKM, dan QnA.
                                 </p>
-                                <div class="readmore_button"><a href="#">Read More</a></div>
                             </div>
                         </div>
                     </div>
@@ -303,8 +311,8 @@
                             <div class="up">
                                 <p class="chunks_text">UKM Teknokrat merupakan Unit Kegiatan Mahasiswa Universitas
                                     Teknokrat Indonesia terdapat kurang lebih 10 UKM aktif dan menjadi wadah mahasiswa
-                                    untuk berlatih dan belajar untuk mempardalam kemampuan di bidang yang disukai.</p>
-                                <div class="readmore_button"><a href="#">Read More</a></div>
+                                    untuk berlatih dan belajar untuk mempardalam kemampuan di bidang yang disukai.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -319,7 +327,6 @@
                                     Proses Seleksi dilakukan secara adil dan kompetitif oleh juri yang berkompeten
                                     dibidangnya, sehingga menghasilkan juara yang layak.
                                 </p>
-                                <div class="readmore_button"><a href="#">Read More</a></div>
                             </div>
                         </div>
                     </div>
@@ -347,7 +354,7 @@
                         '<a class="card-image" title="Selengkapnya" href="/event/' . $item['id_event'] . '" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
                         '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' .
                         '</a>' .
-                        '<a class="card-description" href="">' .
+                        '<a class="card-description" href="/event/' . $item['id_event'] . '">' .
                         '<h2>' . $item['nama'] . '</h2>' .
                         '<p>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</p>' .
                         '</a>' .
@@ -365,10 +372,10 @@
                     if ($key >= 3) {
                         echo
                         '<li class="card-event">' .
-                            '<a class="card-image" title="Selengkapnya" href="" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
+                            '<a class="card-image" title="Selengkapnya" href="/event/' . $item['id_event'] . '" style="background-image:url( /uploads/images/' . esc($item['gambar_poster']) . ');" data-image-full="/uploads/images/' . esc($item['gambar_poster']) . '">' .
                             '<img src="/uploads/images/' . esc($item['gambar_poster']) . '" alt="logo">' .
                             '</a>' .
-                            '<a class="card-description" href="">' .
+                            '<a class="card-description" href="/event/' . $item['id_event'] . '">' .
                             '<h2>' . $item['nama'] . '</h2>' .
                             '<p>' . esc(date('d F Y', strtotime($item['tanggal']))) . '</p>' .
                             '</a>' .
@@ -380,6 +387,60 @@
 
     </div>
     <!-- event section end -->
+    <div class="ukm_section">
+        <div id="ukm" class="slider">
+            <div class="slide-track">
+                <div class="slide">
+                    <img src="/images/UKM-FUTSAL.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-HIDATE.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-ISLAM.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-KARATE.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-PROGRAMMER.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-SIPIL.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-TAEKWONDO.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-TARI.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-FUTSAL.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-HIDATE.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-ISLAM.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-KARATE.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-PROGRAMMER.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-SIPIL.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-TAEKWONDO.png" width="100" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="/images/UKM-TARI.png" width="100" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- about section start -->
     <div id="about" class="about_section layout_padding">
         <div class="container">
@@ -410,7 +471,7 @@
         <div class="container">
             <div id="doc" class="row">
                 <div class="col-sm-12">
-                    <h1 class="judul" style="padding-top: 3em">Dokumentasi Tahunan</h1>
+                    <h1 class="judul" style="padding-top: 3em">Dokumentasi</h1>
                 </div>
             </div>
         </div>
@@ -436,7 +497,6 @@
         </div>
     </div>
     <!-- studies section end -->
-
     <!-- news section start -->
     <div id="sponsor" class="layout_padding">
         <div class="sponsor-bg">
@@ -445,11 +505,11 @@
             </div>
             <div class="sponsor-list">
                 <?php foreach ($mitra as $key => $item) {
-                    if($key < 5){
+                    if ($key < 5) {
                         echo
                         '<div class="sponsor-item">' .
-                        '<img width="90" src="/uploads/images/' . esc($item['logo']) . '" alt="logo">' .
-                        '</div>';
+                            '<img width="90" src="/uploads/images/' . esc($item['logo']) . '" alt="logo">' .
+                            '</div>';
                     }
                 } ?>
             </div>
@@ -465,7 +525,8 @@
                     <div class="col-xl-4 col-lg-4 mb-50">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" class="img-fluid" alt="logo" /></a>
+                                <a href="index.html"><img src="/images/UNIVERSITASTEKNOKRAT.png" class="img-fluid"
+                                        alt="logo" /></a>
                             </div>
                         </div>
                     </div>
@@ -477,7 +538,6 @@
                             <ul>
                                 <li><a href="/">Home</a></li>
                                 <li><a href="#about">About Us</a></li>
-                                <li><a href="#event">Register</a></li>
                                 <li><a href="#doc">Documentation</a></li>
                                 <li><a href="#contact">Contact</a></li>
                             </ul>
@@ -490,9 +550,8 @@
                             </div>
                             <ul>
                                 <li><a href="#">Opening</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Kategori</a></li>
-                                <li><a href="#">Sertifikat</a></li>
+                                <li><a href="#event">Register</a></li>
+                                <li><a href="#">UKM</a></li>
                             </ul>
                         </div>
                     </div>
@@ -502,16 +561,14 @@
                                 <h3>Contact Us</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Contact Person</a></li>
-                                <ul class="row" style="gap: 3em; padding-inline: 3em">
+                                <ul class="column" style="gap: 3em;">
                                     <li>
-                                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a title="082289911436" href="#"><i class="fa-brands fa-whatsapp"></i> Ilham
+                                            Nasul</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                        <a title="085727789364" href="#"><i class="fa-brands fa-whatsapp"></i> Vera
+                                            Afridita</a>
                                     </li>
                                 </ul>
                             </ul>
@@ -530,8 +587,8 @@
     </div>
     <a href="javascript:void(0);" id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-caret-up"></i></a>
     <script>
-        var dataEvent = <?php echo json_encode($dataEvent); ?>;
-        console.log(dataEvent);
+    var dataEvent = <?php echo json_encode($dataEvent); ?>;
+    console.log(dataEvent);
     </script>
 
     <!-- copyright section end -->
@@ -551,59 +608,59 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleBtn = document.querySelector(".toggle-btn");
-            const toggleContent = document.querySelector(".toggle-content");
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleBtn = document.querySelector(".toggle-btn");
+        const toggleContent = document.querySelector(".toggle-content");
 
-            toggleBtn.addEventListener("click", function() {
-                toggleBtn.classList.toggle("active");
-                toggleContent.classList.toggle("show");
-            });
+        toggleBtn.addEventListener("click", function() {
+            toggleBtn.classList.toggle("active");
+            toggleContent.classList.toggle("show");
         });
+    });
     </script>
     <script>
-        function showHideCalendar() {
-            var calendar = document.getElementById('calendar');
-            var calendarIcon = document.getElementById('calendarIcon');
-            var calendarButton = document.getElementById('calendarButton');
-            if (calendar.style.display === 'none') {
-                calendar.style.display = 'flex';
-                calendar.style.opacity = 1;
-                calendarIcon.classList.remove('fa-calendar-alt');
-                calendarIcon.classList.add('fa-calendar-times');
-                calendarButton.style.backgroundColor = '#f8f8f8';
-                setTimeout(function() {
-                    calendar.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                calendar.style.transform = 'translateY(-20px)';
-                calendar.style.opacity = 0;
-                calendarIcon.classList.remove('fa-calendar-times');
-                calendarIcon.classList.add('fa-calendar-alt');
-                calendarButton.style.backgroundColor = 'transparent';
-                setTimeout(function() {
-                    calendar.style.display = 'none';
-                }, 300);
-            }
+    function showHideCalendar() {
+        var calendar = document.getElementById('calendar');
+        var calendarIcon = document.getElementById('calendarIcon');
+        var calendarButton = document.getElementById('calendarButton');
+        if (calendar.style.display === 'none') {
+            calendar.style.display = 'flex';
+            calendar.style.opacity = 1;
+            calendarIcon.classList.remove('fa-calendar-alt');
+            calendarIcon.classList.add('fa-calendar-times');
+            calendarButton.style.backgroundColor = '#f8f8f8';
+            setTimeout(function() {
+                calendar.style.transform = 'translateY(0)';
+            }, 100);
+        } else {
+            calendar.style.transform = 'translateY(-20px)';
+            calendar.style.opacity = 0;
+            calendarIcon.classList.remove('fa-calendar-times');
+            calendarIcon.classList.add('fa-calendar-alt');
+            calendarButton.style.backgroundColor = 'transparent';
+            setTimeout(function() {
+                calendar.style.display = 'none';
+            }, 300);
         }
+    }
     </script>
     <script>
-        window.onscroll = function() {
-            scrollFunction();
-        };
+    window.onscroll = function() {
+        scrollFunction();
+    };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById('back-to-top').style.display = 'block';
-            } else {
-                document.getElementById('back-to-top').style.display = 'none';
-            }
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById('back-to-top').style.display = 'block';
+        } else {
+            document.getElementById('back-to-top').style.display = 'none';
         }
+    }
 
-        function scrollToTop() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
+    function scrollToTop() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
     </script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
